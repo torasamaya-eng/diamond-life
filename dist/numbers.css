@@ -83,3 +83,14 @@ html,body,#app{height:100%;overflow:hidden}body{padding-bottom:0}#app{height:100
 .career-actions{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin:24px 0}
 .career-actions button{min-height:44px}
 @media(max-width:720px){.site-screen{padding:0 16px}.site-content{padding-top:20px}.site-content .two-columns{grid-template-columns:minmax(0,1fr)}.site-content .panel{padding:16px}.site-content .career-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.site-content .career-metrics>div{min-width:0}.site-content .career-metrics strong{font-size:24px}.site-content .dialog-actions{display:flex;flex-wrap:wrap}.site-content .dialog-actions button{flex:1;min-width:100px}.site-footer nav{gap:4px 16px!important}.site-content .page-heading h1{font-size:24px}}
+
+/* Mobile usability fixes */
+@media(max-width:720px){
+  input,select,textarea{font-size:16px}
+  .sidebar nav{padding-bottom:calc(4px + env(safe-area-inset-bottom))}
+  .workspace{height:calc(100dvh - 72px - env(safe-area-inset-bottom))}
+  .workspace main{
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+}
