@@ -103,3 +103,22 @@ html,body,#app{height:100%;overflow:hidden}body{padding-bottom:0}#app{height:100
     padding-bottom:16px;
   }
 }
+/* Safari-safe bottom navigation spacing */
+@media(max-width:720px){
+  body{
+    padding-bottom:0;
+  }
+
+  .workspace{
+    height:100dvh;
+  }
+
+  .workspace main{
+    padding-bottom:calc(84px + env(safe-area-inset-bottom));
+  }
+
+  .workspace .view-play:not(:has(.retired-banner)){
+    overflow-y:auto;
+    padding-bottom:calc(84px + env(safe-area-inset-bottom));
+  }
+}
