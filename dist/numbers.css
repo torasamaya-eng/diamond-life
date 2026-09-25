@@ -83,49 +83,40 @@ html,body,#app{height:100%;overflow:hidden}body{padding-bottom:0}#app{height:100
 .career-actions{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin:24px 0}
 .career-actions button{min-height:44px}
 @media(max-width:720px){.site-screen{padding:0 16px}.site-content{padding-top:20px}.site-content .two-columns{grid-template-columns:minmax(0,1fr)}.site-content .panel{padding:16px}.site-content .career-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.site-content .career-metrics>div{min-width:0}.site-content .career-metrics strong{font-size:24px}.site-content .dialog-actions{display:flex;flex-wrap:wrap}.site-content .dialog-actions button{flex:1;min-width:100px}.site-footer nav{gap:4px 16px!important}.site-content .page-heading h1{font-size:24px}}
+/* Mobile layout: keep content above fixed bottom navigation */
+@media(max-width:720px){
+  input,select,textarea{
+    font-size:16px;
+  }
 
-/* Mobile usability fixes */
-@media(max-width:720px){
-  input,select,textarea{font-size:16px}
-  .sidebar nav{padding-bottom:calc(4px + env(safe-area-inset-bottom))}
-  .workspace{height:calc(100dvh - 72px - env(safe-area-inset-bottom))}
-  .workspace main{
-    overscroll-behavior:contain;
-    -webkit-overflow-scrolling:touch;
-  }
-}
-/* Prevent mobile play content from hiding behind bottom navigation */
-@media(max-width:720px){
-  .view-play:not(:has(.retired-banner)){
-    overflow-y:auto;
-    overflow-x:hidden;
-    min-height:0;
-    padding-bottom:16px;
-  }
-}
-/* Safari-safe bottom navigation spacing */
-@media(max-width:720px){
   body{
     padding-bottom:0;
   }
 
+  .sidebar nav{
+    padding-bottom:calc(4px + env(safe-area-inset-bottom));
+  }
+
   .workspace{
-    height:100dvh;
+    height:calc(100dvh - 76px - env(safe-area-inset-bottom));
+    min-height:0;
   }
 
   .workspace main{
-    padding-bottom:calc(84px + env(safe-area-inset-bottom));
+    min-height:0;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
   }
 
-  .workspace .view-play:not(:has(.retired-banner)){
+  .workspace main.view-play{
     overflow-y:auto;
-    padding-bottom:calc(84px + env(safe-area-inset-bottom));
+    overflow-x:hidden;
+    padding-bottom:16px;
   }
-}
-/* Keep recent news above the fixed mobile navigation */
-@media(max-width:720px){
+
   .view-play .recent-news{
-    flex-shrink:0;
-    margin-bottom:calc(90px + env(safe-area-inset-bottom));
+    flex:0 0 auto;
+    margin-bottom:0;
   }
 }
