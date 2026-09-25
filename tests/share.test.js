@@ -17,7 +17,7 @@ test('主要成績を投打別に選び、二軍を混ぜず、ゲーム状態�
  assert.ok(card.facts.includes('MVP 1回 ／ オールスター 1回'));assert.ok(card.facts.includes('メジャー経験 1年'));
  assert.equal(JSON.stringify(s),before);
  const p=careerCardData(retired('pitcher'));assert.equal(p.metrics.find(([k])=>k==='勝利')[1],25);assert.ok(!p.metrics.some(([k])=>k==='安打'));
- assert.equal(SHARE_GAME_URL,'');assert.match(careerShareText(card),/#DIAMONDLIFE/);assert.doesNotMatch(careerShareText(card),/https?:/);
+ assert.equal(SHARE_GAME_URL,'https://hakkyu-jinsei.com/');assert.match(careerShareText(card),/#白球人生/);assert.match(careerShareText(card),/https:\/\/hakkyu-jinsei\.com\//);
  assert.throws(()=>careerCardData(createPlayer()),/引退後/);
 });
 test('カードは1080×1350のPNGで、必要なブランド表記を含む',async()=>{
@@ -25,11 +25,11 @@ test('カードは1080×1350のPNGで、必要なブランド表記を含む',as
  const ctx={fillRect(){},strokeRect(){},measureText:t=>({width:String(t).length*20}),fillText:t=>drawn.push(t)};
  const canvas={getContext:()=>ctx,toBlob:cb=>cb(new Blob(['png'],{type:'image/png'})),toDataURL:()=> 'data:image/png;base64,cG5n'};
  globalThis.document={createElement:()=>canvas};
- try{const asset=await makeCareerCard(retired());assert.equal(canvas.width,1080);assert.equal(canvas.height,1350);assert.equal(asset.blob.type,'image/png');assert.ok(drawn.includes('DIAMOND LIFE'));assert.ok(drawn.includes('#DIAMONDLIFE'));}
+ try{const asset=await makeCareerCard(retired());assert.equal(canvas.width,1080);assert.equal(canvas.height,1350);assert.equal(asset.blob.type,'image/png');assert.ok(drawn.includes('白球人生'));assert.ok(drawn.includes('#白球人生'));}
  finally{globalThis.document=prior;}
 });
 test('ファイル共有の対応・非対応・キャンセル・API失敗を処理する',async()=>{
- const descriptor=Object.getOwnPropertyDescriptor(globalThis,'navigator'),asset={blob:new Blob(['png'],{type:'image/png'}),filename:'card.png',text:'#DIAMONDLIFE'};
+ const descriptor=Object.getOwnPropertyDescriptor(globalThis,'navigator'),asset={blob:new Blob(['png'],{type:'image/png'}),filename:'card.png',text:'#白球人生'};
  const set=value=>Object.defineProperty(globalThis,'navigator',{configurable:true,value});
  try{
   set({});assert.equal(canShareCareerFile(asset),false);assert.equal(await shareCareerFile(asset),false);

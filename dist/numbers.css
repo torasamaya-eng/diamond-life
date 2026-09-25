@@ -69,7 +69,7 @@ html,body,#app{height:100%;overflow:hidden}body{padding-bottom:0}#app{height:100
 .site-content{width:100%;max-width:1060px;min-width:0;margin:0 auto;padding:32px 0 48px;overflow-wrap:anywhere}
 .site-top .site-content{min-height:100%;display:flex;flex-direction:column;padding-bottom:18px}
 .site-home{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 0}
-.site-home h1{font:700 clamp(28px,6vw,46px)/1.3 var(--num),sans-serif;letter-spacing:.06em;margin:0 0 36px}
+.site-home h1{font:700 clamp(28px,6vw,46px)/1.3 var(--num),sans-serif;letter-spacing:.06em;margin:0 0 20px}.site-intro{width:min(100%,620px);text-align:center;margin:0 auto 28px;color:#aebbb5}.site-intro p{margin:0 0 8px;line-height:1.8;font-size:14px}
 .site-start-actions{display:grid;gap:12px;width:min(100%,300px)}
 .site-start-actions button{min-height:52px}
 .site-footer nav{justify-content:center}

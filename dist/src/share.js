@@ -1,7 +1,7 @@
 import {sumStats,avg,ops,era,innings,decimal} from './stats.js';
 import {money} from './format.js';
 // Set this to the real public game URL when available. Never use a placeholder.
-export const SHARE_GAME_URL='';
+export const SHARE_GAME_URL='https://hakkyu-jinsei.com/';
 export function careerCardData(s){
  if(!s.retired)throw Error('引退後に結果を共有できます。');
  const pro=s.records.filter(r=>['pro','mlb'].includes(r.stage));
@@ -22,7 +22,7 @@ export function careerCardData(s){
   highlights:[...honors,...records,...titles].slice(0,4)};
 }
 export function careerShareText(card){
- return ['DIAMOND LIFE｜'+card.name+'の野球人生',card.scope+'・'+card.years+'年',card.metrics.map(([label,value])=>label+' '+value).join(' ／ '),...card.highlights.slice(0,2),'#DIAMONDLIFE',SHARE_GAME_URL].filter(Boolean).join('\n');
+ return ['白球人生｜'+card.name+'の野球人生',card.scope+'・'+card.years+'年',card.metrics.map(([label,value])=>label+' '+value).join(' ／ '),...card.highlights.slice(0,2),'#白球人生',SHARE_GAME_URL].filter(Boolean).join('\n');
 }
 export async function makeCareerCard(s){
  const card=careerCardData(s),canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
@@ -36,7 +36,7 @@ export async function makeCareerCard(s){
  ctx.fillStyle='#101820';ctx.fillRect(0,0,1080,1350);
  ctx.fillStyle='#1d302c';ctx.fillRect(0,0,1080,270);
  ctx.strokeStyle='#d8c68e';ctx.lineWidth=3;ctx.strokeRect(28,28,1024,1294);
- text('DIAMOND LIFE',68,100,43,'#e5d39c',944,800);
+ text('白球人生',68,100,43,'#e5d39c',944,800);
  text('CAREER / FINAL RECORD',70,141,20,'#a7b9b3');
  text(card.name,68,220,58,'#ffffff',944,800);
  text((card.pitch?'PITCHER':'BATTER')+'  /  '+card.scope,68,315,24,'#b8c9c2');
@@ -49,16 +49,16 @@ export async function makeCareerCard(s){
  card.facts.forEach((line,i)=>text(line,72,756+i*45,27,'#d6dfe3'));
  ctx.fillStyle='#d8c68e';ctx.fillRect(68,976,944,2);
  card.highlights.forEach((line,i)=>text(line,72,1019+i*45,26,'#e5d39c'));
- text('#DIAMONDLIFE',68,1260,34,'#a6e1c2',680,800);
+ text('#白球人生',68,1260,34,'#a6e1c2',680,800);
  text('MY BASEBALL STORY',720,1260,18,'#98aaa3',292);
  const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('画像生成に失敗しました。')),'image/png'));
- return {blob,preview:canvas.toDataURL('image/png'),text:careerShareText(card),filename:'DIAMOND-LIFE-career.png'};
+ return {blob,preview:canvas.toDataURL('image/png'),text:careerShareText(card),filename:'hakkyu-jinsei-career.png'};
 }
 export function canShareCareerFile(asset){
  try{return typeof File!=='undefined'&&!!globalThis.navigator?.share&&!!globalThis.navigator?.canShare?.({files:[new File([asset.blob],asset.filename,{type:'image/png'})]});}catch{return false;}
 }
 export async function shareCareerFile(asset){
  if(!canShareCareerFile(asset))return false;
- try{await navigator.share({title:'DIAMOND LIFE',text:asset.text,files:[new File([asset.blob],asset.filename,{type:'image/png'})]});return true;}
+ try{await navigator.share({title:'白球人生',text:asset.text,files:[new File([asset.blob],asset.filename,{type:'image/png'})]});return true;}
  catch(error){if(error.name==='AbortError')return true;return false;}
 }

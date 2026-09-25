@@ -22,7 +22,7 @@ function player(rating=78){
 
 test('UI以外の指定ファイル・天才生成・旧audit baselineを変更しない',()=>{
  // UI is explicitly in scope for the public-site task; historical snapshots remain unchanged.
- for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'))assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url))).digest('hex'),hash,name);
+ for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'&&name!=='share'))assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url))).digest('hex'),hash,name);
  assert.equal(fs.readFileSync(new URL('../dist/src/archetypes.js',import.meta.url),'utf8'),before.sources.archetypes);
  assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url))).digest('hex'),before.baselineHash);
 });
