@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createPlayer} from '../dist/src/engine.js';
+import {eligibility,negotiate,reviewPostingChallenge,acceptOffer} from '../dist/src/market.js';
+import {queueMarketNotices} from '../dist/src/lifecycle.js';
+import {setContract} from '../dist/src/contracts.js';
+import {emptyStats} from '../dist/src/stats.js';
+import {TEAMS} from '../dist/src/data.js';
+function player(){const s=createPlayer('申請検証','batter',71);Object.assign(s,{stage:'pro',age:28,year:2031,team:TEAMS[0],proYears:8,salary:15000});for(const k in s.player.abilities)s.player.abilities[k]=85;s.records=Array.from({length:8},(_,i)=>({year:2023+i,stage:'pro',team:s.team,stats:{...emptyStats(),games:143,ab:500,hits:160,hr:30}}));setContract(s,15000,4);return s;}
+test('ポスティングは複数年契約中でも申請可能、FAの契約制限は維持',()=>{const s=player();assert.equal(eligibility(s,'posting'),'');assert.match(eligibility(s,'fa'),/複数年契約/);});
+test('課題達成後は残契約と能力低下で妨げず海外契約まで成立',()=>{const s=player();s.postingChallenge={year:2030,team:s.team,status:'pending',stat:'hr',target:25,label:'25本塁打'};reviewPostingChallenge(s,s.records.at(-1));for(const k in s.player.abilities)s.player.abilities[k]=50;assert.equal(eligibility(s,'posting'),'');const b=negotiate(s,'posting',true);assert.equal(b.permissionGranted,true);assert.ok(b.offers.length);acceptOffer(s,b.offers[0].id);assert.equal(s.stage,'mlb');assert.equal(s.activeContract.team,s.team);assert.ok(s.salary>0);});
+test('同年に残っている旧拒否結果も課題達成で更新、再申請で再抽選しない',()=>{const s=player();s.postingChallenge={year:s.year,team:s.team,status:'pending',stat:'hr',target:25,label:'25本'};s.marketAttempts[s.year+':posting']={year:s.year,kind:'posting',offers:[],closed:true,message:'球団は申請を拒否。'};reviewPostingChallenge(s,{year:s.year,team:s.team,stats:{hr:25}});const b=negotiate(s,'posting',true),seed=s.seed;assert.ok(b.offers.length);assert.equal(b.closed,false);assert.deepEqual(negotiate(s,'posting'),b);assert.equal(s.seed,seed);});
+test('承認後のオファーなしは固定し、拒否結果の更新と区別',()=>{const s=player();s.postingChallenge={year:2030,team:s.team,status:'achieved'};const b={year:s.year,kind:'posting',offers:[],permissionGranted:true,message:'条件の合うオファーは届きませんでした。',closed:false};s.marketAttempts[s.year+':posting']=b;const seed=s.seed;assert.equal(negotiate(s,'posting',true),b);assert.equal(s.seed,seed);});
+test('旧球団名の承認は同一球団として扱い、移籍先への承認持越しを防止',()=>{const s=player();s.postingChallenge={year:2030,team:'東京スワローウィングス',status:'achieved'};for(const k in s.player.abilities)s.player.abilities[k]=50;assert.equal(eligibility(s,'posting'),'');s.team=TEAMS[1];assert.match(eligibility(s,'posting'),/75/);s.records=s.records.slice(0,4);assert.match(eligibility(s,'posting'),/あと1年/);});
+test('通知は野手能力のみの申請判定と一致し、課題達成時に再通知',()=>{const s=player();for(const k of ['velocity','control','stamina','breaking','strikeout'])s.player.abilities[k]=10;queueMarketNotices(s);assert.ok(s.notices.some(n=>n.kind==='posting'));s.notices.forEach(n=>n.seen=true);s.postingChallenge={year:s.year-1,team:s.team,status:'achieved'};queueMarketNotices(s);assert.ok(s.notices.some(n=>n.title.includes('課題達成')));const count=s.notices.filter(n=>n.kind==='posting').length;queueMarketNotices(s);assert.equal(s.notices.filter(n=>n.kind==='posting').length,count);});
+

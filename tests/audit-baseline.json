@@ -1,0 +1,425 @@
+[
+  {
+    "seed": 7,
+    "role": "batter",
+    "route": "pro",
+    "sha256": "931a0dee59a7975f7164d42ae758f65d73b680333881602b1116271322831855",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "batter",
+    "route": "university",
+    "sha256": "1916be908e25bd1625d9ef65ad2587011e1ef9a2da9208160adf6d9015050abc",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "university",
+      "pro",
+      "mlb",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "batter",
+    "route": "overseas",
+    "sha256": "4ad3c59311bf6594726b828e724f5d0cab7e6a9f29988ea7f40e84e75bee2555",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "overseas",
+      "mlb",
+      "independent",
+      "pro"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "batter",
+    "route": "corporate",
+    "sha256": "931a0dee59a7975f7164d42ae758f65d73b680333881602b1116271322831855",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "batter",
+    "route": "independent",
+    "sha256": "931a0dee59a7975f7164d42ae758f65d73b680333881602b1116271322831855",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "pitcher",
+    "route": "pro",
+    "sha256": "25f62b2189360c7debfb3fd500ca0e17f6f6f264f4acbf9f083532d50744d2d7",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "pro",
+      "mlb",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "pitcher",
+    "route": "university",
+    "sha256": "6fc7aafc6cbfbfd2e9c4584bb6b91d65da0a1c6a04a986a2ccd3168998c34f03",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "university",
+      "pro",
+      "mlb",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "pitcher",
+    "route": "overseas",
+    "sha256": "17bcd6a43f795acf4b88f1db15204cfb07b61b4e81162f42936a36aa2129367f",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "overseas",
+      "pro",
+      "mlb",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "pitcher",
+    "route": "corporate",
+    "sha256": "2bf300b2882884d385dc0f25f30233942feafbd975b4facfeff9a8fbfcb3a192",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro",
+      "mlb",
+      "independent"
+    ]
+  },
+  {
+    "seed": 7,
+    "role": "pitcher",
+    "route": "independent",
+    "sha256": "7a3495d68ac659575b19b9d1b18e065ffddc44e12443147aaa67ab9d60bc2a90",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "independent",
+      "pro",
+      "mlb",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "batter",
+    "route": "pro",
+    "sha256": "eb536c453c90d58751448816de23ae79d95c14422560ec615164debe54d22a5a",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "pro",
+      "mlb",
+      "independent"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "batter",
+    "route": "university",
+    "sha256": "69c63b9ab30c7626646c85576698de11577500e0ad347ee59ecb3ea6c48af741",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "university",
+      "corporate",
+      "pro"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "batter",
+    "route": "overseas",
+    "sha256": "55cc93084dc168ec220686b4930915c960dd7e54c2f0b7fe91405d0c104b770d",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "overseas",
+      "mlb",
+      "pro",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "batter",
+    "route": "corporate",
+    "sha256": "0e4f64632381b1dc9c2a663af4af6866eb136a716b79892308c587bf99241d7b",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "batter",
+    "route": "independent",
+    "sha256": "5335b572db45095e76290b31d4bb82436713527c5ace0ddba371dccbe51329a9",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "independent",
+      "pro",
+      "mlb",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "pitcher",
+    "route": "pro",
+    "sha256": "f0046a217bc3cd318ca0df878dea634c91d0c0a8a265ce2d0c08ebe094400d3c",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "pro",
+      "mlb",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "pitcher",
+    "route": "university",
+    "sha256": "b400f409f5df3f9b784fa78c9e45b7cab2002a2eb0991e424ffb90c46fe6a18c",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "university",
+      "pro",
+      "independent",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "pitcher",
+    "route": "overseas",
+    "sha256": "fc2f4d3f16cea29176a146c1ccbb1a0e3ddc0cc843a1c2a2ba2fb0e4c9cdadc6",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "overseas",
+      "pro",
+      "independent"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "pitcher",
+    "route": "corporate",
+    "sha256": "0ba35b727b38525d3d3679bc98f66feb8f3b1dc69ba3b3d3e814ab0f5511fb0b",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro",
+      "mlb",
+      "independent"
+    ]
+  },
+  {
+    "seed": 42,
+    "role": "pitcher",
+    "route": "independent",
+    "sha256": "0cc7e6d498513126db6e599ebd4856d1625574c0695b5c9ce242c732924d0202",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "independent",
+      "pro",
+      "corporate"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "batter",
+    "route": "pro",
+    "sha256": "62c2bbc595693e908d4dafbc78911c6824bd2666515c8355af738062841ef910",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "pro",
+      "mlb"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "batter",
+    "route": "university",
+    "sha256": "9f19580d11e7f2a602cb332a1067d3cfec23e2fa6eb0f807853d9e3f09a5d1ee",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "university",
+      "pro",
+      "mlb"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "batter",
+    "route": "overseas",
+    "sha256": "012a165c819dd1b69c4f32b43d545b44244cd5e9c5072b07ae6eeda6c4327871",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "overseas",
+      "mlb",
+      "pro"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "batter",
+    "route": "corporate",
+    "sha256": "b5d61ec15ec4c567f405e003431a98d08a734b6a4397d9375885d1ab4d35dfb1",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "batter",
+    "route": "independent",
+    "sha256": "b5f48c59d5e0e18afc1b9f8d9b65ba0cc9a5cadf99c8b9fa4220642d8fd5e39a",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "independent",
+      "pro"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "pitcher",
+    "route": "pro",
+    "sha256": "d154c3a19aef0cbd23ad807cb1a29992a6d35e36e8cc3949361a41aa4b91b4fa",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "pro",
+      "mlb",
+      "independent"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "pitcher",
+    "route": "university",
+    "sha256": "698564a1cd027ebd17bcd0b2333c4970871cea29b7a913c201b9649056b0d0fa",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "university",
+      "pro"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "pitcher",
+    "route": "overseas",
+    "sha256": "50f4e1a364efbd1feed548b7fbac800cf64b24b874038e04604a2ffe6587400f",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "overseas",
+      "mlb",
+      "pro"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "pitcher",
+    "route": "corporate",
+    "sha256": "6ca09c8a4db79acbea1dcba825db3bde4459fccee9a043d9d9d38be7c949bc5b",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "corporate",
+      "pro",
+      "mlb",
+      "independent"
+    ]
+  },
+  {
+    "seed": 99,
+    "role": "pitcher",
+    "route": "independent",
+    "sha256": "d154c3a19aef0cbd23ad807cb1a29992a6d35e36e8cc3949361a41aa4b91b4fa",
+    "stages": [
+      "elementary",
+      "middle",
+      "high",
+      "pro",
+      "mlb",
+      "independent"
+    ]
+  }
+]

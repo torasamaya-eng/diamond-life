@@ -1,0 +1,15 @@
+import {advanceSeason as advanceYear} from './support.js';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createPlayer} from '../dist/src/engine.js';
+import {simulateDomestic,levelRows} from '../dist/src/levels.js';
+import {youthCalendar,youthSelection,YOUTH_CUPS} from '../dist/src/youth.js';
+import {emptyStats,sumStats} from '../dist/src/stats.js';
+import {validate} from '../dist/src/storage.js';
+function pro(role='batter'){const s=createPlayer('test',role,54123);s.stage='pro';s.age=25;s.year=2033;s.salary=1200;for(const k in s.player.abilities)s.player.abilities[k]=55;return s;}
+test('一軍と二軍を独立記録し、一軍年度成績に二軍を加算しない',()=>{for(const role of ['batter','pitcher']){const s=pro(role);advanceYear(s);const r=s.records.at(-1);assert.ok(r.levels.first.games>0);assert.ok(r.levels.second.games>0);assert.deepEqual(r.stats,r.levels.first);assert.equal(levelRows(s.records,'first')[0].stats.games,r.stats.games);assert.ok(sumStats([r.levels.first,r.levels.second]).games>r.stats.games);validate(s);}});
+test('一軍出場比率が低い選手ほど二軍の実戦機会が増える',()=>{const s=pro(),t=structuredClone(s);const a=simulateDomestic(s,120,.9),b=simulateDomestic(t,10,.08);assert.ok(a.first.games>b.first.games);assert.ok(a.second.games<b.second.games);});
+test('旧記録を勝手に一軍・二軍へ振り分けず、二軍破損は拒否',()=>{const s=pro();advanceYear(s);const before=s.records[0].stats;delete s.records[0].levels;validate(s);assert.equal(levelRows(s.records,'first').length,0);assert.deepEqual(s.records[0].stats,before);s.records[0].levels={second:{...emptyStats(),hits:-1}};assert.throws(()=>validate(s));});
+test('世界大会は年代・年齢・開催年で限定、同年の二重選考を防ぐ',()=>{for(const c of YOUTH_CUPS){const s=createPlayer('test','batter',931);s.stage=c.stage;s.age=c.minAge;s.year=c.start;s.current={...emptyStats(),games:60,ab:200,hits:80};for(const k in s.player.abilities)s.player.abilities[k]=90;assert.equal(youthCalendar(s)[0].id,c.id);youthSelection(s,{stats:s.current});youthSelection(s,{stats:s.current});assert.equal(s.nationalHistory.length,1);s.year++;assert.equal(youthCalendar(s).length,0);s.year--;s.age=c.minAge-1;assert.equal(youthCalendar(s).length,0);}});
+test('小中高の投手・野手に選出／非選出があり、学校成績は変化しない',()=>{for(const role of ['batter','pitcher'])for(const c of YOUTH_CUPS){let selected=0;for(let seed=1;seed<=60;seed++){const s=createPlayer('test',role,seed*997);s.stage=c.stage;s.age=c.minAge;s.year=c.start;for(const k in s.player.abilities)s.player.abilities[k]=c.threshold+8;s.current={...emptyStats(),games:30,ab:100,hits:36,outs:100,er:7};const old=JSON.stringify(s.current);youthSelection(s,{stats:s.current});assert.equal(JSON.stringify(s.current),old);if(s.nationalHistory[0].selected){selected++;assert.ok(s.nationalHistory[0].stats.games>0);assert.ok(s.youthNotice);}}assert.ok(selected>0&&selected<60);}});
+test('代表の最低能力に届かない場合は選出されない',()=>{const s=createPlayer();s.age=11;s.year=2019;for(const k in s.player.abilities)s.player.abilities[k]=10;youthSelection(s,{stats:{...emptyStats(),ab:100,hits:50}});assert.equal(s.nationalHistory[0].selected,false);assert.equal(s.nationalHistory[0].stats,undefined);});

@@ -1,0 +1,17 @@
+import {advanceSeason as advanceYear} from './support.js';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createPlayer,chooseEmployment} from '../dist/src/engine.js';
+import {setContract,signRenewal} from '../dist/src/contracts.js';
+import {reviewEmployment,queueMarketNotices} from '../dist/src/lifecycle.js';
+import {validate} from '../dist/src/storage.js';
+import {emptyStats} from '../dist/src/stats.js';
+import {settle} from './support.js';
+function pro(seed=100){const s=createPlayer('検証','batter',seed);s.stage='pro';s.age=27;s.year=2035;s.team='東京スワローウィングス';s.proYears=9;for(const k of Object.keys(s.player.abilities)){s.player.abilities[k]=85;s.player.potential[k]=99;}setContract(s,15000,3);return s;}
+test('複数年契約は期間内の年俸を保証し、満了時だけ更改する',()=>{const s=pro();for(let i=0;i<2;i++){advanceYear(s);assert.equal(s.salary,15000);assert.equal(s.contractOffers.length,0);}advanceYear(s);assert.ok(s.contractOffers.length);assert.equal(s.totalSalary,45000);const y=s.year;advanceYear(s);assert.equal(s.year,y);signRenewal(s,'one');assert.equal(s.activeContract.endYear,s.year);});
+test('50歳シーズンを終えて強制引退し、51歳へ進まない',()=>{const s=pro();s.age=49;setContract(s,600,2);for(const k of Object.keys(s.player.abilities))s.player.abilities[k]=95;advanceYear(s);assert.equal(s.age,50);settle(s);advanceYear(s);assert.equal(s.age,50);assert.equal(s.retired,true);const n=s.records.length;advanceYear(s);assert.equal(s.records.length,n);assert.equal(s.records.at(-1).age,50);});
+test('戦力外とコーチ打診・現役続行・引退後就任を確認',()=>{let release=false,coach=false;for(let seed=1;seed<150;seed++){const s=pro(seed*123);s.age=40;if(seed%2)s.staffWarning={team:s.team,year:s.year-1};setContract(s,1000,1);reviewEmployment(s,{overall:35,stats:{...emptyStats(),games:5}});if(s.employment?.type==='released'){release=true;assert.equal(s.salary,0);assert.equal(s.team,'自由契約');const copy=structuredClone(s);chooseEmployment(copy,'amateur');assert.equal(copy.stage,'corporate');assert.equal(copy.retired,false);}if(s.employment?.options.some(o=>o.id==='coach')){coach=true;chooseEmployment(s,'coach');assert.equal(s.retired,true);assert.equal(s.postCareer.role,'コーチ');assert.equal(s.totalSalary,0);}}assert.ok(release&&coach);});
+test('契約期間中は戦力外にせず、年齢だけで打ち切らない',()=>{const s=pro();s.age=45;setContract(s,1000,2);reviewEmployment(s,{overall:10,stats:{...emptyStats(),games:0}});assert.equal(s.employment,null);});
+test('低確率の天才と普通の選手が再現可能な乱数で出現',()=>{let geniuses=0;for(let i=1;i<=3000;i++){const s=createPlayer('x','batter',i*16411);if(s.player.genius){geniuses++;assert.ok(s.player.talent>=1.65);assert.ok(Object.values(s.player.potential).every(v=>v>=95));}}assert.ok(geniuses>65&&geniuses<140,`geniuses=${geniuses}`);});
+test('FA・ポスティングは解禁時に通知、既読は再通知しない',()=>{const s=pro();setContract(s,1000,1);s.domesticEntry={route:'university',draftYear:2020};s.records=Array.from({length:7},(_,i)=>({year:2021+i,stage:'pro',firstTeamDays:145}));queueMarketNotices(s);assert.ok(s.notices.some(n=>n.kind==='fa'));assert.ok(s.notices.some(n=>n.kind==='posting'));const count=s.notices.filter(n=>n.kind!=='trade').length;queueMarketNotices(s);assert.equal(s.notices.filter(n=>n.kind!=='trade').length,count);});
+test('新しい契約・通知データを持たないセーブを移行',()=>{const s=pro();delete s.activeContract;delete s.notices;delete s.noticeFlags;delete s.contractOffers;delete s.employment;delete s.postCareer;delete s.player.genius;const seed=s.seed;validate(s);assert.equal(s.seed,seed);assert.equal(s.activeContract.annual,s.salary);assert.deepEqual(s.notices,[]);assert.equal(s.player.genius,false);});
