@@ -122,3 +122,10 @@ html,body,#app{height:100%;overflow:hidden}body{padding-bottom:0}#app{height:100
     padding-bottom:calc(84px + env(safe-area-inset-bottom));
   }
 }
+/* Keep recent news above the fixed mobile navigation */
+@media(max-width:720px){
+  .view-play .recent-news{
+    flex-shrink:0;
+    margin-bottom:calc(90px + env(safe-area-inset-bottom));
+  }
+}
