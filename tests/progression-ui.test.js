@@ -224,3 +224,14 @@ test('開始画面の保存キャリアからも広告後に旧セーブを維�
  pro(first);first.run('autoSave()');const id=first.run('s.careerId');const reload=game(storage);
  reload.click('new');reload.click('confirm-new');await new Promise(r=>setImmediate(r));assert.match(reload.html('#modal'),/id="new-player"/);assert.equal(reload.run('s'),null);assert.equal(game(storage).run('savedCareer.state.careerId'),id);assert.equal(game(storage).run('savedCareer.state.newCareerAd.status'),'disabled');
 });
+
+test('共有ダイアログはX・OS・保存・コピーを選択でき、OS共有を自動起動しない',async()=>{
+ const g=game();pro(g);g.run("let nativeCalls=0,xCalls=0,xArgs;makeCareerCard=async()=>({blob:{},preview:'data:image/png;base64,test',filename:'card.png',text:'既存共有文',xUrl:'https://x.com/intent/tweet?text=test'});canShareCareerFile=()=>true;shareCareerFile=async()=>{nativeCalls++;return true;};window.open=(...args)=>{xCalls++;xArgs=args;return null;};");
+ await g.run('showCareerShare()');assert.equal(g.run('sharedCareer'),null);
+ g.run('retire(s)');await g.run('showCareerShare()');assert.equal(g.run('nativeCalls'),0);const html=g.html('#modal');for(const text of ['Xに投稿','共有画面を開く','画像保存','シェア文章をコピー'])assert.ok(html.includes(text));assert.ok(html.indexOf('share-x')<html.indexOf('share-send'));
+ g.click('share-x');assert.equal(g.run('xCalls'),1);assert.equal(g.run('xArgs[0]'),'https://x.com/intent/tweet?text=test');assert.equal(g.run('xArgs[2]'),'noopener,noreferrer');assert.equal(g.run('nativeCalls'),0);
+ g.click('share-send');assert.equal(g.run('nativeCalls'),1);
+ g.run("window.open=()=>{throw Error('blocked');}");assert.doesNotThrow(()=>g.click('share-x'));assert.match(g.run("$('#share-status').textContent"),/文章コピー/);
+ g.run("let copied='',downloaded=0;globalThis.navigator={clipboard:{writeText:async text=>{copied=text;}}};globalThis.URL={createObjectURL:()=> 'blob:test',revokeObjectURL(){}};document.body={append(){}};document.createElement=()=>({click(){downloaded++;},remove(){}});");
+ g.click('share-copy');await new Promise(r=>setImmediate(r));assert.equal(g.run('copied'),'既存共有文');g.click('share-download');assert.equal(g.run('downloaded'),1);
+});

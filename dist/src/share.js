@@ -24,6 +24,10 @@ export function careerCardData(s){
 export function careerShareText(card){
  return ['白球人生｜'+card.name+'の野球人生',card.scope+'・'+card.years+'年',card.metrics.map(([label,value])=>label+' '+value).join(' ／ '),...card.highlights.slice(0,2),'#白球人生',SHARE_GAME_URL].filter(Boolean).join('\n');
 }
+export function careerXShareText(card){
+ return ['白球人生｜'+card.name+'の野球人生',card.scope+'・'+card.years+'年',card.metrics.slice(0,3).map(([label,value])=>label+' '+value).join(' / '),'#白球人生',SHARE_GAME_URL].join('\n');
+}
+export function careerXShareUrl(card){return 'https://x.com/intent/tweet?text='+encodeURIComponent(careerXShareText(card));}
 export async function makeCareerCard(s){
  const card=careerCardData(s),canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
  const ctx=canvas.getContext('2d');if(!ctx)throw Error('このブラウザでは画像を生成できません。');
@@ -52,7 +56,7 @@ export async function makeCareerCard(s){
  text('#白球人生',68,1260,34,'#a6e1c2',680,800);
  text('MY BASEBALL STORY',720,1260,18,'#98aaa3',292);
  const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('画像生成に失敗しました。')),'image/png'));
- return {blob,preview:canvas.toDataURL('image/png'),text:careerShareText(card),filename:'hakkyu-jinsei-career.png'};
+ return {blob,preview:canvas.toDataURL('image/png'),text:careerShareText(card),xUrl:careerXShareUrl(card),filename:'hakkyu-jinsei-career.png'};
 }
 export function canShareCareerFile(asset){
  try{return typeof File!=='undefined'&&!!globalThis.navigator?.share&&!!globalThis.navigator?.canShare?.({files:[new File([asset.blob],asset.filename,{type:'image/png'})]});}catch{return false;}

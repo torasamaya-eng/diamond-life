@@ -39,3 +39,13 @@ test('ファイル共有の対応・非対応・キャンセル・API失敗を�
   set({canShare:()=>true,share:async()=>{throw Error('unsupported');}});assert.equal(await shareCareerFile(asset),false);
  }finally{if(descriptor)Object.defineProperty(globalThis,'navigator',descriptor);else delete globalThis.navigator;}
 });
+import {careerXShareText,careerXShareUrl} from '../dist/src/share.js';
+for(const role of ['batter','pitcher'])test('X向けの'+role+'成績は先頭3項目と名前・年数・タグ・URLだけを符号化',()=>{
+ const s=retired(role);s.player.name='山'.repeat(24);const card=careerCardData(s),before=careerShareText(card),text=careerXShareText(card),url=new URL(careerXShareUrl(card));
+ assert.equal(url.origin,'https://x.com');assert.equal(url.pathname,'/intent/tweet');assert.deepEqual([...url.searchParams.keys()],['text']);assert.equal(url.searchParams.get('text'),text);assert.ok(careerXShareUrl(card).endsWith(encodeURIComponent(text)));
+ assert.ok(text.includes(s.player.name));assert.ok(text.includes('・2年'));assert.equal(text.split('#白球人生').length-1,1);assert.equal(text.split(SHARE_GAME_URL).length-1,1);
+ for(const [label,value] of card.metrics.slice(0,3))assert.ok(text.includes(label+' '+value));assert.ok(!text.includes(card.metrics[3][0]));assert.ok(!text.includes('永久欠番'));
+ // Conservative bound: count every character as two units, including the literal URL.
+ assert.ok(Array.from(text).length*2<280);assert.equal(careerShareText(card),before);
+});
+test('X文章の改行・記号・日本語を安全にURL化する',()=>{const card=careerCardData(retired());card.name='山田 & 太郎?#';const text=careerXShareText(card);assert.equal(new URL(careerXShareUrl(card)).searchParams.get('text'),text);});
