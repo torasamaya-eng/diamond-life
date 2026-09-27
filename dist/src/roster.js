@@ -102,7 +102,7 @@ export function simulateDailyRoster(s,opportunity,injury=null){
   if(!sick&&(onActive&&scheduledFirst||onFarm&&scheduledFarm)){
    const starter=s.player.role==='pitcher'&&s.player.pitchRole==='starter';
    const chance=s.player.role==='pitcher'?starter?1:pitchGameFactor(s):onFarm?1:s.player.batterRole==='regular'?.96:.7;
-   if((!starter||day-lastAppearance>=(overseas?5:6))&&random(s)<chance){played=true;level=onActive?'first':'second';games[level]++;lastAppearance=day;}
+   if((!starter||day-lastAppearance>=6)&&random(s)<chance){played=true;level=onActive?'first':'second';games[level]++;lastAppearance=day;}
   }
   days.push({date,day,status,team:s.team,onActive,on40:overseas?!status.startsWith('il60')&&m.on40:null,service:overseas?(onActive||onIL):onActive,played,level,activeLimit:overseas?expanded?28:26:31,benchLimit:overseas?expanded?28:26:29});
  }

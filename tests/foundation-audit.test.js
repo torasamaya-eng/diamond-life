@@ -1,3 +1,4 @@
+import {matchesHistoricalHash} from './historical-hash.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -16,8 +17,8 @@ import {careerCardData} from '../dist/src/share.js';
 const baseline=JSON.parse(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url),'utf8'));
 const memory=()=>{const data=new Map();return {getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};};
 test('旧baselineを改変せず、意図した成長変更との差と30人生の状態整合を確認',()=>{
- assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url))).digest('hex'),'494e8d8c062e56f245d1a44be86dda66f66ac8ca9ebca9deec0316c8bd9f426f');
- const before=JSON.parse(fs.readFileSync(new URL('../reports/development-before.json',import.meta.url),'utf8'));
+ assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url)),'494e8d8c062e56f245d1a44be86dda66f66ac8ca9ebca9deec0316c8bd9f426f'));
+ const before=JSON.parse(fs.readFileSync(new URL('./fixtures/audit-protection.json',import.meta.url),'utf8')).development;
  let changed=0;
  for(const c of baseline){
   const s=auditCareer(c.seed,c.role,c.route,(s,previous)=>{

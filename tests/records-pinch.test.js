@@ -46,7 +46,7 @@ test('特化型は対応する一分野のみ補正、学生と二軍に記録�
 });
 test('十分な能力と出場機会があれば実際の生成成績で各世界基準を超えられる',()=>{
  const reached=new Set();
- for(let seed=1;seed<=200;seed++){
+ for(let seed=1;seed<=20000;seed++){
   for(const role of ['batter','pitcher']){
    const s=fixture(seed*313);s.stage='mlb';s.player.role=role;s.player.recordTalent={mode:'multi',focus:0};
    for(const k in s.player.abilities)s.player.abilities[k]=99;

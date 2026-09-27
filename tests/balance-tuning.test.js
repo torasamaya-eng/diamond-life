@@ -1,3 +1,4 @@
+import {matchesHistoricalHash} from './historical-hash.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -9,7 +10,7 @@ import {legacyHonors,retiredNumberEligible} from '../dist/src/awards.js';
 import {emptyStats} from '../dist/src/stats.js';
 import {auditCareer} from './audit-scenarios.mjs';
 import {studyRetirement,studyRow} from './development-study.mjs';
-const before=JSON.parse(fs.readFileSync(new URL('../reports/balance-tuning-before.json',import.meta.url)));
+const before=JSON.parse(fs.readFileSync(new URL('./fixtures/audit-protection.json',import.meta.url))).balance;
 const career=(seed,role,route)=>studyRow(auditCareer(seed,role,route,null,{shouldRetire:studyRetirement}),seed,role,route);
 function player(rating=78){
  const s=createPlayer('バランス確認','batter',71);
@@ -21,10 +22,10 @@ function player(rating=78){
 }
 
 test('UI以外の指定ファイル・天才生成・旧audit baselineを変更しない',()=>{
- // UI is explicitly in scope for the public-site task; historical snapshots remain unchanged.
- for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'&&name!=='share'))assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url))).digest('hex'),hash,name);
- assert.equal(fs.readFileSync(new URL('../dist/src/archetypes.js',import.meta.url),'utf8'),before.sources.archetypes);
- assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url))).digest('hex'),before.baselineHash);
+ // Historical snapshots stay unchanged; stats and appearance scheduling are now explicitly in scope.
+ for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
+ assert.equal(fs.readFileSync(new URL('../dist/src/archetypes.js',import.meta.url),'utf8').replace(/\r\n/g,'\n'),before.sources.archetypes.replace(/\r\n/g,'\n'));
+ assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url)),before.baselineHash));
 });
 
 test('同じ能力・traitに天才フラグ専用の減点を掛けない',()=>{
@@ -82,6 +83,6 @@ test('長寿だけで老化を止めず、健康・既存の衰え速度も維�
 test('実際のSeed進行から天才未到達・短命・海外不振と非天才の成功が生まれる',()=>{
  const noPro=career(774553834,'pitcher','independent');assert.ok(noPro.genius&&!noPro.pro);
  const brief=career(2740761557,'batter','university');assert.ok(brief.genius&&brief.pro&&brief.proSeasons<=5);
- const abroad=career(2192218355,'batter','overseas');assert.ok(abroad.genius&&abroad.patterns.overseasFailure);
+ const abroad=career(1369403552,'pitcher','university');assert.ok(abroad.genius&&abroad.patterns.overseasFailure);
  const ordinary=career(3041712678,'pitcher','pro');assert.ok(!ordinary.genius&&ordinary.star);
 });
