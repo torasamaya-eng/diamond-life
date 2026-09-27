@@ -5,12 +5,19 @@ import {CAREER_BALANCE} from './balance.js';
 
 export function retiredNumberEligible(s,team,rows){
  const c=CAREER_BALANCE.retiredNumber,years=rows.filter(r=>r.team===team),st=sumStats(years),pitch=s.player.role==='pitcher';
- if(new Set(years.filter(r=>r.stats.games>0).map(r=>r.year)).size<c.years)return false;
+ const activeYears=new Set(years.filter(r=>r.stats.games>0).map(r=>r.year)).size;
+ if(activeYears<c.years)return false;
  const awards=(s.awards||[]).filter(a=>a.team===team),major=awards.filter(a=>['首位打者','本塁打王','打点王','最多安打','盗塁王','最高出塁率','最優秀防御率','最多勝利','最多奪三振','最多セーブ','最優秀中継ぎ'].includes(a.title));
  const historical=pitch?st.wins>=c.historicalWins||st.saves>=c.historicalSaves:st.hits>=c.historicalHits&&st.hr>=c.historicalHR;
  const record=(s.recordHistory||[]).some(r=>r.team===team);
  const dominant=pitch?st.wins>=c.wins||st.saves>=c.saves:st.hits>=c.hits||st.hr>=c.hr;
- return dominant&&major.length>=(historical?c.historicalTitles:c.majorTitles)&&(new Set(major.map(a=>a.year)).size>=c.titleYears||historical)&&(awards.some(a=>a.title==='最優秀選手（MVP）')||record||historical);
+ const titleYears=new Set(major.map(a=>a.year)).size,mvp=awards.some(a=>a.title==='最優秀選手（MVP）');
+ const established=dominant&&major.length>=(historical?c.historicalTitles:c.majorTitles)&&(titleYears>=c.titleYears||historical)&&(mvp||record||historical);
+ // Repeated league-leading seasons can establish franchise stature without an MVP, especially for relievers.
+ const sustained=dominant&&activeYears>=c.sustainedYears&&major.length>=c.sustainedTitles&&titleYears>=c.sustainedTitleYears;
+ // A decorated all-round hitter need not reach the power-oriented historic counting thresholds.
+ const decorated=!pitch&&activeYears>=c.decoratedYears&&st.hits>=c.decoratedHits&&mvp&&major.length>=c.decoratedTitles&&titleYears>=c.decoratedTitleYears&&awards.filter(a=>a.title==='ベストナイン').length>=c.decoratedBestNine;
+ return established||sustained||decorated;
 }
 export const ALL_STAR_RULES={voteBase:5000,votesPerMerit:35000,votesPerTitle:45000,multiTitleRecommendation:.97,titleRecommendation:.90,fieldingRecommendation:.80};
 export function allStarBallot(s,st,titles=[]){

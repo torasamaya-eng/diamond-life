@@ -34,5 +34,7 @@ export const CAREER_BALANCE={
  evidenceAverage:.29,evidenceERA:3.5,
  struggleSeasons:3,struggleMerit:.5,struggleBatterGames:45,strugglePitchInnings:45,trialRating:62,developmentYears:3,
  retiredNumber:{years:12,majorTitles:4,historicalTitles:3,titleYears:3,hits:2500,hr:400,wins:180,saves:300,
- historicalHits:3000,historicalHR:500,historicalWins:250,historicalSaves:400}
+ historicalHits:3000,historicalHR:500,historicalWins:250,historicalSaves:400,
+ sustainedYears:15,sustainedTitles:5,sustainedTitleYears:5,
+ decoratedYears:14,decoratedHits:2000,decoratedTitles:8,decoratedTitleYears:5,decoratedBestNine:7}
 };
