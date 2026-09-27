@@ -158,11 +158,11 @@ test('停滞は永久化せず、回復と昇降格の適応を構造化履歴�
  s.stage='mlb';s.developmentState.level='minor';observeDevelopmentRoster(s,{counts:{active:150,farm:0}});
  assert.ok(s.developmentHistory.some(h=>h.reason==='一軍・メジャーへの昇格'));
 });
-test('同Seed・同操作とセーブ再開が一致し、旧baseline・広告・年俸は未改変',()=>{
+test('同Seed・同操作とセーブ再開が一致し、旧baseline・広告を維持',()=>{
  const a=auditCareer(7,'batter','overseas'),b=auditCareer(7,'batter','overseas');
  assert.deepEqual(auditProjection(a),auditProjection(b));
  const s=createPlayer('継続','pitcher',731);advance(s);const copy=validate(structuredClone(s));advance(s);advance(copy);assert.deepEqual(s,copy);
  const hashes=JSON.parse(fs.readFileSync(new URL('./fixtures/audit-protection.json',import.meta.url))).developmentHashes;
- // Historical snapshots stay unchanged; stats and appearance scheduling are now explicitly in scope.
- for(const [name,hash] of Object.entries(hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
+ // Historical snapshots stay unchanged. Contract/finance/draft terms are explicitly authorized in the current task.
+ for(const [name,hash] of Object.entries(hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'&&!['contracts','finance','draft'].includes(name)))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
 });

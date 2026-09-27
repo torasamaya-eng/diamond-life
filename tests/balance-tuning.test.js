@@ -21,9 +21,9 @@ function player(rating=78){
  return s;
 }
 
-test('UI以外の指定ファイル・天才生成・旧audit baselineを変更しない',()=>{
- // Historical snapshots stay unchanged; stats and appearance scheduling are now explicitly in scope.
- for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
+test('過去の保護対象から今回の契約変更だけを除き、天才生成・旧audit baselineを維持',()=>{
+ // Historical snapshots stay unchanged. Contract/finance/draft terms are explicitly authorized in the current task.
+ for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'&&!['contracts','finance','draft'].includes(name)))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
  assert.equal(fs.readFileSync(new URL('../dist/src/archetypes.js',import.meta.url),'utf8').replace(/\r\n/g,'\n'),before.sources.archetypes.replace(/\r\n/g,'\n'));
  assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url)),before.baselineHash));
 });
@@ -82,7 +82,8 @@ test('長寿だけで老化を止めず、健康・既存の衰え速度も維�
 
 test('実際のSeed進行から天才未到達・短命・海外不振と非天才の成功が生まれる',()=>{
  const noPro=career(774553834,'pitcher','independent');assert.ok(noPro.genius&&!noPro.pro);
- const brief=career(2740761557,'batter','university');assert.ok(brief.genius&&brief.pro&&brief.proSeasons<=5);
+ // Contract protection extends this unsuccessful career by one season (5 -> 6); it still never becomes a star.
+ const brief=career(2740761557,'batter','university');assert.ok(brief.genius&&brief.pro&&brief.proSeasons<=6&&!brief.star);
  const abroad=career(1369403552,'pitcher','university');assert.ok(abroad.genius&&abroad.patterns.overseasFailure);
  const ordinary=career(3041712678,'pitcher','pro');assert.ok(!ordinary.genius&&ordinary.star);
 });

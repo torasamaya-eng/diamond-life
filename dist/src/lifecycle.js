@@ -4,12 +4,13 @@ import {CAREER_BALANCE} from './balance.js';
 import {managerEligible,careerPromise,directOverseasProspect} from './career-rules.js';
 import {performance,specialistValue} from './stats.js';
 import {negotiate,eligibility,postingApproved} from './market.js';
-import {salaryEstimate} from './contracts.js';
+import {salaryEstimate,rehabSalary} from './contracts.js';
 import {random,pick} from './random.js';
 import {TEAMS,migrateTeamNames,STAFF_ROLES} from './data.js';
 import {SALARY_MODEL} from './contracts.js';
 export function reviewEmployment(s,record){
  if(s.age>=SALARY_MODEL.maxAge||s.activeContract?.endYear>s.year||s.contractOffers?.some(o=>o.id==='rehab'))return;
+ const rehabDecision=s.rehabReview?.year===s.year?s.rehabReview.decision:null;if(rehabDecision==='retain')return;
  const volume=s.player.role==='pitcher'?record.stats.outs/3:record.stats.games,merit=performance(record.stats,s.player.role),overseas=s.stage==='mlb';
  const early=s.proYears>=2&&s.proYears<=6&&['brief','lostStar'].includes(s.player.arc)&&merit<.5;
  const recent=s.records.filter(r=>['pro','mlb'].includes(r.stage)&&!r.partial).slice(-CAREER_BALANCE.struggleSeasons);
@@ -18,7 +19,7 @@ export function reviewEmployment(s,record){
  const decline=!usefulSpecialist&&(early||stalled||record.overall<(overseas?62:47)||(s.age>=35&&(record.overall<(overseas?73:64)||merit<0)&&volume<(overseas?75:55)));
  const veteran=s.age>=32&&s.proYears>=5;
  const firstWarning=decline&&veteran&&(!s.staffWarning||s.staffWarning.team!==s.team);
- const released=!firstWarning&&decline&&random(s)<(overseas?.88:.65)*(1+(s.age>=35?.5-developmentTrait(s,'longevity'):0)*DECLINE.employmentLongevityWeight);
+ const released=rehabDecision==='release'||!firstWarning&&decline&&random(s)<(overseas?.88:.65)*(1+(s.age>=35?.5-developmentTrait(s,'longevity'):0)*DECLINE.employmentLongevityWeight);
  const coach=firstWarning||veteran&&record.overall<66&&random(s)<.35;
  if(!released&&!coach)return;
  const direct=overseas&&directOverseasProspect(s),attentionBonus=direct?(s.age<=35?.25:.1):0;
@@ -37,4 +38,13 @@ export function reviewEmployment(s,record){
  if(released){s.team='自由契約';s.salary=0;s.activeContract=null;}s.contractOffers=[];s.retirementAdvice=null;
 }
 export function queueMarketNotices(s){if(s.retired||s.employment)return;if(s.stage==='mlb'){if(!eligibility(s,'mlbFa')&&!s.notices.some(n=>n.kind==='mlbFa'&&n.year===s.year))s.notices.push({kind:'mlbFa',year:s.year,seen:false,title:'メジャーFAの交渉が可能です',body:'メジャー登録・負傷者リストの在籍が6年分に到達しています。'});return;}if(s.stage!=='pro')return;const years=s.records.filter(r=>r.stage==='pro').length;const rating=Math.round(Object.values(s.player.abilities).reduce((a,b)=>a+b,0)/Object.keys(s.player.abilities).length);const entries=[];for(const kind of ['fa','overseasFa'])if(!eligibility(s,kind)&&!s.noticeFlags[kind])entries.push({kind,title:kind==='fa'?'国内FA権を取得しました':'海外FA権を取得しました',body:kind==='fa'?'国内球団と交渉できます。宣言すると残留しても再取得に一軍登録4シーズンが必要です。':'球団承認なしで国内・海外球団と交渉できます。宣言残留でも再取得に一軍登録4シーズンが必要です。'});const approvalKey=postingApproved(s)?s.postingChallenge.year+':'+s.postingChallenge.team:null;if(!s.postingReport&&!eligibility(s,'posting')&&(!s.noticeFlags.posting||approvalKey&&s.noticeFlags.postingApproval!==approvalKey)){entries.push({kind:'posting',title:approvalKey?'課題達成・ポスティング申請が可能です':'海外挑戦のチャンス',body:approvalKey?'球団承認を獲得しました。複数年契約中でも海外球団の条件を確認できます。':'ポスティングを申請できます。複数年契約中でも球団承認を得れば海外交渉へ進めます。'});if(approvalKey)s.noticeFlags.postingApproval=approvalKey;}const last=s.records.at(-1),prev=s.records.at(-2);const down=last&&prev&&(last.overall<prev.overall-2||performance(last.stats,s.player.role)<performance(prev.stats,s.player.role)-1.5);const cooling=s.moves.some(m=>m.kind==='trade'&&s.year-m.year<3)||s.year-(s.lastTradeNoticeYear||0)<3;if(!cooling&&!eligibility(s,'trade')&&random(s)<(down?.08:.012)){const board=negotiate(s,'trade',true);s.market=null;entries.push({kind:'trade',team:board.offers[0]?.team,title:down?'復活を期待するトレード打診':'電撃トレードの打診',body:(board.offers[0]?.team||'球団')+'から具体的なトレード条件が届きました。移籍先と年俸を確認できます。'});s.lastTradeNoticeYear=s.year;}for(const n of entries){s.notices.push({...n,year:s.year,seen:false});if(n.kind!=='trade')s.noticeFlags[n.kind]=true;}}
-export function migrateCareer(s){migrateTeamNames(s);if(s.activeContract===undefined)s.activeContract=(['pro','mlb','independent'].includes(s.stage)?{team:s.team,startYear:s.year,endYear:s.year,years:1,annual:s.salary,type:'既存契約'}:null);s.contractOffers??=[];s.employment??=null;s.notices??=[];s.noticeFlags??={};s.player.genius??=false;s.postCareer??=null;s.careerPromises??=[];s.contractStatus??=s.stage==='pro'&&s.salary<SALARY_MODEL.npbFloor?'development':'registered';s.injuries??=[];s.incomeHistory??=[];s.totalIncentives??=0;if(s.activeContract&&!s.retired&&s.age<=SALARY_MODEL.maxAge){s.activeContract.endYear=Math.min(s.activeContract.endYear,s.year+SALARY_MODEL.maxAge-s.age);s.activeContract.years=s.activeContract.endYear-s.activeContract.startYear+1;}s.contractOffers=s.contractOffers.map(o=>({...o,years:Math.min(o.years,Math.max(1,SALARY_MODEL.maxAge-s.age+1))}));if(s.age>SALARY_MODEL.maxAge&&!s.retired){s.retired=true;s.pending=null;s.contractOffers=[];s.employment=null;s.timeline.push({year:s.year,text:'年齢上限50歳へのルール変更により現役終了（過去の記録は保持）'});}return s;}
+export function migrateCareer(s){migrateTeamNames(s);if(s.activeContract===undefined)s.activeContract=(['pro','mlb','independent'].includes(s.stage)?{team:s.team,startYear:s.year,endYear:s.year,years:1,annual:s.salary,type:'既存契約'}:null);s.contractOffers??=[];s.employment??=null;s.notices??=[];s.noticeFlags??={};s.player.genius??=false;s.postCareer??=null;s.careerPromises??=[];s.overseasContract??=s.proEntry?.route==='overseasDirect'?{version:1,team:s.proEntry.team,entryYear:s.proEntry.year,legacy:true,status:s.mlbRoster?.status||'unknown',signingBonus:null}:null;s.signingPayments??=[];s.totalSigningBonus??=0;s.totalSetupAllowance??=0;s.rehabContract??=null;s.rehabReview??=null;s.rosterReturn??=null;s.contractStatus??=s.stage==='pro'&&s.salary<SALARY_MODEL.npbFloor?'development':'registered';s.developmentReason??=s.contractStatus==='development'?'performance':null;s.injuries??=[];s.incomeHistory??=[];s.totalIncentives??=0;if(s.activeContract&&!s.retired&&s.age<=SALARY_MODEL.maxAge){s.activeContract.endYear=Math.min(s.activeContract.endYear,s.year+SALARY_MODEL.maxAge-s.age);s.activeContract.years=s.activeContract.endYear-s.activeContract.startYear+1;}s.contractOffers=s.contractOffers.map(o=>({...o,years:Math.min(o.years,Math.max(1,SALARY_MODEL.maxAge-s.age+1))}));if(s.age>SALARY_MODEL.maxAge&&!s.retired){s.retired=true;s.pending=null;s.contractOffers=[];s.employment=null;s.timeline.push({year:s.year,text:'年齢上限50歳へのルール変更により現役終了（過去の記録は保持）'});}return s;}
+
+export function declineRehab(s){
+ if(!s.contractOffers.some(o=>o.id==='rehab'&&o.year===s.year))throw Error('育成再契約の提示がありません。');
+ const from=s.team,record=s.records.at(-1),pay=rehabSalary(s,record),rating=record?.overall||0;
+ s.timeline.push({year:s.year,text:from+'の育成再契約を辞退し、他球団との契約を探す'});
+ const options=[{id:'amateur',team:'東都モータース',stage:'corporate',salary:0,role:'player'}];
+ if((s.age<=29||rating>=60)&&random(s)<.65){const registered=rating>=70&&(s.health?.daysLeft||0)<=180;options.unshift({id:'rehab-other',team:pick(s,TEAMS.filter(t=>t!==from)),stage:'pro',salary:Math.max(registered?SALARY_MODEL.npbFloor:SALARY_MODEL.developmentFloor,pay),years:1,role:'player',development:!registered,developmentReason:registered?null:'rehab'});}
+ s.employment={year:s.year,type:'released',from,options};s.team='自由契約';s.salary=0;s.activeContract=null;s.contractOffers=[];s.rehabReview=null;
+}

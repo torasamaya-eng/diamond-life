@@ -201,3 +201,10 @@ test('課題未達から在籍延長の代案を選び、翌年達成できる',
 test('長いキャリア年表も初期状態で折りたたみ、全記録を残す',()=>{
  const g=game();pro(g);const html=g.run('career()');assert.match(html,/<details class="panel career-timeline"><summary>キャリア年表/);assert.doesNotMatch(html,/<details class="panel career-timeline" open/);assert.match(html,/小学校入学/);
 });
+
+test('契約カード選択と追従合意は同じIDを使い、単一提示も即合意できる',()=>{
+ const g=game();pro(g);g.run("s.contractOffers=[{id:'one',annual:12000,years:1,year:s.year},{id:'multi',annual:11000,years:3,year:s.year}];renewalDialog();");
+ assert.match(g.html('#modal'),/contract-dock/);g.click('contract-select','multi');assert.match(g.html('#modal'),/contract-dock[\s\S]*data-id="multi"/);
+ g.click('sign-contract','multi');assert.equal(g.run('s.salary'),11000);assert.equal(g.run('s.activeContract.years'),3);
+ g.run("s.contractOffers=[{id:'one',annual:13000,years:1,year:s.year}];renewalDialog();");assert.doesNotMatch(g.html('#modal'),/data-action="contract-select"/);g.click('sign-contract','one');assert.equal(g.run('s.salary'),13000);
+});

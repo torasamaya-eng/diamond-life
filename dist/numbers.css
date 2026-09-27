@@ -76,6 +76,7 @@ html,body,#app{height:100%;overflow:hidden}body{padding-bottom:0}#app{height:100
 
 
 /* Mobile layout: one breakpoint, one owner for shell and progression. */
+.contract-dock,.contract-select{display:none}
 @media(max-width:720px){
  .brand{display:none}
  .autosave{display:none}
@@ -238,4 +239,17 @@ html,body,#app{height:100%;overflow:hidden}body{padding-bottom:0}#app{height:100
  .view-play .compact-news>span{display:none}
  .view-play .compact-news button{width:100%}
  .afterlife-story p{font-size:14px}
+
+ /* Contract dialogs only: the body scrolls while the selected agreement stays visible. */
+ dialog.contract-dialog[open]{display:flex;flex-direction:column;width:calc(100% - 16px);height:calc(100dvh - 24px);max-height:calc(100dvh - 24px);padding:14px 14px 0;overflow:hidden}
+ .contract-dialog>.dialog-head{flex:0 0 auto;margin-bottom:10px}
+ .contract-dialog>.contract-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:2px 2px 16px}
+ .contract-dialog .contract-card{padding:14px}
+ .contract-dialog .contract-selected{outline:2px solid #cee78d;outline-offset:-2px}
+ .contract-dialog .contract-desktop{display:none}
+ .contract-dialog .contract-select{display:block;min-height:44px;width:100%}
+ .contract-dialog .contract-dock{display:flex;flex-direction:column;flex:0 0 auto;gap:8px;background:#161d25;border-top:1px solid #667583;padding:12px 0 max(12px,env(safe-area-inset-bottom,0px))}
+ .contract-dock>div{display:flex;flex-direction:column;gap:4px;font-size:13px;overflow-wrap:anywhere}
+ .contract-dock span{font-size:16px;font-weight:700}
+ .contract-dock button{min-height:48px;width:100%;margin:0;color:#06281f;font-weight:700}
 }

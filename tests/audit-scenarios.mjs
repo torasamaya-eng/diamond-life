@@ -13,7 +13,7 @@ export function auditCareer(seed,role,route,observe=null,options={}){
   else if(s.rosterDecision)resolveRosterDecision(s,'accept');
   else if(s.nationalOffers?.length)decideNational(s,true);
   else if(s.employment){const o=s.employment.options.find(o=>o.role==='player');if(!o)throw Error('No playable employment');chooseEmployment(s,o.id);}
-  else if(s.contractOffers.length)signRenewal(s,'one');
+  else if(s.contractOffers.length)signRenewal(s,s.contractOffers.some(o=>o.id==='one')?'one':s.contractOffers[0].id);
   else if(s.retirementAdvice&&!s.retirementAdvice.answered)s.retirementAdvice.answered=true;
   else if(s.pending){
    if(s.pending.type==='middle')choose(s,seed%2?'club':'school');
