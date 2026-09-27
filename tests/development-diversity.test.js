@@ -164,5 +164,5 @@ test('同Seed・同操作とセーブ再開が一致し、旧baseline・広告�
  const s=createPlayer('継続','pitcher',731);advance(s);const copy=validate(structuredClone(s));advance(s);advance(copy);assert.deepEqual(s,copy);
  const hashes=JSON.parse(fs.readFileSync(new URL('./fixtures/audit-protection.json',import.meta.url))).developmentHashes;
  // Historical snapshots stay unchanged. Contract/finance/draft terms are explicitly authorized in the current task.
- for(const [name,hash] of Object.entries(hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'&&!['contracts','finance','draft'].includes(name)))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
+ for(const [name,hash] of Object.entries(hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'&&!['ads','contracts','finance','draft'].includes(name)))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
 });

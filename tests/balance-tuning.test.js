@@ -23,7 +23,7 @@ function player(rating=78){
 
 test('過去の保護対象から今回の契約変更だけを除き、天才生成・旧audit baselineを維持',()=>{
  // Historical snapshots stay unchanged. Contract/finance/draft terms are explicitly authorized in the current task.
- for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'&&!['contracts','finance','draft'].includes(name)))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
+ for(const [name,hash] of Object.entries(before.hashes).filter(([name])=>name!=='ui'&&name!=='share'&&name!=='stats'&&name!=='roster'&&!['ads','contracts','finance','draft'].includes(name)))assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('../dist/src/'+name+'.js',import.meta.url)),hash),name);
  assert.equal(fs.readFileSync(new URL('../dist/src/archetypes.js',import.meta.url),'utf8').replace(/\r\n/g,'\n'),before.sources.archetypes.replace(/\r\n/g,'\n'));
  assert.ok(matchesHistoricalHash(fs.readFileSync(new URL('./audit-baseline.json',import.meta.url)),before.baselineHash));
 });

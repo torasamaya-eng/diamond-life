@@ -35,7 +35,7 @@ test('結果共有は引退後のみ表示し、既存の年度別成績表を�
  assert.match(g.run('play()'),/結果をシェア/);assert.equal(g.run('table(s.records)'),before);
 });
 
-test('自動保存から続きへ再開し、新しい人生は確認前もキャンセル後も旧データを保持',()=>{
+test('自動保存から続きへ再開し、新しい人生は確認前もキャンセル後も旧データを保持',async()=>{
  const map=new Map(),storage={getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v)};
  const first=game(storage);assert.doesNotMatch(first.html('#app'),/続きから/);
  first.click('new');first.click('random-player');const id=first.run('s.careerId');
@@ -45,7 +45,7 @@ test('自動保存から続きへ再開し、新しい人生は確認前もキ�
  const before=storage.getItem('diamond-life.autosave');
  reload.click('new');assert.match(reload.html('#modal'),/上書き/);assert.equal(storage.getItem('diamond-life.autosave'),before);
  reload.click('close');assert.equal(storage.getItem('diamond-life.autosave'),before);
- reload.click('new');reload.click('confirm-new');assert.equal(storage.getItem('diamond-life.autosave'),before);
+ reload.click('new');reload.click('confirm-new');await new Promise(resolve=>setImmediate(resolve));assert.equal(storage.getItem('diamond-life.autosave'),before);
  reload.click('random-player');assert.notEqual(reload.run('s.careerId'),id);
  assert.equal(game(storage).run('savedCareer.state.careerId'),reload.run('s.careerId'));
 });
@@ -207,4 +207,20 @@ test('契約カード選択と追従合意は同じIDを使い、単一提示も
  assert.match(g.html('#modal'),/contract-dock/);g.click('contract-select','multi');assert.match(g.html('#modal'),/contract-dock[\s\S]*data-id="multi"/);
  g.click('sign-contract','multi');assert.equal(g.run('s.salary'),11000);assert.equal(g.run('s.activeContract.years'),3);
  g.run("s.contractOffers=[{id:'one',annual:13000,years:1,year:s.year}];renewalDialog();");assert.doesNotMatch(g.html('#modal'),/data-action="contract-select"/);g.click('sign-contract','one');assert.equal(g.run('s.salary'),13000);
+});
+
+test('ニューゲーム広告は明示確定のみ、キャンセル・連打・作成前のセーブを保護',async()=>{
+ const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
+ const g=game(storage);pro(g);g.run("autoSave();NEW_CAREER_AD_CONFIG.enabled=true;let restartCalls=0,restartDone;setNewCareerAdAdapter({ready:()=>true,request:c=>{restartCalls++;restartDone=c.done;}});");
+ const id=g.run('s.careerId'),before=g.run('JSON.stringify(s.records)');
+ g.click('new');g.click('close');assert.equal(g.run('restartCalls'),0);
+ g.click('new');g.click('confirm-new');g.click('confirm-new');assert.equal(g.run('restartCalls'),1);assert.doesNotMatch(g.html('#modal'),/id="new-player"/);assert.equal(g.run('s.careerId'),id);
+ g.run("restartDone('viewed')");await new Promise(r=>setImmediate(r));assert.match(g.html('#modal'),/id="new-player"/);assert.equal(g.run('JSON.stringify(s.records)'),before);assert.equal(game(storage).run('savedCareer.state.careerId'),id);
+ g.click('close');g.click('new');g.click('confirm-new');await new Promise(r=>setImmediate(r));assert.equal(g.run('restartCalls'),1);assert.match(g.html('#modal'),/id="new-player"/);
+});
+test('開始画面の保存キャリアからも広告後に旧セーブを維持、初回は広告なし',async()=>{
+ const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
+ const first=game(storage);first.click('new');assert.match(first.html('#modal'),/id="new-player"/);assert.equal(first.run('s'),null);
+ pro(first);first.run('autoSave()');const id=first.run('s.careerId');const reload=game(storage);
+ reload.click('new');reload.click('confirm-new');await new Promise(r=>setImmediate(r));assert.match(reload.html('#modal'),/id="new-player"/);assert.equal(reload.run('s'),null);assert.equal(game(storage).run('savedCareer.state.careerId'),id);assert.equal(game(storage).run('savedCareer.state.newCareerAd.status'),'disabled');
 });
