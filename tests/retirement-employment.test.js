@@ -17,9 +17,9 @@ test('試合数から一軍・二軍・育成・全休を区別する',()=>{
  assert.equal(rosterFromGames(levels(90,10)),'一軍中心');assert.equal(rosterFromGames(levels(3,90)),'二軍中心');
  assert.equal(rosterFromGames(levels(0,0)),'出場なし（療養・調整中）');assert.equal(rosterFromGames(levels(0,50),'development'),'育成・二軍');
 });
-test('長期離脱の育成打診は任意で、複数年契約中は提示せず、復帰間近なら提示しない',()=>{
- const s=player();s.health={name:'膝靱帯損傷',daysLeft:180};const r={stats:emptyStats(),overall:40,salary:420,roster:'全休'};
- prepareRenewal(s,r);reviewEmployment(s,r);assert.equal(s.employment,null);assert.ok(s.contractOffers.some(o=>o.id==='one'));assert.ok(s.contractOffers.some(o=>o.id==='rehab'));
+test('長期離脱で球団が育成のみを打診し、複数年契約中は提示せず、復帰間近なら提示しない',()=>{
+ const s=player();s.age=23;s.health={name:'膝靱帯損傷',daysLeft:180,severe:true};const r={stats:emptyStats(),overall:40,salary:420,roster:'全休'};
+ prepareRenewal(s,r);reviewEmployment(s,r);assert.equal(s.employment,null);assert.ok(!s.contractOffers.some(o=>o.id==='one'));assert.ok(s.contractOffers.some(o=>o.id==='rehab'));
  s.year++;signRenewal(s,'rehab');assert.equal(s.contractStatus,'development');assert.ok(s.salary>=240);assert.equal(s.activeContract.type,'育成・リハビリ');
  const other=player();other.health={name:'膝靱帯損傷',daysLeft:180};setContract(other,1500,3);prepareRenewal(other,r);assert.equal(other.contractOffers.length,0);assert.equal(other.salary,1500);
  const recovered=player();recovered.health={name:'捻挫',daysLeft:20};prepareRenewal(recovered,r);assert.ok(!recovered.contractOffers.some(o=>o.id==='rehab'));

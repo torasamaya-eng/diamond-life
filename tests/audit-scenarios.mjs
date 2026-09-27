@@ -7,7 +7,7 @@ import {eligibility,negotiate,acceptOffer,remain} from '../dist/src/market.js';
 export function auditCareer(seed,role,route,observe=null,options={}){
  const s=createPlayer('監査 選手',role,seed);let attemptedPosting=false;
  for(let step=0;step<500&&!s.retired;step++){
-  const before=observe?structuredClone(s):null;
+  const before=observe&&options.snapshot!==false?structuredClone(s):null;
   if(options.shouldRetire?.(s)){retire(s);observe?.(s,before);break;}
   if(s.injuryAdvice)continueAfterInjury(s);
   else if(s.rosterDecision)resolveRosterDecision(s,'accept');
@@ -20,6 +20,7 @@ export function auditCareer(seed,role,route,observe=null,options={}){
    else if(s.pending.type==='high')choose(s,'mirai');
    else if(s.stage==='high'&&['university','overseas','corporate'].includes(route))choose(s,route);
    else if(s.stage==='high'&&route==='independent'&&s.pending.draft.independentOffer)choose(s,'independent');
+   else if(options.careerRoute?.(s))choose(s,options.careerRoute(s));
    else if(s.pending.draft.overseasOffer)choose(s,'mlb');
    else if(s.pending.draft.type!=='指名なし')choose(s,'pro');
    else choose(s,['corporate','independent'].includes(s.stage)?'stay':'corporate');

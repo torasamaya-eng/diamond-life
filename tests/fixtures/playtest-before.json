@@ -1,0 +1,318 @@
+{
+  "renewal": {
+    "contractOffers": [
+      {
+        "id": "one",
+        "annual": 6920,
+        "years": 1,
+        "year": 2034,
+        "reason": "打撃・守備・出場機会を評価"
+      },
+      {
+        "id": "rehab",
+        "annual": 1510,
+        "years": 1,
+        "year": 2034,
+        "development": true,
+        "reason": "将来性を評価。疲労骨折から復帰まで約150日。"
+      }
+    ],
+    "health": {
+      "name": "疲労骨折",
+      "daysLeft": 150,
+      "totalDays": 180,
+      "severe": false
+    },
+    "rehabReview": {
+      "decision": "retain",
+      "optionalRehab": true,
+      "annual": 1510,
+      "reason": "将来性を評価。疲労骨折から復帰まで約150日。",
+      "year": 2033
+    },
+    "contractStatus": "registered",
+    "salary": 4400,
+    "activeContract": {
+      "team": "東京クラウンズ",
+      "startYear": 2033,
+      "endYear": 2033,
+      "years": 1,
+      "annual": 4400,
+      "type": "更改",
+      "guarantees": null,
+      "incentive": null
+    }
+  },
+  "routes": [
+    {
+      "route": "independent",
+      "offer": {
+        "year": 2033,
+        "age": 23,
+        "stage": "independent",
+        "score": 92,
+        "type": "支配下",
+        "rank": 1,
+        "independentOffer": true,
+        "team": "埼玉キングス",
+        "salary": 1550,
+        "bonus": 9700,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 4700
+        }
+      },
+      "salary": 1550,
+      "activeContract": {
+        "team": "埼玉キングス",
+        "startYear": 2034,
+        "endYear": 2034,
+        "years": 1,
+        "annual": 1550,
+        "type": "新人契約",
+        "guarantees": null,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 4700
+        }
+      },
+      "contracts": [],
+      "incomeHistory": [
+        {
+          "year": 2034,
+          "team": "埼玉キングス",
+          "age": 24,
+          "salary": 0,
+          "paidSalary": 0,
+          "incentives": 0,
+          "signingBonus": 9700,
+          "setupAllowance": 0
+        }
+      ],
+      "totalSigningBonus": 9700
+    },
+    {
+      "route": "corporate",
+      "offer": {
+        "year": 2033,
+        "age": 23,
+        "stage": "corporate",
+        "score": 92,
+        "type": "支配下",
+        "rank": 1,
+        "independentOffer": true,
+        "team": "埼玉キングス",
+        "salary": 1550,
+        "bonus": 9700,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 4700
+        }
+      },
+      "salary": 1550,
+      "activeContract": {
+        "team": "埼玉キングス",
+        "startYear": 2034,
+        "endYear": 2034,
+        "years": 1,
+        "annual": 1550,
+        "type": "新人契約",
+        "guarantees": null,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 4700
+        }
+      },
+      "contracts": [],
+      "incomeHistory": [
+        {
+          "year": 2034,
+          "team": "埼玉キングス",
+          "age": 24,
+          "salary": 0,
+          "paidSalary": 0,
+          "incentives": 0,
+          "signingBonus": 9700,
+          "setupAllowance": 0
+        }
+      ],
+      "totalSigningBonus": 9700
+    },
+    {
+      "route": "university",
+      "offer": {
+        "year": 2030,
+        "age": 22,
+        "stage": "university",
+        "score": 100,
+        "type": "支配下",
+        "rank": 1,
+        "independentOffer": true,
+        "team": "福岡オーシャンズ",
+        "salary": 1600,
+        "bonus": 10000,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 5000
+        }
+      },
+      "salary": 1600,
+      "activeContract": {
+        "team": "福岡オーシャンズ",
+        "startYear": 2031,
+        "endYear": 2031,
+        "years": 1,
+        "annual": 1600,
+        "type": "新人契約",
+        "guarantees": null,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 5000
+        }
+      },
+      "contracts": [],
+      "incomeHistory": [
+        {
+          "year": 2031,
+          "team": "福岡オーシャンズ",
+          "age": 23,
+          "salary": 0,
+          "paidSalary": 0,
+          "incentives": 0,
+          "signingBonus": 10000,
+          "setupAllowance": 0
+        }
+      ],
+      "totalSigningBonus": 10000
+    },
+    {
+      "route": "high",
+      "offer": {
+        "year": 2030,
+        "age": 18,
+        "stage": "high",
+        "score": 100,
+        "type": "支配下",
+        "rank": 1,
+        "independentOffer": true,
+        "team": "福岡オーシャンズ",
+        "salary": 1600,
+        "bonus": 10000,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 5000
+        }
+      },
+      "salary": 1600,
+      "activeContract": {
+        "team": "福岡オーシャンズ",
+        "startYear": 2031,
+        "endYear": 2031,
+        "years": 1,
+        "annual": 1600,
+        "type": "新人契約",
+        "guarantees": null,
+        "incentive": {
+          "stat": "ab",
+          "target": 440,
+          "label": "440打数",
+          "amount": 5000
+        }
+      },
+      "contracts": [],
+      "incomeHistory": [
+        {
+          "year": 2031,
+          "team": "福岡オーシャンズ",
+          "age": 19,
+          "salary": 0,
+          "paidSalary": 0,
+          "incentives": 0,
+          "signingBonus": 10000,
+          "setupAllowance": 0
+        }
+      ],
+      "totalSigningBonus": 10000
+    }
+  ],
+  "elementary": [
+    {
+      "seed": 7130,
+      "age": 6,
+      "stage": "elementary",
+      "injury": {
+        "year": 2014,
+        "age": 6,
+        "name": "疲労骨折",
+        "totalDays": 114,
+        "severe": false,
+        "daysLeft": 0,
+        "lost": 0.9344262295081968,
+        "startDay": 0,
+        "unavailableDays": 114
+      }
+    },
+    {
+      "seed": 62744,
+      "age": 6,
+      "stage": "elementary",
+      "injury": {
+        "year": 2014,
+        "age": 6,
+        "name": "疲労骨折",
+        "totalDays": 164,
+        "severe": false,
+        "daysLeft": 42,
+        "lost": 1,
+        "startDay": 0,
+        "unavailableDays": 164
+      }
+    },
+    {
+      "seed": 132618,
+      "age": 6,
+      "stage": "elementary",
+      "injury": {
+        "year": 2014,
+        "age": 6,
+        "name": "疲労骨折",
+        "totalDays": 174,
+        "severe": false,
+        "daysLeft": 52,
+        "lost": 1,
+        "startDay": 0,
+        "unavailableDays": 174
+      }
+    },
+    {
+      "seed": 188232,
+      "age": 6,
+      "stage": "elementary",
+      "injury": {
+        "year": 2014,
+        "age": 6,
+        "name": "疲労骨折",
+        "totalDays": 134,
+        "severe": false,
+        "daysLeft": 12,
+        "lost": 1,
+        "startDay": 0,
+        "unavailableDays": 134
+      }
+    }
+  ]
+}

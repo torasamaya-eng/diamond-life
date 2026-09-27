@@ -74,7 +74,7 @@ export function evaluateRehabContract(s,record){
  const poor=recent.length>=2&&recent.every(r=>seasonSalaryValue(s,r)<1000);
  if(s.age>=34&&!prospect&&!star&&rating<50&&poor&&s.health.severe)return {decision:'release',reason:'故障前の低迷と復帰見込みを考慮'};
  const rehab=!star&&s.health.daysLeft>=180&&(prospect||s.health.severe);
- return {decision:rehab?'rehab':'retain',optionalRehab:!star,annual:rehabSalary(s,record),reason:(prospect?'将来性を評価。':'過去実績と復帰見込みを評価。')+s.health.name+'から復帰まで約'+s.health.daysLeft+'日。'};
+ return {decision:rehab?'rehab':'retain',annual:rehabSalary(s,record),reason:(prospect?'将来性を評価。':'過去実績と復帰見込みを評価。')+s.health.name+'から復帰まで約'+s.health.daysLeft+'日。'};
 }
 export function salaryEstimate(s,record,market=false){
  const st=record.stats,assessment=calculateSalaryEvaluation(s,record);
@@ -147,7 +147,7 @@ export function prepareRenewal(s,record){
   const pay=Math.max(s.stage==='pro'?Math.max(SALARY_MODEL.npbFloor,renewalFloor(s.salary)):SALARY_MODEL.mlbFloor,Math.round(annual*.92/10)*10);
   s.contractOffers.push({id:'multi',annual:pay,years:Math.min(multi.years,SALARY_MODEL.maxAge-s.age),year:s.year+1,reason:'継続的な主力実績と長期構想を評価',incentive:multi.incentive});
  }
- if(rehab&&(rehab.decision==='rehab'||rehab.optionalRehab)){
+ if(rehab?.decision==='rehab'){
   s.contractOffers.push({id:'rehab',annual:rehab.annual,years:1,year:s.year+1,development:true,reason:rehab.reason});
   s.news.push('来季の支配下契約終了と育成再契約を打診。断って他球団を探すこともできます。');
  }
@@ -171,4 +171,10 @@ export function evaluateRosterReturn(s,{date,recovered,farmGames=0,farmStats=nul
  const evidence=farmStats?clamp(performance(farmStats,s.player.role),-1,3):0;
  const chance=clamp(.3+(rating-60)*.012+(potential-rating)*.003+(s.age<=28?.08:0)+(s.clubTrust?.[s.team]||0)+evidence*.025,.15,.8);
  return roll<chance;
+}
+
+export function normalizeRenewalOffers(s){
+ if(!s.contractOffers?.some(o=>o.id==='one')||!s.contractOffers.some(o=>o.id==='rehab'))return;
+ const decision=s.rehabReview?.decision||'retain';
+ s.contractOffers=decision==='release'?[]:s.contractOffers.filter(o=>decision==='rehab'?o.id==='rehab':o.id!=='rehab');
 }

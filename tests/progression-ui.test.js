@@ -235,3 +235,11 @@ test('共有ダイアログはX・OS・保存・コピーを選択でき、OS共
  g.run("let copied='',downloaded=0;globalThis.navigator={clipboard:{writeText:async text=>{copied=text;}}};globalThis.URL={createObjectURL:()=> 'blob:test',revokeObjectURL(){}};document.body={append(){}};document.createElement=()=>({click(){downloaded++;},remove(){}});");
  g.click('share-copy');await new Promise(r=>setImmediate(r));assert.equal(g.run('copied'),'既存共有文');g.click('share-download');assert.equal(g.run('downloaded'),1);
 });
+
+test('進行画面は二軍・マイナーだけの実績を前面に出し、確定記録を変更しない',()=>{
+ const g=game();pro(g);
+ for(const stage of ['pro','mlb']){g.run("s.stage='"+stage+"';s.current=emptyStats();s.currentLevels=null;s.records=[{year:2030,stage:s.stage,stats:emptyStats(),levels:{first:emptyStats(),second:{...emptyStats(),games:100,ab:300,hits:90,hr:12}}}];");const before=g.run('JSON.stringify(s.records)');const html=g.run('play()');assert.match(html,new RegExp('2030年の成績 / '+(stage==='pro'?'二軍':'マイナー')));assert.match(html,/100試合/);assert.equal(g.run('JSON.stringify(s.records)'),before);assert.equal(g.run('sumStats(s.records).hits'),0);}
+});
+test('国内ドラフトの基本年俸と契約金を進路画面で別行に表示する',()=>{
+ const g=game();pro(g);g.run("s.stage='high';s.pending={type:'career',draft:{year:s.year,type:'支配下',rank:1,team:TEAMS[0],salary:1600,bonus:10000,independentOffer:true}};choiceDialog();");const html=g.html('#modal');assert.match(html,/<p>基本年俸（1年分）：1,600万円<\/p>/);assert.match(html,/<p>契約金（入団時・年俸とは別）：1億円<\/p>/);
+});

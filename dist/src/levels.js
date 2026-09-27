@@ -20,3 +20,14 @@ export function simulateRegisteredLevels(s,roster){
  const second=simulateStats(farm,roster.games.second,s.stage==='mlb'?63:46);s.seed=farm.seed;
  return {first,second};
 }
+
+export function progressDisplayStats(s){
+ const current=!!s.currentLevels||!!s.current?.games;
+ const row=current?{stage:s.stage,year:s.year,stats:s.current,levels:s.currentLevels}:s.records?.at(-1);
+ const stage=row?.stage||s.stage,stats=row?.stats||emptyStats(),year=row?.year||s.year;
+ if(!['pro','mlb'].includes(stage))return {stats,year,label:'',level:null,current};
+ const first=row?.levels?.first||stats,second=row?.levels?.second;
+ if(first.games>0)return {stats:first,year,label:stage==='mlb'?'メジャー':'一軍',level:'first',current};
+ if(second?.games>0)return {stats:second,year,label:stage==='mlb'?'マイナー':'二軍',level:'second',current};
+ return {stats:first,year,label:'出場なし',level:null,current};
+}
