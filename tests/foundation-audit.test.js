@@ -1,3 +1,4 @@
+import {IDBFactory} from 'fake-indexeddb';
 import {matchesHistoricalHash} from './historical-hash.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -29,8 +30,8 @@ test('旧baselineを改変せず、意図した成長変更との差と30人生�
  }
  assert.equal(changed,baseline.length);
 });
-test('旧データを補完してもID・乱数・既存能力は不変。追加特性と年度環境は独立保存',()=>{
- const storage=memory(),s=createPlayer('旧選手','pitcher',42),id=s.careerId,seed=s.seed,abilities=structuredClone(s.player.abilities);
+test('旧データを補完してもID・乱数・既存能力は不変。追加特性と年度環境は独立保存',async()=>{
+ const storage=memory(),db={storage,indexedDB:new IDBFactory()},s=createPlayer('旧選手','pitcher',42),id=s.careerId,seed=s.seed,abilities=structuredClone(s.player.abilities);
  delete s.player.developmentTraits;delete s.developmentHistory;delete s.seasonEnvironments;
  writeAutosave(s,storage);const loaded=readAutosave(storage).state;
  assert.equal(loaded.careerId,id);assert.equal(loaded.seed,seed);assert.deepEqual(loaded.player.abilities,abilities);
@@ -42,14 +43,14 @@ test('旧データを補完してもID・乱数・既存能力は不変。追加
  const context=developmentContext(loaded);
  assert.equal(context.age,loaded.age);assert.equal(context.careerYear,1);
  assert.deepEqual(seasonEnvironment(loaded),{leagues:{test:{mode:'reserved'}}});
- retire(loaded);writeAutosave(loaded,storage);assert.ok(saveRetiredCareer(loaded,{storage}).ok);
- const archived=readCareerLibrary(storage).careers[0].state;
+ retire(loaded);writeAutosave(loaded,storage);assert.ok((await saveRetiredCareer(loaded,db)).ok);
+ const archived=(await readCareerLibrary(db)).careers[0].state;
  assert.equal(archived.careerId,id);assert.equal(readAutosave(storage).state.careerId,id);
  assert.deepEqual(archived.player.developmentTraits.futureTrait,{example:1});
  const before=JSON.stringify(archived);careerCardData(archived);assert.equal(JSON.stringify(archived),before);
  writeAutosave(createPlayer('次の選手','batter',7),storage);
- assert.equal(readCareerLibrary(storage).careers[0].careerId,id);
- assert.ok(storage.getItem(AUTOSAVE_KEY));assert.ok(storage.getItem(CAREER_LIBRARY_KEY));
+ assert.equal((await readCareerLibrary(db)).careers[0].careerId,id);
+ assert.ok(storage.getItem(AUTOSAVE_KEY));assert.equal(storage.getItem(CAREER_LIBRARY_KEY),null);
 });
 test('部分的に欠けた成長上限を乱数消費せず補完しNaNの能力を防ぐ',()=>{
  const s=createPlayer('互換確認','batter',99),seed=s.seed,power=s.player.potential.power;

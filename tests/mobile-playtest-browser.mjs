@@ -1,6 +1,6 @@
 import {createRequire} from 'node:module';import http from 'node:http';import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';
 import {createPlayer} from '../dist/src/engine.js';import {emptyStats} from '../dist/src/stats.js';import {setContract} from '../dist/src/contracts.js';import {writeAutosave,AUTOSAVE_KEY} from '../dist/src/autosave.js';import {reportedRenewal,graduate,draftOffer} from './playtest-fixtures.mjs';
-const require=createRequire(import.meta.url),{chromium,webkit}=require('C:/Users/owner/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+import {chromium,webkit} from 'playwright';
 const old=new Map(['ui','lifecycle'].map(n=>['/src/'+n+'.js',execFileSync('git',['show','551c4e4:dist/src/'+n+'.js'],{encoding:'utf8'})]));
 const server=http.createServer((req,res)=>{let name=new URL(req.url,'http://localhost').pathname;const before=name.startsWith('/before/');if(before)name=name.slice(7);if(name==='/')name='/index.html';try{res.setHeader('Content-Type',name.endsWith('.js')?'text/javascript':name.endsWith('.css')?'text/css':'text/html');res.end(before&&old.has(name)?old.get(name):fs.readFileSync(path.resolve('dist','.'+name)));}catch{res.writeHead(404).end();}});await new Promise(r=>server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+server.address().port;
 const output=[];fs.mkdirSync('reports/playtest-browser',{recursive:true});

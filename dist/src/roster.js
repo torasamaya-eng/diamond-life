@@ -1,3 +1,4 @@
+import {minorAnnualRate,selectMajorContract} from './mlb-contracts.js';
 import {majorReady} from './development.js';
 import {random,integer,clamp,pick} from './random.js';
 import {overall} from './growth.js';
@@ -19,7 +20,7 @@ export function prepareRosterDecision(s){
  const m=overseasRoster(s);
  if(m.reviewYear===s.year)return false;
  m.reviewYear=s.year;
- if(!m.on40||s.health?.daysLeft>0||overall(s)>=70&&majorReady(s)||s.activeContract?.guarantees?.regular)return false;
+ if(!m.on40||s.health?.daysLeft>0||overall(s)>=70&&majorReady(s)||s.activeContract?.endYear>=s.year&&s.activeContract.guarantees?.regular)return false;
  const years=mlbService(s)/172;
  if(years>=5||!optionAllowance(s)){
  s.rosterDecision={year:s.year,type:years>=5?'consent':'dfa',mayElectFA:years>=3||m.outrighted,date:rosterDate(s.year,-7),deadline:rosterDate(s.year,0)};
@@ -53,23 +54,25 @@ export function resolveRosterDecision(s,id){
 export function simulateDailyRoster(s,opportunity,injury=null,reviewDevelopment=false){
  const overseas=s.stage==='mlb',cfg=overseas?ROSTER_RULES.mlb:ROSTER_RULES.npb;
  const m=overseas?overseasRoster(s):null,active=overseas?'major':'first',farm=overseas?'minor':'second';
+ const guaranteed=s.activeContract?.endYear>=s.year&&s.activeContract.guarantees?.regular&&s.contractStatus!=='development';
  const count=cfg.days;let firstTarget=clamp(opportunity,0,1);
  const start=injury?.startDay??0,duration=injury?.unavailableDays??Math.ceil((injury?.lost||0)*365);
  const nationalDays=s.seasonImpact?.year===s.year?Math.ceil((s.seasonImpact.loss||0)*count):0;
  
  let status=(s.contractStatus==='development'&&!overseas||overseas&&!m.on40)?farm:random(s)<firstTarget?active:farm;
- if(overseas&&m.refusedYear===s.year)status=active;
+ if(guaranteed||overseas&&m.refusedYear===s.year)status=active;
  const days=[],transactions=[],counts={active:0,farm:0,il:0,injuryCredit:0,option:0},games={first:0,second:0};
  let recallDay=0,ilUntil=0,demotions=0,optionUsed=false,injuryEligible=false,lastAppearance=-20;
  const prev=s.records.findLast(r=>r.stage===s.stage&&r.year===s.year-1);
  const change=(day,next,reason)=>{if(status===next)return;transactions.push({date:rosterDate(s.year,day),day,from:status,to:next,reason,eligibleDate:next===farm||next==='injured'?rosterDate(s.year,recallDay):null});status=next;};
  const demote=day=>{
+  if(guaranteed)return false;
   if(!overseas){recallDay=day+10;change(day,farm,'不調・チーム編成による登録抹消');return true;}
   if(m.refusedYear===s.year||mlbService(s)>=860&&m.consentYear!==s.year||demotions>=5||!optionAllowance(s)&&!m.optionYears.includes(s.year))return false;
   recallDay=day+(s.player.role==='pitcher'?15:10);demotions++;change(day,farm,'マイナーへオプション配属');return true;
  };
  if(overseas&&status===farm&&m.on40){status=active;if(!demote(0))status=active;}
- if(overseas&&status===active)m.on40=true;
+ if(overseas&&status===active){m.on40=true;selectMajorContract(s);}
  transactions.unshift({date:rosterDate(s.year,0),day:0,from:'offseason',to:status,reason:'開幕登録'});
  for(let day=0;day<count;day++){
   const inInjury=duration>0&&day>=start&&day<start+duration;const sick=inInjury||day<nationalDays;const currentEnd=inInjury?Math.max(start+duration,day<nationalDays?nationalDays:0):nationalDays;
@@ -87,17 +90,17 @@ export function simulateDailyRoster(s,opportunity,injury=null,reviewDevelopment=
     const recovered=!sick&&(!injury||day>=start+duration);
     if(evaluateRosterReturn(s,{date:rosterDate(s.year,day),recovered,farmGames:games.second,farmStats:priorFarm,roll:random(s)})){
      s.contractStatus='registered';s.salary=Math.max(SALARY_MODEL.npbFloor,s.salary);
-     if(s.activeContract){s.activeContract.annual=s.salary;s.activeContract.type='支配下復帰';}
+     if(s.activeContract){s.activeContract.annual=s.salary;s.activeContract.guaranteedTotal=s.salary*s.activeContract.years;s.activeContract.type='支配下復帰';}
      s.rosterReturn={year:s.year,date:rosterDate(s.year,day),reason:s.developmentReason};
      firstTarget=Math.max(firstTarget,overall(s)>=65?.85:.35);
      transactions.push({day,date:rosterDate(s.year,day),from:'development',to:'registered',reason:'実戦調整と球団評価を経て支配下選手へ復帰'});
      s.news.push('獲得：'+rosterDate(s.year,day)+' 支配下登録。一軍復帰を目指します。');
     }
    }
-   if(day%14===0||day===recallDay){const desired=random(s)<firstTarget;
+   if(day%14===0||day===recallDay||guaranteed&&status===farm){const roll=random(s),desired=guaranteed||roll<firstTarget;
     if(status===active&&!desired)demote(day);
     else if(status===farm&&desired&&day>=recallDay&&!(overseas&&s.overseasContract?.entryYear===s.year&&!m.on40&&day<OVERSEAS_ROOKIE_RULES.earliestPromotionDay)&&!(s.stage==='pro'&&s.contractStatus==='development')){
-     if(overseas){if(!m.on40){m.outrightYear=null;transactions.push({day,date:rosterDate(s.year,day),from:'outside40',to:'40man',reason:'メジャー契約を選択、40人枠に登録'});}m.on40=true;}
+     if(overseas){if(!m.on40){m.outrightYear=null;transactions.push({day,date:rosterDate(s.year,day),from:'outside40',to:'40man',reason:'メジャー契約を選択、40人枠に登録'});}m.on40=true;selectMajorContract(s);}
      change(day,active,overseas?'メジャー昇格':'一軍へ出場選手登録');
     }
    }
@@ -116,7 +119,7 @@ export function simulateDailyRoster(s,opportunity,injury=null,reviewDevelopment=
    const chance=s.player.role==='pitcher'?starter?1:pitchGameFactor(s):onFarm?1:s.player.batterRole==='regular'?.96:.7;
    if((!starter||day-lastAppearance>=6)&&random(s)<chance){played=true;level=onActive?'first':'second';games[level]++;lastAppearance=day;}
   }
-  days.push({date,day,status,team:s.team,onActive,on40:overseas?!status.startsWith('il60')&&m.on40:null,service:overseas?(onActive||onIL):onActive,played,level,activeLimit:overseas?expanded?28:26:31,benchLimit:overseas?expanded?28:26:29});
+  days.push({date,day,status,team:s.team,...(overseas&&s.activeContract?.payScale?{minorAnnual:minorAnnualRate(s)}:{}),onActive,on40:overseas?!status.startsWith('il60')&&m.on40:null,service:overseas?(onActive||onIL):onActive,played,level,activeLimit:overseas?expanded?28:26:31,benchLimit:overseas?expanded?28:26:29});
  }
  if(overseas&&counts.option<20)for(const d of days)if((d.status==='minor'||d.status==='minorInjured')&&d.on40)d.service=true;
  const service=overseas?Math.min(172,counts.active+counts.il+(counts.option<20?counts.option:0)):Math.min(145,counts.active+counts.injuryCredit);

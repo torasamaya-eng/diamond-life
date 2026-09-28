@@ -21,6 +21,7 @@ export function auditCareer(seed,role,route,observe=null,options={}){
    else if(s.stage==='high'&&['university','overseas','corporate'].includes(route))choose(s,route);
    else if(s.stage==='high'&&route==='independent'&&s.pending.draft.independentOffer)choose(s,'independent');
    else if(options.careerRoute?.(s))choose(s,options.careerRoute(s));
+   else if(s.pending.draft.returnOffers?.length)choose(s,s.pending.draft.returnOffers[0].id);
    else if(s.pending.draft.overseasOffer)choose(s,'mlb');
    else if(s.pending.draft.type!=='指名なし')choose(s,'pro');
    else choose(s,['corporate','independent'].includes(s.stage)?'stay':'corporate');

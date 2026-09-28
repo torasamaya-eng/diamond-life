@@ -1,0 +1,4 @@
+import {IDBFactory} from 'fake-indexeddb';
+export function libraryMemory(){const m=new Map();return {getItem:k=>m.get(k)??null,setItem:(k,v)=>m.set(k,String(v)),removeItem:k=>m.delete(k),key:i=>[...m.keys()][i]??null,get length(){return m.size;}};}
+export function libraryOptions(){return {storage:libraryMemory(),indexedDB:new IDBFactory()};}
+export function abortingDatabase(factory,{failDelete=false}={}){return {open(...args){const request=factory.open(...args);request.addEventListener('success',()=>{const db=request.result,original=db.transaction.bind(db);db.transaction=(...args)=>{const tx=original(...args),get=tx.objectStore.bind(tx);tx.objectStore=(name)=>{const store=get(name);store.put=()=>{tx.abort();throw new DOMException('quota','QuotaExceededError');};if(failDelete)store.delete=()=>{tx.abort();throw new DOMException('quota','QuotaExceededError');};return store;};return tx;};});return request;}};}

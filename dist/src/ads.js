@@ -3,6 +3,21 @@ export const FINAL_CAREER_AD_CONFIG={enabled:false,timeoutMs:8000};
 export const NEW_CAREER_AD_CONFIG={enabled:false,timeoutMs:1200,displayTimeoutMs:120000};
 const finalAdLedgerPrefix='diamond-life.final-career-ad.';
 const newAdLedgerPrefix='diamond-life.new-career-ad.';
+export const CAREER_AD_LEDGER_KEY='diamond-life.career-exit-ads';
+export const MAX_AD_LEDGER_CAREERS=128;
+function reserveCareerAd(storage,id){
+ const raw=storage.getItem(CAREER_AD_LEDGER_KEY),ledger=raw?JSON.parse(raw):[];
+ if(!Array.isArray(ledger)||ledger.some(x=>typeof x!=='string'))throw Error('Invalid ad ledger');
+ const legacy=[];
+ if(typeof storage.key==='function')for(let i=0;i<storage.length;i++){const key=storage.key(i);if(key?.startsWith(finalAdLedgerPrefix)||key?.startsWith(newAdLedgerPrefix))legacy.push(key);}
+ const already=ledger.includes(id)||[finalAdLedgerPrefix,newAdLedgerPrefix].some(prefix=>storage.getItem(prefix+id)!==null);
+ const migrated=legacy.map(key=>key.slice(key.startsWith(finalAdLedgerPrefix)?finalAdLedgerPrefix.length:newAdLedgerPrefix.length));
+ const next=[...new Set([...migrated,...ledger].filter(x=>x!==id)),id].slice(-MAX_AD_LEDGER_CAREERS);
+ storage.setItem(CAREER_AD_LEDGER_KEY,JSON.stringify(next));
+ // Delete legacy keys only after the replacement ledger has been written successfully.
+ for(const key of legacy)storage.removeItem?.(key);
+ return !already;
+}
 let finalCareerAdAdapter=null,newCareerAdAdapter=null;
 export function setFinalCareerAdAdapter(adapter){finalCareerAdAdapter=adapter;}
 export function setNewCareerAdAdapter(adapter){newCareerAdAdapter=adapter;}
@@ -32,8 +47,7 @@ async function runCareerExitAd(state,field,options,defaults,defaultAdapter){
  try{
   const storage=options.storage??globalThis.localStorage;
   if(!storage)return finish('storage-unavailable');
-  if([finalAdLedgerPrefix,newAdLedgerPrefix].some(prefix=>storage.getItem(prefix+state.careerId)!==null))return finish('already-attempted');
-  storage.setItem((field==='finalCareerAd'?finalAdLedgerPrefix:newAdLedgerPrefix)+state.careerId,'attempted');
+  if(!reserveCareerAd(storage,state.careerId))return finish('already-attempted');
  }catch{return finish('storage-unavailable');}
  try{options.persist?.();}catch{}
  const config=options.config??defaults;

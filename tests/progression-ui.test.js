@@ -1,22 +1,23 @@
+import {IDBFactory} from 'fake-indexeddb';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-test('名鑑閲覧は進行中の選手を変えず、満枠の入替と削除は確認後だけ実行する',()=>{
+test('名鑑閲覧は進行中の選手を変えず、満枠の入替と削除は確認後だけ実行する',async()=>{
  const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
- const g=game(storage);g.run("for(let i=0;i<3;i++){const p=createPlayer('名鑑'+i,'batter',123+i);retire(p);saveRetiredCareer(p);}s=createPlayer('現役','batter',400);autoSave();");
+ const g=game(storage);await g.run("(async()=>{for(let i=0;i<3;i++){const p=createPlayer('名鑑'+i,'batter',123+i);retire(p);await saveRetiredCareer(p);}s=createPlayer('現役','batter',400);autoSave();})()");
  const live=g.run('s.careerId'),auto=storage.getItem('diamond-life.autosave');
- g.click('library-open');assert.match(g.html('#app'),/保存選手 3 \/ 3/);
- const id=g.run('readCareerLibrary().careers[0].careerId');
- g.click('library-view',id);assert.match(g.html('#app'),/全年度の成績/);assert.match(g.html('#app'),/海外マイナー/);
+ await g.click('library-open');assert.match(g.html('#app'),/保存選手 3 \/ 3/);
+ const id=(await g.run('(async()=> (await readCareerLibrary()).careers[0].careerId)()'));
+ await g.click('library-view',id);assert.match(g.html('#app'),/全年度の成績/);assert.match(g.html('#app'),/海外マイナー/);
  assert.equal(g.run('s.careerId'),live);assert.equal(storage.getItem('diamond-life.autosave'),auto);
- g.run('retire(s)');g.click('library-save');assert.match(g.html('#app'),/保存枠がいっぱいです/);
+ g.run('retire(s)');await g.click('library-save');assert.match(g.html('#app'),/保存枠がいっぱいです/);
  const before=storage.getItem('diamond-life.retired-careers');
- g.click('library-replace',id);assert.match(g.html('#modal'),/入れ替えますか/);assert.equal(storage.getItem('diamond-life.retired-careers'),before);
- g.click('library-back');assert.equal(storage.getItem('diamond-life.retired-careers'),before);
- g.click('library-replace',id);g.click('library-confirm',id);assert.equal(g.run('readCareerLibrary().careers.length'),3);assert.ok(g.run('readCareerLibrary().careers.some(c=>c.careerId===s.careerId)'));
- g.click('library-delete',live);assert.equal(g.run('readCareerLibrary().careers.length'),3);g.click('library-confirm',live);assert.equal(g.run('readCareerLibrary().careers.length'),2);
+ await g.click('library-replace',id);assert.match(g.html('#modal'),/入れ替えますか/);assert.equal(storage.getItem('diamond-life.retired-careers'),before);
+ await g.click('library-back');assert.equal(storage.getItem('diamond-life.retired-careers'),before);
+ await g.click('library-replace',id);await g.click('library-confirm',id);assert.equal((await g.run('(async()=> (await readCareerLibrary()).careers.length)()')),3);assert.ok((await g.run('(async()=> (await readCareerLibrary()).careers.some(c=>c.careerId===s.careerId))()')));
+ await g.click('library-delete',live);assert.equal((await g.run('(async()=> (await readCareerLibrary()).careers.length)()')),3);await g.click('library-confirm',live);assert.equal((await g.run('(async()=> (await readCareerLibrary()).careers.length)()')),2);
 });
 
 test('最終キャリアの広告が失敗しても画面遷移し、保存・再開後は再要求しない',async()=>{
@@ -145,39 +146,39 @@ function game(localStorage){
  const fields=Object.fromEntries(Object.entries(values).map(([key,options])=>[key,{options,selectedIndex:0,get value(){return this.options[this.selectedIndex];}}]));
  nodes['#new-player']={elements:{namedItem:key=>fields[key]}};
  class FormData {constructor(form){this.form=form;}get(key){return this.form.elements.namedItem(key).value;}entries(){return Object.keys(fields).map(key=>[key,this.get(key)])[Symbol.iterator]();}}
- const ctx=vm.createContext({localStorage,FormData,document:{querySelector:q=>nodes[q]??=node(),addEventListener:(name,handler)=>events[name]=handler},window:{scrollTo(){}},setTimeout(){},clearTimeout(){}});
+ const ctx=vm.createContext({indexedDB:new IDBFactory(),localStorage,FormData,document:{querySelector:q=>nodes[q]??=node(),addEventListener:(name,handler)=>events[name]=handler},window:{scrollTo(){}},setTimeout(){},clearTimeout(){}});
  vm.runInContext(source,ctx);
  return {run:code=>vm.runInContext(code,ctx),html:q=>nodes[q].innerHTML,click:(action,id)=>events.click({preventDefault(){},target:{closest:()=>({dataset:{action,id}})}})};
 }
 
-test('トップ・空の名鑑・戻る操作は選手作成やストレージ書込みをしない',()=>{
+test('トップ・空の名鑑・戻る操作は選手作成やストレージ書込みをしない',async()=>{
  const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
  const g=game(storage);assert.equal(g.run('s'),null);assert.equal(g.run("$('#modal').open"),false);
  assert.match(g.html('#app'),/ニューゲーム/);assert.match(g.html('#app'),/選手名鑑/);
  for(const page of ['privacy','terms','contact'])assert.match(g.html('#app'),new RegExp(page+'\\.html'));
- g.click('library-open');assert.match(g.html('#app'),/保存選手 0 \/ 3/);assert.match(g.html('#app'),/まだいません/);
+ await g.click('library-open');assert.match(g.html('#app'),/保存選手 0 \/ 3/);assert.match(g.html('#app'),/まだいません/);
  g.click('site-top');assert.match(g.html('#app'),/ニューゲーム/);assert.equal(data.size,0);
  g.click('new');assert.match(g.html('#modal'),/id="new-player"/);g.click('close');assert.equal(g.run('s'),null);
 });
 
-test('名鑑詳細はモーダルではなく独立ページで全記録を表示し戻れる',()=>{
+test('名鑑詳細はモーダルではなく独立ページで全記録を表示し戻れる',async()=>{
  const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
- const g=game(storage);pro(g);g.run('retire(s);saveRetiredCareer(s);autoSave()');
+ const g=game(storage);pro(g);await g.run('(async()=>{retire(s);await saveRetiredCareer(s);autoSave()})()');
  const before=JSON.stringify([...data]),state=g.run('JSON.stringify(s)'),id=g.run('s.careerId');
- g.click('library-open');g.click('library-view',id);
+ await g.click('library-open');await g.click('library-view',id);
  assert.equal(g.run("$('#modal').open"),false);
  for(const label of ['選手名鑑に戻る','全年度の成績','獲得タイトル・表彰','海外マイナー','背番号履歴','最高年俸'])assert.ok(g.html('#app').includes(label));
  assert.doesNotMatch(g.html('#app'),/data-action="library-save"/);
- g.click('library-back');assert.match(g.html('#app'),/保存選手 1 \/ 3/);
+ await g.click('library-back');assert.match(g.html('#app'),/保存選手 1 \/ 3/);
  g.click('site-top');assert.equal(g.run('JSON.stringify(s)'),state);assert.equal(JSON.stringify([...data]),before);
 });
 
-test('引退後は最終結果・共有・保存の順で重複保存を防ぐ',()=>{
+test('引退後は最終結果・共有・保存の順で重複保存を防ぐ',async()=>{
  const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
  const g=game(storage);pro(g);g.run('retire(s)');const html=g.run('career()');
  assert.ok(html.indexOf('キャリアハイ')<html.indexOf('data-action="share-result"'));
  assert.ok(html.indexOf('data-action="share-result"')<html.indexOf('data-action="library-save"'));
- g.click('library-save');g.click('library-save');assert.equal(g.run('readCareerLibrary().careers.length'),1);assert.match(g.html('#app'),/保存済み/);
+ await g.click('library-save');await g.click('library-save');assert.equal((await g.run('(async()=> (await readCareerLibrary()).careers.length)()')),1);assert.match(g.html('#app'),/保存済み/);
 });
 function pro(g){g.run("s=createPlayer('検証','batter',71);Object.assign(s,{stage:'pro',age:28,year:2031,team:TEAMS[0],proYears:8,salary:15000});for(const k in s.player.abilities)s.player.abilities[k]=85;s.records=Array.from({length:8},(_,i)=>({year:2023+i,stage:'pro',team:s.team,stats:{...emptyStats(),games:143,ab:500,hits:160,hr:30}}));setContract(s,15000,4);");}
 test('ランダムの1クリックで選手設定を閉じて開始、お知らせトーストなし',()=>{

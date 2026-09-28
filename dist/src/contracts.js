@@ -1,3 +1,4 @@
+import {MLB_ECONOMY,usdMoney,mlbSalaryValue,mlbPayStage,minorAnnualRate,rule4Terms,selectMajorContract} from './mlb-contracts.js';
 import {overall} from './growth.js';
 import {faService} from './free-agency.js';
 import {developmentSalaryModifier} from './development.js';
@@ -9,7 +10,7 @@ export const SALARY_ANCHORS={rookieBreakout:7000,thirdYearStar:12000,fourthYearS
 // Unit: ten thousand JPY. Historical anchors, not a claim about current market prices.
 export const CURRENCY={usdJpy:150};
 export const MLB_MINIMUM_USD=780000;
-export const SALARY_MODEL={npbFloor:420,developmentFloor:240,npbCap:120000,mlbFloor:MLB_MINIMUM_USD*CURRENCY.usdJpy/10000,mlbCap:600000,geniusChance:1/30,maxAge:50,earlyExperience:[.40,.68,1.0]};
+export const SALARY_MODEL={npbFloor:420,developmentFloor:240,npbCap:120000,mlbFloor:MLB_MINIMUM_USD*CURRENCY.usdJpy/10000,mlbCap:usdMoney(MLB_ECONOMY.marketCap),geniusChance:1/30,maxAge:50,earlyExperience:[.40,.68,1.0]};
 export const SALARY_SOURCES=[
  {label:'グラゼニ.com：2026年推定年俸ランキング',url:'https://www.gurazeni.com/'},
  {label:'グラゼニ.com：牧秀悟の年俸・年度成績（1300→7000→12000→23000万円）',url:'https://www.gurazeni.com/player/1988'},
@@ -84,7 +85,7 @@ export function salaryEstimate(s,record,market=false){
   if(s.developmentReason==='rehab')return Math.max(240,Math.round(Math.max(s.salary*.85,rehabSalary(s,record))/10)*10);
   return Math.round(clamp(240+(record.levels?.second?.games||st.games||0)*1.5,240,500)/10)*10;
  }
- if(s.stage==='mlb')target=Math.max(SALARY_MODEL.mlbFloor,target*7.5);
+ if(s.stage==='mlb')return mlbSalaryValue(s,record,market);
  const floor=s.stage==='mlb'?SALARY_MODEL.mlbFloor:SALARY_MODEL.npbFloor,cap=s.stage==='mlb'?SALARY_MODEL.mlbCap:SALARY_MODEL.npbCap;
  if(market)target*=CONTRACT_RULES.marketPremium;
  else {
@@ -98,38 +99,44 @@ export function salaryEstimate(s,record,market=false){
  return Math.min(cap,Math.max(minimum,Math.round(target/10)*10));
 }
 export function rookieContractTerms(result,role='batter'){
- if(result.type==='指名なし')return {salary:0,bonus:0,incentive:null};
- if(result.type==='育成')return {salary:Math.round(clamp(240+(result.score-59)*10,240,500)/10)*10,bonus:300,setupAllowance:300,incentive:null};
- const merit=clamp((result.score-70)/25,0,1),rank=result.rank||6;
- const salary=Math.round(clamp(500+(7-rank)*120+merit*380,420,1600)/10)*10;
- const bonus=Math.round(clamp(1200+(7-rank)*1000+merit*2800,1500,10000)/100)*100;
- return {salary,bonus,incentive:rank<=2&&result.score>=82?{stat:role==='pitcher'?'outs':'ab',target:role==='pitcher'?420:440,label:role==='pitcher'?'140投球回':'440打数',amount:Math.round((2500+merit*2500)/100)*100}:null};
+ if(result.type==='指名なし')return {salary:0,bonus:0,setupAllowance:0,incentive:null};
+ if(result.type==='育成')return {salary:Math.round(clamp(240+(result.score-59)*4,240,300)/10)*10,bonus:0,setupAllowance:300,incentive:null};
+ const merit=clamp((result.score-65)/30,0,1),rank=clamp(result.rank||6,1,6);
+ const ready=clamp((['university','overseas','corporate','independent'].includes(result.stage)?.15:0)+Math.max(0,(result.age||18)-18)*.012,0,.22);
+ const salaryBands=[[1000,1600],[900,1200],[650,1000],[500,800],[450,650],[420,600]];
+ const bonusBands=[[8000,10000],[6000,7000],[4000,6000],[3000,5000],[2000,4000],[1500,3000]];
+ const blend=clamp(merit+ready,0,1),[lo,hi]=salaryBands[rank-1],[blo,bhi]=bonusBands[rank-1];
+ const salary=Math.round((lo+(hi-lo)*blend)/10)*10,bonus=Math.round((blo+(bhi-blo)*blend)/100)*100;
+ return {salary,bonus,setupAllowance:0,incentive:rank<=2&&result.score>=82?{stat:role==='pitcher'?'outs':'ab',target:role==='pitcher'?420:440,label:role==='pitcher'?'140投球回':'440打数',amount:Math.round((2500+merit*2500)/100)*100}:null};
 }
 // Fixed 2026 planning values; amounts are annual equivalents in ten thousand JPY.
 export const OVERSEAS_ROOKIE_RULES={minorUsd:30000,earliestPromotionDay:14};
 export function overseasRookieTerms(score,rank){
  const minorAnnual=OVERSEAS_ROOKIE_RULES.minorUsd*CURRENCY.usdJpy/10000;
- const bonusUsd=Math.round(clamp((score-45)/55,0,1)**3*5000000+100000);
- return {rank,score,years:1,salary:minorAnnual,bonus:Math.round(bonusUsd*CURRENCY.usdJpy/10000),minorLevel:'A',payScale:{minorAnnual,majorAnnual:SALARY_MODEL.mlbFloor}};
+ const slot=rule4Terms(score,rank),bonusUsd=slot.signingBonusUsd;
+ return {...slot,rank,score,years:1,salary:minorAnnual,bonus:usdMoney(bonusUsd),minorLevel:'A',payScale:{minorAnnual,majorAnnual:SALARY_MODEL.mlbFloor}};
 }
 export function signOverseasRookie(s,offer){
- const terms={...overseasRookieTerms(offer.score||60,offer.rank),...offer};
- s.overseasContract={version:1,team:s.team,entryYear:s.year,rank:terms.rank,score:terms.score,signingBonus:terms.bonus,minorLevel:terms.minorLevel,status:'minor',legacy:false};
+ const terms=offer.entryKind==='internationalAmateur'?{minorLevel:'A',...offer}:{...overseasRookieTerms(offer.score||60,offer.rank),...offer};
+ s.overseasContract={version:2,entryKind:terms.entryKind||'rule4',draftRound:terms.draftRound,slotValueUsd:terms.slotValueUsd,signingBonusUsd:terms.signingBonusUsd,bonusPoolUsd:terms.bonusPoolUsd,postingFee:terms.postingFee||0,team:s.team,entryYear:s.year,rank:terms.rank,score:terms.score,signingBonus:terms.bonus,minorLevel:terms.minorLevel,status:'minor',legacy:false};
  s.mlbRoster={optionYears:[],outrighted:false,on40:false,status:'minor'};
  setContract(s,terms.payScale.minorAnnual,1,'海外新人契約',null,null,terms.payScale);
  return terms;
 }
 export function setContract(s,annual,years=1,type='更改',guarantees=null,incentive=null,payScale=null){
+ if(!Number.isFinite(annual)||annual<0||!Number.isInteger(years)||years<1)throw Error('契約金額・年数が不正です。');
+ if(payScale&&(!Number.isFinite(payScale.minorAnnual)||!Number.isFinite(payScale.majorAnnual)||payScale.minorAnnual<0||payScale.majorAnnual<0))throw Error('給与レートが不正です。');
  years=Math.max(1,Math.min(years,SALARY_MODEL.maxAge-s.age+1));
  if(s.stage==='pro')annual=Math.max(s.contractStatus==='development'?SALARY_MODEL.developmentFloor:SALARY_MODEL.npbFloor,annual);
- if(s.stage==='mlb'){if(payScale){payScale={...payScale,majorAnnual:Math.max(SALARY_MODEL.mlbFloor,payScale.majorAnnual)};annual=s.mlbRoster?.status==='major'||s.mlbRoster?.status?.startsWith('il')?payScale.majorAnnual:payScale.minorAnnual;}else annual=Math.max(SALARY_MODEL.mlbFloor,annual);}
- s.salary=annual;s.activeContract={team:s.team,startYear:s.year,endYear:s.year+years-1,years,annual,type,guarantees,incentive,...(payScale?{payScale}: {})};s.contractOffers=[];
+ if(s.stage==='mlb'){if(payScale){payScale={...payScale,minorAnnual:Math.max(payScale.minorAnnual,minorAnnualRate(s)),majorAnnual:Math.max(SALARY_MODEL.mlbFloor,payScale.majorAnnual)};annual=s.mlbRoster?.status==='major'||s.mlbRoster?.status?.startsWith('il')?payScale.majorAnnual:payScale.minorAnnual;}else annual=Math.max(SALARY_MODEL.mlbFloor,annual);}
+ if(s.stage==='mlb'&&s.mlbRoster?.on40)selectMajorContract(s);
+ s.salary=annual;s.activeContract={team:s.team,startYear:s.year,endYear:s.year+years-1,years,annual,type,guarantees,incentive,schemaVersion:2,guaranteedTotal:payScale?null:annual*years,...(payScale?{payScale}: {})};s.contractOffers=[];
 }
 export function prepareRenewal(s,record){
  if(s.age>=SALARY_MODEL.maxAge)return;
  const active=s.activeContract;
  if(active&&active.endYear>s.year){s.salary=active.annual;s.contracts.push({year:s.year,team:s.team,salary:record.salary,nextSalary:s.salary,roster:record.roster,yearsLeft:active.endYear-s.year});s.news.push('複数年契約は残り'+(active.endYear-s.year)+'年。来季も年俸'+money(s.salary)+'。');return;}
- let annual=salaryEstimate(s,record);const payScale=s.stage==='mlb'?active?.payScale:null;if(payScale)annual=s.mlbRoster?.status==='major'||s.mlbRoster?.status?.startsWith('il')?Math.max(payScale.majorAnnual,annual):payScale.minorAnnual;const reasons=calculateSalaryEvaluation(s,record).reasons;
+ let annual=salaryEstimate(s,record);const payScale=s.stage==='mlb'&&active?.payScale?{...active.payScale,minorAnnual:Math.max(active.payScale.minorAnnual,minorAnnualRate(s,s.year+1)),majorAnnual:annual}:null;if(payScale)annual=s.mlbRoster?.status==='major'||s.mlbRoster?.status?.startsWith('il')?payScale.majorAnnual:payScale.minorAnnual;const reasons=calculateSalaryEvaluation(s,record).reasons;
  s.contracts.push({year:s.year,team:s.team,salary:record.salary,nextSalary:annual,roster:record.roster,yearsLeft:0});
  if(s.stage==='independent'){s.salary=annual;return;}
  const rehab=evaluateRehabContract(s,record);s.rehabReview=rehab?{...rehab,year:s.year}:null;
@@ -143,7 +150,7 @@ export function prepareRenewal(s,record){
   const years=record.overall>=85?integer(s,3,s.stage==='mlb'?7:5):integer(s,2,3);
   multi={years,incentive:incentiveOffer(s,annual,years)};
  }
- if(multi&&!rehab&&s.contractStatus!=='development'&&(veteran||rights?.domesticDays<=145)){
+ if(multi&&(s.stage!=='mlb'||mlbPayStage(s)==='freeAgent')&&!rehab&&s.contractStatus!=='development'&&(veteran||rights?.domesticDays<=145)){
   const pay=Math.max(s.stage==='pro'?Math.max(SALARY_MODEL.npbFloor,renewalFloor(s.salary)):SALARY_MODEL.mlbFloor,Math.round(annual*.92/10)*10);
   s.contractOffers.push({id:'multi',annual:pay,years:Math.min(multi.years,SALARY_MODEL.maxAge-s.age),year:s.year+1,reason:'継続的な主力実績と長期構想を評価',incentive:multi.incentive});
  }

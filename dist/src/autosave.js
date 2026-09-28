@@ -1,3 +1,4 @@
+import {compactCareerState,expandCareerState} from './archive.js';
 import {DEVELOPMENT_TRAIT_DEFAULTS} from './development.js';
 import {validate} from './storage.js';
 export const AUTOSAVE_KEY='diamond-life.autosave';
@@ -11,7 +12,7 @@ export function readAutosave(storage){
   const envelope=JSON.parse(raw);
   if(envelope.version!==AUTOSAVE_VERSION)throw Error('対応していない保存バージョンです。');
   if(typeof envelope.payload!=='string'||envelope.checksum!==checksum(envelope.payload))throw Error('保存データが破損しています。');
-  const state=JSON.parse(envelope.payload);
+  const state=expandCareerState(JSON.parse(envelope.payload));
   if(typeof state.careerId!=='string'||!/^DL-[A-Z0-9-]{6,80}$/.test(state.careerId))throw Error('キャリアIDを読み込めません。');
   const migrated=!state.developmentState||Object.keys(DEVELOPMENT_TRAIT_DEFAULTS).some(k=>state.player?.developmentTraits?.[k]==null);
   validate(state);
@@ -23,7 +24,7 @@ export function writeAutosave(state,storage){
  try{
   storage??=globalThis.localStorage;
   if(!storage)throw Error('保存機能を利用できません。');
-  const payload=JSON.stringify(state);
+  const payload=JSON.stringify(compactCareerState(state));
   storage.setItem(AUTOSAVE_KEY,JSON.stringify({version:AUTOSAVE_VERSION,savedAt:new Date().toISOString(),checksum:checksum(payload),payload}));
   return {ok:true,error:''};
  }catch(error){return {ok:false,error:'オートセーブに失敗しました。ブラウザの保存設定・空き容量を確認してください。'};}

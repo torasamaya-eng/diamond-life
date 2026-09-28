@@ -1,0 +1,905 @@
+{
+  "verifiedAt": "2026-09-28T22:42:52.558Z",
+  "startingCommit": "6fc0ab5c6d6da72819d4e689d6ae005ecd0f8206",
+  "tests": {
+    "total": 318,
+    "passed": 318,
+    "failed": 0
+  },
+  "releaseRunner": [
+    {
+      "name": "build",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-ads.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-afterlife.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-archetypes.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-archive.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-autosave.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-awards.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-balance.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-career-library.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-career-rules.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-career-types.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-championship.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-contract-history.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-contracts.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-data.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-dev-tools.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-development.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-draft.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-engine.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-events.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-fielding.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-finance.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-format.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-free-agency.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-growth.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-health.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-identity.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-levels.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-lifecycle.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-market.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-mlb-contracts.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-national.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-npb-return.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-personality.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-profile.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-public-config.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-random.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-records.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-roster.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-scouting.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-share.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-stats.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-storage.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-ui.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-youth.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "unit",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "storage",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "contracts-browser",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "browser",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "site-browser",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "simulation",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "diff-check",
+      "passed": true,
+      "exit": 0
+    }
+  ],
+  "browser": [
+    {
+      "browser": "Chromium",
+      "width": 320,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 320,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 375,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 375,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 390,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 390,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 430,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 430,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 768,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 768,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 1280,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "width": 1280,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "storageQuota": "QuotaExceededError",
+      "migration": true,
+      "saved": 3,
+      "roundTrip": true,
+      "passed": true
+    },
+    {
+      "browser": "Chromium",
+      "standalone": true,
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 320,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 320,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 375,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 375,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 390,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 390,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 430,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 430,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 768,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 768,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 1280,
+      "stage": "elementary",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "width": 1280,
+      "stage": "pro",
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "storageQuota": "QuotaExceededError",
+      "migration": true,
+      "saved": 3,
+      "roundTrip": true,
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "standalone": true,
+      "passed": true
+    }
+  ],
+  "contractBrowser": [
+    {
+      "browser": "chromium",
+      "width": 375,
+      "kind": "single",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "kind": "multi",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "kind": "development",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "kind": "rehab",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "kind": "fa",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "kind": "overseas",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "kind": "guaranteed",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "kind": "single",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "kind": "multi",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "kind": "development",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "kind": "rehab",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "kind": "fa",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "kind": "overseas",
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "kind": "guaranteed",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 375,
+      "kind": "single",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 375,
+      "kind": "multi",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 375,
+      "kind": "development",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 375,
+      "kind": "rehab",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 375,
+      "kind": "fa",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 375,
+      "kind": "overseas",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 375,
+      "kind": "guaranteed",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "kind": "single",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "kind": "multi",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "kind": "development",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "kind": "rehab",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "kind": "fa",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "kind": "overseas",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "kind": "guaranteed",
+      "passed": true
+    }
+  ],
+  "siteChecks": 39,
+  "simulation": {
+    "count": 5000,
+    "maxAutoBytes": 853973,
+    "maxArchiveBytes": 680446,
+    "policy": "existing studyRetirement, seed multiplicative 2654435761",
+    "retiredNumber": 71,
+    "legacy": 310,
+    "pro": 3678,
+    "major": 312,
+    "age40": 186,
+    "genius": 168,
+    "meanRetirement": 32.6534,
+    "invariants": {
+      "signingDuplicate": 0,
+      "setupDuplicate": 0,
+      "postingPlayerIncome": 0,
+      "NaN": 0,
+      "Infinity": 0,
+      "negativeMoney": 0,
+      "contractTotalMismatch": 0,
+      "paidSalaryMismatch": 0,
+      "formerNpbRedraft": 0
+    },
+    "issues": [],
+    "transitions": {
+      "elementary→middle": 5000,
+      "middle→high": 5000,
+      "high→corporate": 2560,
+      "corporate→pro": 2635,
+      "pro→independent": 1166,
+      "independent→corporate": 207,
+      "high→university": 1000,
+      "university→pro": 376,
+      "high→overseas": 1000,
+      "overseas→mlb": 172,
+      "mlb→pro": 122,
+      "high→pro": 245,
+      "pro→mlb": 404,
+      "independent→pro": 453,
+      "pro→corporate": 663,
+      "overseas→pro": 273,
+      "university→corporate": 624,
+      "overseas→corporate": 555,
+      "high→independent": 195,
+      "mlb→independent": 86,
+      "mlb→corporate": 48
+    },
+    "returns": {
+      "independent": 265,
+      "corporate": 169,
+      "mlb": 45
+    },
+    "contractStages": {
+      "preArbitration": 2530,
+      "arbitration": 1107,
+      "freeAgent": 1773,
+      "superTwo": 162
+    },
+    "salaries": {
+      "pro": {
+        "n": 31517,
+        "mean": 5007.54624686677,
+        "median": 2780,
+        "p95": 14880,
+        "max": 72120
+      },
+      "mlb": {
+        "n": 4336,
+        "mean": 53698.256828205725,
+        "median": 12694.1424,
+        "p95": 299819,
+        "max": 738323.1806
+      },
+      "independent": {
+        "n": 2062,
+        "mean": 232.51212415130942,
+        "median": 180,
+        "p95": 400,
+        "max": 490
+      }
+    }
+  },
+  "storage": [
+    {
+      "name": "NPB20",
+      "years": 20,
+      "before": {
+        "state": 1446095,
+        "autosave": 1675134,
+        "library1": 1446180,
+        "library3": 4338397,
+        "records": 728818,
+        "dailyRoster": 699872,
+        "rosterHistory": 699872,
+        "periodResults": 2,
+        "timeline": 11154
+      },
+      "after": {
+        "autosave": 417232,
+        "library1": 378972,
+        "library3": 1136916,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 20
+      }
+    },
+    {
+      "name": "MLB20",
+      "years": 20,
+      "before": {
+        "state": 1556123,
+        "autosave": 1787390,
+        "library1": 1556208,
+        "library3": 4668481,
+        "records": 787380,
+        "dailyRoster": 758076,
+        "rosterHistory": 758076,
+        "periodResults": 2,
+        "timeline": 3587
+      },
+      "after": {
+        "autosave": 460114,
+        "library1": 422778,
+        "library3": 1268334,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 20
+      }
+    },
+    {
+      "name": "mixed30",
+      "years": 30,
+      "before": {
+        "state": 2246681,
+        "autosave": 2591242,
+        "library1": 2246766,
+        "library3": 6740155,
+        "records": 1135957,
+        "dailyRoster": 1092267,
+        "rosterHistory": 1092267,
+        "periodResults": 2,
+        "timeline": 10236
+      },
+      "after": {
+        "autosave": 653717,
+        "library1": 597738,
+        "library3": 1793214,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 30
+      }
+    },
+    {
+      "name": "maximum",
+      "years": 33,
+      "before": {
+        "state": 2378270,
+        "autosave": 2755245,
+        "library1": 2378355,
+        "library3": 7134922,
+        "records": 1200658,
+        "dailyRoster": 1152896,
+        "rosterHistory": 1152896,
+        "periodResults": 2,
+        "timeline": 17244
+      },
+      "after": {
+        "autosave": 681819,
+        "library1": 619703,
+        "library3": 1859109,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 33
+      }
+    }
+  ],
+  "sourceSha256Lf": {
+    "DIAMOND-LIFE.html": "37d194d66f63908edcd12767c70eec220c901cff977b6186968443c1d2e2099d",
+    "build-single-file.mjs": "1ab897df0a198190d2ba4edb7dcfe0dd44a45615e1235dd99b0451c2ebfcd8bc",
+    "package.json": "92340088cc8b9f8d9a96bb41e733eabe6f35c48ba3b13b4d3892c947eff547e4",
+    "package-lock.json": "d301174e2ec22f1ce18dd5f5d33367bbe1c3692a01453eca31fb01f72741cfb7",
+    "dist/src/ads.js": "d9e49dfc9d91752f3323d24143ad1026b82e065be57d0c8fb602707021d1891d",
+    "dist/src/afterlife.js": "21ccf0a8178132b74304256055df8c771a82bcd067207fee18de04af72b931ec",
+    "dist/src/archetypes.js": "f377528479e4b49aa33a5fc604d074859c9fd4fc5781059cdc691ee9facdefef",
+    "dist/src/archive.js": "dc729363139e8dae743b35cbd87903e1732ce75749d754007eecb8ffabfce8f7",
+    "dist/src/autosave.js": "3be6c249ae27d9260ec7717c6d24638468be10bad61874d0e67f91b48fd47cea",
+    "dist/src/awards.js": "c31defcabd2f26f55bf4875a61ac472f2aa18fe3a6a3da02a0cb3e578891b03a",
+    "dist/src/balance.js": "b17f8367faf561294ecbb8e1c856e15f799f5ed410ce5150f885a75102eeccf3",
+    "dist/src/career-library.js": "227ec554d66719e6b75d0d6aabb0bf23029f72b9132069da7c2fa59c69e85ae0",
+    "dist/src/career-rules.js": "9dd8ba613c77d61b20be0c910d9acd8c05f13552b388c18df569bb4e48db1f70",
+    "dist/src/career-types.js": "f5975c3f86eb47f34d5549200b8c05a2ecee06cfabd65a44c1323f31fb875e08",
+    "dist/src/championship.js": "9309d36fd54062446d26709fce7ae2a00be65a0c9c3af942581b1f8aa6c56939",
+    "dist/src/contract-history.js": "7717658a9c372e825918607eba36c20ae2e2d1dc84b292c343babdf2e363e5f9",
+    "dist/src/contracts.js": "ba644ffde965ddbe701c0f314777341d030d990b50d4b85b3f952889f1d02dbd",
+    "dist/src/data.js": "66ebd177f5078d83122f8946c598f2648ceac8a335f8370e85fa91cdff509730",
+    "dist/src/dev-tools.js": "60e1b90d971fa4af1f0cd79c501b5b6fb2676fcedef013bb2f9a90e3ec64df68",
+    "dist/src/development.js": "61a9fe36f11bb8a6f58ac96f6c9540dbecf8c0649fec02127be590288d5d2b09",
+    "dist/src/draft.js": "0b63e0bf45260a51ba542992871adace3c7b6df6df272f3823cc56d726923314",
+    "dist/src/engine.js": "aea570081e2b02e627edefa1e5c260b43a697e031502814cde2fce8e0b186453",
+    "dist/src/events.js": "68286899645229663fd9f0ee536dae2dabb759dc283c4d560f7cb50dd2c0ec5a",
+    "dist/src/fielding.js": "8961733465826a8c2a7ebcc3c3d265dc6643103461cce005bfe59ee1f83f4370",
+    "dist/src/finance.js": "8f082959222784ff3f46308b24c180d517068995c1a9aab5b1b17af44923ac15",
+    "dist/src/format.js": "40334361c5ceec9d850cdf56643ec328265fbe5d78c7391a0258ba4f93057dfd",
+    "dist/src/free-agency.js": "2c7637ec0dac881c69c53ddbe5bd7528672dcaaeee23408c19b7ec7237b37abe",
+    "dist/src/growth.js": "740bc5b51dd2d9b1c457f763561833421b74666644171b1fcfb44ad62bc2bd04",
+    "dist/src/health.js": "f297ee0416bf0d3b95a2b23f30768b6bc8a7adcab9c2d65a1164828e63146e7c",
+    "dist/src/identity.js": "47b45f25c4a631aedf39b2bebbe3b5764591aad7c66445a151b712c3d79db061",
+    "dist/src/levels.js": "1944d3444d6a111f6889a0278acaadc4ead4a9a17b8ab740a27e24680e5b054d",
+    "dist/src/lifecycle.js": "3ff64d0fc9880d25a70cdf1cb51aed125c3b37379c355671c5140683a067dfd6",
+    "dist/src/market.js": "70b7268fc7fb0624788aff6008f34d612a4c113ebf4a0b32ae66fa9117348b90",
+    "dist/src/mlb-contracts.js": "9d1616ed1ae490d5d80befab4b5daea6c3f0d1d9023385310f5921e8a3d8bae0",
+    "dist/src/national.js": "84f5a80169336ee273941e26a985e5d4fd451fc772825887b4e5e5e3468dd571",
+    "dist/src/npb-return.js": "ae09720c8f0b24b389855b46d88abf6dabcbf7e3896828c44c7f728bf0be9bd9",
+    "dist/src/personality.js": "1858d4fc3572f34de63c274a0d02156db59e636e2b6ade66001360da5f0c6f44",
+    "dist/src/profile.js": "7bad2c7ba0a63bea3d105f00c693297c6852ad4df2bef1ce722deed200766534",
+    "dist/src/public-config.js": "682d313cfbe09133c74705a4474dfc16b7ed539a3c9eec944dcdd7291fdfe830",
+    "dist/src/random.js": "289a77d506078bb23b2c783ed7cf2658c1863b0b170044a88151e8dee7580281",
+    "dist/src/records.js": "55ff44b0274dbd270d6288be11e13323c2d033af7cbb131c5f620a41a84a5d5f",
+    "dist/src/roster.js": "9aa811aa79447f8cb4ed26cb6ca3045b2cd104a19fc50af361b8c7debf22e6d8",
+    "dist/src/scouting.js": "ad81e87dd7f26a1bdd5ccf1aac80d5e9aed81a4546e74d74d78a6fd64ecdc519",
+    "dist/src/share.js": "f7397ec585da25454e9e327106ff08953da2880e4273f19d5fffeef307dbd5e0",
+    "dist/src/stats.js": "d1cd2915200c9e48d13031bf582ffebb65dec80257d14cdb1de25d9ab089f81d",
+    "dist/src/storage.js": "6ba5df63728296839c3b5d406469b25e1d01e9bb0dfd6e7708a6782cf2929a2b",
+    "dist/src/ui.js": "403259c74e5f3e01a7fdbfe04562a65b3d81814a5e8f122eb10c2c7e6d571cfe",
+    "dist/src/youth.js": "b887bf9056be87d6080f45fee8465f31739006924910be1b944a56ce1b4ca71e",
+    "tests/ads.test.js": "1f1b9483f3baa7afaef1327812a7b228f375bb65b885d15b6d1137621c260385",
+    "tests/allstar.test.js": "240d5b0a36f152a92759e381e8e6b3701e9077f166e9bfd15a2e1ebecc033099",
+    "tests/audit-scenarios.mjs": "7ad2138d354a7d14f0f7ad9024ee01c389fa398ed4467ee3473aee6e50cee1df",
+    "tests/autosave.test.js": "59258b3f6f81b60b425a371c0b404c6c6f3ad151298b1e3547198aa6e9153e7c",
+    "tests/balance-report.mjs": "5b834fda52f8f52c6b547eafdff67324609ad60f0e180e82565294a9eba19476",
+    "tests/balance-tuning.test.js": "75e6bd7381275742b5c8c4eb946ed0ef015cef3dead8bc8698b6494a8932fb3b",
+    "tests/bundle.test.js": "b18847e5c0e425df6e05fe8afbbaf810776efad3c837259ed1e5eefc829c1929",
+    "tests/career-library.test.js": "9eb67b61330bc636bcd03f3ed46132c004f04abfce9073bacf6f296b515ea651",
+    "tests/championship.test.js": "881b42e3dc0fab33cb797e0a9073f6eef5b9071975cc94c59538dd973104edd1",
+    "tests/contract-scope.test.js": "0a03adbd7f86fc72d4e5a1d5268ceb9509f6bb82f59f63788d6649f1da319bb4",
+    "tests/contracts-browser-check.mjs": "590216a536e4ea74cee52c271f9cc9598d61972be72194fc0b9866d24d56237c",
+    "tests/contracts-completion.test.js": "4963103a49dfd5ba63582c94e96579a6effd660557f2cfead48afdc1964edeb2",
+    "tests/contracts-study.mjs": "d4315819f8192ffd981d4dd7261c1d1cd5ba9a36d346745c1ab817b3715dd65a",
+    "tests/contracts.test.js": "2753a2190dc1b7fa662fb9cbd0260e213deb4c99a80a8e1266072057b100e062",
+    "tests/daily-roster.test.js": "82dc8159a7087bc606aa71a20d2bd46ad02e3126f4ce92913aa987c63cb0e4cf",
+    "tests/development-diversity.test.js": "31bff9ee9cd67abf0497e21fd6e50ba37f8a77921b76f70862f7f93dc687b441",
+    "tests/development-report.mjs": "15480ca08c03d9446c7dc084efcb173fc52c5a7edb22bba0580cdf472f061185",
+    "tests/development-study.mjs": "c4f3c1952b2b47614173c77bd66399f723e3fedb3feb21e59ceebfdd656d5106",
+    "tests/expansion.test.js": "c0789be21a5b1063b38e2571855925a602aae14038f84c35dc4eb06024b9377d",
+    "tests/fielding.test.js": "54a462a1e4fcc75c7411b5f8614246a3a368c039094aa75112bb3278e5cbfb25",
+    "tests/first-team-pay.test.js": "431b060b223ac7a5bfdb53072c5aa2188a75fbc96d4084834e772d9f9b4fb888",
+    "tests/foundation-audit.test.js": "b94b8dd54f99343bad7738031f733dee2ff95a46462af82d1bfcb5f4ada5d734",
+    "tests/free-agency.test.js": "cf4ad90c1e703d4bfdc9100be2c5d3b10ffe5ae30a7b6eb9e7677e212898b9b0",
+    "tests/historical-hash.mjs": "bfc2a9c4fbc3e312e344260fe14a8bfb08d3528e83fa25705a6bda0509a5b5c2",
+    "tests/levels-youth.test.js": "00288bb2a82826f5ea0894a58d721862ab2bd95cd267362a7c37133cd137da01",
+    "tests/library-helpers.mjs": "0ddbabe5354aba3b883a5e0a217c1dd6bf4a8dbff9459ff1b71709dd1c4c0ff2",
+    "tests/mobile-playtest-browser.mjs": "3a9970300c1d4538465cdc94c23e186633fb13eb883992ffd70927e5d67bff0c",
+    "tests/mobile-playtest-study.mjs": "f8a6797c4b07d22b85f0025731d8438e14cd4895de662e0194113bb87029629b",
+    "tests/mobile-playtest.test.js": "e7c8ba0800d0b86dff52fd6764807ed577a7f6a7626a85088008e8707b021fca",
+    "tests/money-invariants.mjs": "1fc1da1de9cef259ed94cf46ca30e6b38ea2267b0cf506794fe6ec2053598329",
+    "tests/new-career-ads.test.js": "d18c89025d9c38d196563ece46f926b40e204958410bd97daec481b548363f55",
+    "tests/ops.test.js": "34f4dd183c27da5d4f4fce19f743f06c5ac2367660b1d267489366fc47ecf85a",
+    "tests/overseas-rookie-contract.test.js": "30f4b90d79b0ddca5aa577838bd737499f11248847c020c082e0c5cc387273af",
+    "tests/playtest-fixtures.mjs": "4c1d2247378db36aec8038247968e1ab423879577023a5d26a5ae1bb34995f05",
+    "tests/posting.test.js": "d36452d999981686751249301e69b007e08d5533c9fa6f3795db8a82a030e0db",
+    "tests/profile.test.js": "24b4737bef784633ee027b8dfc8cd96373ba0a56423b512816caf4a370d0c233",
+    "tests/progression-ui.test.js": "20b2a77a47968897013f82a89da49ca542d93c56726e001170d1fb0e522aea9d",
+    "tests/public-pages.test.js": "25e3e196149bd683a19668d3ce13860c8cacd4360f08ee77176327ecbb5748ee",
+    "tests/record-ui.test.js": "277b3088adb994bfe34968eb165328f94b9790c6fc5b63c2185f6c339276d4a3",
+    "tests/records-pinch.test.js": "f52167c3f90df36c2c638e1512c121500a59169306e4668c7b8e308d222a4458",
+    "tests/release-browser.mjs": "71311e728c4c9be1ebfcd43acaf35d3f104d9b525c5fdf13c5d51cb7672fd5b1",
+    "tests/release-economy.test.js": "5bdf4a18e22e4cb0737caa21b38f32362b4faa99430232092e7b7b0e5d0ce424",
+    "tests/release-fixtures.mjs": "5e7a843beae55ba14337859acd28f7ddbb34554a519ab1c61d973dcddc355a0b",
+    "tests/release-runner.mjs": "35c8db858946284cdd2412fc38cac18787cff6a3deddc265df95f2754846404d",
+    "tests/release-simulation.mjs": "7486f63a49f8006236c153eb04b18af3b95afcd6e1db41f2fcd7defff2a57b1a",
+    "tests/release-storage-measure.mjs": "5fac551b780bd905ad38d3ccbe02d064163909a540dde3f2a4ba20e83dbcbe26",
+    "tests/release-storage.test.js": "a9b12c9409752ff5b147eacf6173a9da955d9086ccf6fcd19c300525534d3c0f",
+    "tests/retention.test.js": "6bae717858f2ffc90ddac4585821cdced555ff2e48b2dcd81d74140d054adabe",
+    "tests/retired-number-study.mjs": "bb1062d96911de2be6a3c4fdaaff0bc3f1058cdb9d43f6645c77d0b489e6c47e",
+    "tests/retired-number.test.js": "f8f91f5a582263a260f06a56a29216069fb864f557a473370ea0b87a50df912d",
+    "tests/retirement-employment.test.js": "8c0ff43825558af07c97d8c48aff6dd66f5a750dd1aff3981481e470353d8c3c",
+    "tests/share.test.js": "1209133cbe5987eba996291900236fec0d37f6436108be601f2c4ca7ac6fd01d",
+    "tests/simulation.test.js": "69e70cb4beba0a097c215f828c8d913ea7e3b2571ce6c582775a5e8fffb4a867",
+    "tests/site-browser-check.mjs": "4a745c1e8d72a7d79d4dd31e3c890b5d2123e2b9182134718af89d348bf56113",
+    "tests/site-scope.test.js": "2cbf1dd20cd3b9d5722f5dfa7b43f08166f52b10f8dd1d80327010fdbcffa22b",
+    "tests/specialist.test.js": "a7deabaedda3165de4a8f1b65ccf13afcce78585529a57564500b4559183712b",
+    "tests/stat-distribution.test.js": "bee3ed2c0f117bf8677bf8b98133609f9ef5f7a875f60538693274465bacb270",
+    "tests/stat-tail-study.mjs": "a957c569fe37479823fdc5196b07837e8daecd13a0b86590fadd3b20bea91ed8",
+    "tests/stats-distribution.mjs": "9568abc6bec8032e569469ad3fb45ff279b280a7a246204b41d45f3403670cb0",
+    "tests/support.js": "c5fd096a04f4365bc218173960fc9acb20dec5f2447af7b566050c8bd3c2c2c9",
+    "tests/team-names.test.js": "b9e4d9a02f77090009b766d9807342c1f0b7a153c9349559da9d34d129efc71b",
+    "tests/throwing.test.js": "2e8738f439a78025956fe3779cc8f726cd8d308b44b3593ce65dfc48daf8c988",
+    "tests/university-growth.test.js": "13c1ef9c57bf04e113f51b71b8b4df51368a8e758bb8a7d74923735fcdb3e95f",
+    "tests/v15.test.js": "1ab73c8eedecc9b9b28e09f04c68a880fa44e164f995f0f2396f5c657e094e9d",
+    "tests/v17.test.js": "d3b28c6bb1e8b769d6acd482eefb131e8babef0e564577d5c452fef59f6157e0",
+    "tests/v18.test.js": "f669a80798b5f65106909a566a23e2dffc3c62e2eb735360b3d9ca66b024199c",
+    "tests/world-series.test.js": "ce723fe086a60846390465e9cf238da95b4d7edd86ddd9847b718e922b94aec2",
+    "tests/audit-baseline.json": "494e8d8c062e56f245d1a44be86dda66f66ac8ca9ebca9deec0316c8bd9f426f"
+  },
+  "protectedBackupSha256": "775C52C286FF34BC80FD214B574A73ADE53FE0DAEC6ACB4106553402408B152A"
+}

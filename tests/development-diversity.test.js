@@ -1,3 +1,4 @@
+import {IDBFactory} from 'fake-indexeddb';
 import {matchesHistoricalHash} from './historical-hash.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -17,7 +18,7 @@ import {validate} from '../dist/src/storage.js';
 import {auditCareer,auditProjection} from './audit-scenarios.mjs';
 import {studyRetirement,studyRow} from './development-study.mjs';
 import {reviewEmployment} from '../dist/src/lifecycle.js';
-const memory=()=>{const map=new Map();return {getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v)};};
+const memory=()=>{const map=new Map();return {getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k)};};
 function adult(seed=42,stage='overseas'){
  const s=createPlayer('試験 選手','batter',seed);s.stage=stage;s.age=21;s.year=2029;s.grade=1;
  s.team=stage;s.player.arc='ordinary';delete s.player.recordTalent;s.player.arcEvent=true;s.player.growthPhase='normal';s.player.peakAge=31;
@@ -73,19 +74,19 @@ test('同Seedのtrait・peakAgeが一致し、天才抽選・既存talent/potent
   for(const key of ['innateTalent','growthPotential','developmentTiming','peakAge','clutch'])assert.equal(a.player.developmentTraits[key],undefined);
  }
 });
-test('旧保存のtrait補完は決定的で、一度保存されID・能力・乱数・過去履歴を維持',()=>{
- const s=adult(),store=memory();delete s.developmentState;s.player.developmentTraits={injuryResistance:null};
+test('旧保存のtrait補完は決定的で、一度保存されID・能力・乱数・過去履歴を維持',async()=>{
+ const s=adult(),store=memory(),db={storage:store,indexedDB:new IDBFactory()};delete s.developmentState;s.player.developmentTraits={injuryResistance:null};
  const seed=s.seed,peak=s.player.peakAge,abilities=structuredClone(s.player.abilities),history=structuredClone(s.developmentHistory),id=s.careerId;
  const copy=structuredClone(s);ensureDevelopmentState(copy);
  writeAutosave(s,store);const a=readAutosave(store).state,b=readAutosave(store).state;
  assert.deepEqual(a.player.developmentTraits,b.player.developmentTraits);assert.deepEqual(a.player.developmentTraits,copy.player.developmentTraits);
  assert.equal(a.seed,seed);assert.equal(a.careerId,id);assert.equal(a.player.peakAge,peak);assert.deepEqual(a.player.abilities,abilities);assert.deepEqual(a.developmentHistory,history);
- retire(a);assert.ok(saveRetiredCareer(a,{storage:store}).ok);
- const envelope=JSON.parse(store.getItem(CAREER_LIBRARY_KEY));delete envelope.careers[0].state.developmentState;delete envelope.careers[0].state.player.developmentTraits;
+ retire(a);assert.ok((await saveRetiredCareer(a,db)).ok);
+ const envelope={version:1,careers:[{careerId:a.careerId,state:structuredClone(a)}]};db.indexedDB=new IDBFactory();delete envelope.careers[0].state.developmentState;delete envelope.careers[0].state.player.developmentTraits;
  store.setItem(CAREER_LIBRARY_KEY,JSON.stringify(envelope));const old=store.getItem(CAREER_LIBRARY_KEY);
- const saved=readCareerLibrary(store).careers[0].state;
+ const saved=(await readCareerLibrary(db)).careers[0].state;
  assert.equal(saved.careerId,id);assert.notEqual(store.getItem(CAREER_LIBRARY_KEY),old);
- assert.deepEqual(readCareerLibrary(store).careers[0].state.player.developmentTraits,saved.player.developmentTraits);
+ assert.deepEqual((await readCareerLibrary(db)).careers[0].state.player.developmentTraits,saved.player.developmentTraits);
 });
 test('peakAgeの前後は連続し、同能力でも個人の時間軸・能力別衰えが異なる',()=>{
  const s=adult();

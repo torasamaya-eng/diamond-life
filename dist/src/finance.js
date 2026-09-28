@@ -5,7 +5,7 @@ export function careerIncome(s){return (s.totalSalary||0)+(s.totalIncentives||0)
 export function settleSigningPayment(s,offer){
  if(!['pro','mlb'].includes(s.stage))return;s.signingPayments??=[];
  const key=s.year+':'+s.team;if(s.signingPayments.some(p=>p.key===key))return;
- const development=offer.type==='育成',amount=Math.max(0,offer.bonus||0),kind=development?'setupAllowance':'signingBonus';
+ const development=offer.type==='育成',amount=Math.max(0,development?(offer.setupAllowance??offer.bonus??0):(offer.bonus||0)),kind=development?'setupAllowance':'signingBonus';
  s.signingPayments.push({key,year:s.year,team:s.team,kind,amount});
  const row=incomeEntry(s,s.year,s.team);row[kind]=amount;
  if(development)s.totalSetupAllowance=(s.totalSetupAllowance||0)+amount;else s.totalSigningBonus=(s.totalSigningBonus||0)+amount;
@@ -30,18 +30,21 @@ export function firstTeamAllowance(annual,days,stage='pro',status='registered'){
 }
 export function settleSalary(s,r){
  if(r.salarySettled)return;
+ r.annualSalary??=r.salary;
  const scale=s.activeContract?.payScale;
  if(r.stage==='mlb'&&scale){
   const roster=r.dailyRoster,days=roster?.days||[],den=days.length||187;
   const majorDays=days.length?days.filter(d=>d.onActive||d.status?.startsWith('il')).length:Math.min(den,(roster?.counts.active||0)+(roster?.counts.il||0));
-  const minorDays=den-majorDays,majorPay=scale.majorAnnual*majorDays/den,minorPay=scale.minorAnnual*minorDays/den;
+  const minorDays=den-majorDays,majorPay=scale.majorAnnual*majorDays/den;
+  const minorPay=days.length?days.filter(d=>!d.onActive&&!d.status?.startsWith('il')).reduce((n,d)=>n+(d.minorAnnual??scale.minorAnnual)/den,0):scale.minorAnnual*minorDays/den;
   r.overseasPay={majorDays,minorDays,majorAnnual:scale.majorAnnual,minorAnnual:scale.minorAnnual,majorPay,minorPay};
-  r.salary=Math.round((majorPay+minorPay)*10000)/10000;
+  r.basePaidSalary=Math.round((majorPay+minorPay)*10000)/10000;
  }
+ r.basePaidSalary??=r.salary;
  const days=r.dailyRoster?.counts.active??r.firstTeamDays??0;
  r.salaryRegistrationDays=days;
  r.firstTeamAllowance=firstTeamAllowance(r.salary,days,r.stage,r.contractStatus);
- r.paidSalary=Math.round((r.salary+r.firstTeamAllowance)*10000)/10000;
+ r.paidSalary=Math.round(((r.basePaidSalary??r.salary)+r.firstTeamAllowance)*10000)/10000;
  r.salarySettled=true;
  s.totalSalary=Math.round((s.totalSalary+r.paidSalary)*10000)/10000;
  s.totalFirstTeamAllowance=Math.round(((s.totalFirstTeamAllowance||0)+r.firstTeamAllowance)*10000)/10000;
