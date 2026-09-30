@@ -7,10 +7,12 @@ import {writeAutosave,readAutosave} from '../dist/src/autosave.js';
 import {createCareerArchiveSnapshot,expandCareerState} from '../dist/src/archive.js';
 import {validate} from '../dist/src/storage.js';
 import {mlbPayStage} from '../dist/src/mlb-contracts.js';
+import {classifyCareerNarrative,renderCareerNarrative} from '../dist/src/career-narrative.js';
 const count=Number(process.env.RELEASE_CAREERS||1000);if(count<1000)throw Error('Release requires at least 1000 careers');
 let maxAutoBytes=0,maxArchiveBytes=0;
 const routes=['pro','university','overseas','corporate','independent'],rows=[],issues=[],salaries={pro:[],mlb:[],independent:[]},stages={},transitions={},returns={independent:0,corporate:0,mlb:0};
 const invariants=Object.fromEntries(['signingDuplicate','setupDuplicate','postingPlayerIncome','NaN','Infinity','negativeMoney','contractTotalMismatch','paidSalaryMismatch','formerNpbRedraft'].map(k=>[k,0]));
+const narrativeInvariants={empty:0,exception:0,invalidText:0,contradictoryTags:0,mutation:0},narrativeTypes={};
 for(let i=0;i<count;i++){
  const seed=Math.imul(i+1,2654435761)>>>0,route=routes[i%5],role=i%2?'pitcher':'batter';let npbEntry=false,everLeft=false,lastContract='',seen=new Set(),lastTeam='',contractCount=0;
  const s=auditCareer(seed,role,route,state=>{
@@ -22,6 +24,20 @@ for(let i=0;i<count;i++){
   for(const issue of moneyIssues(state)){const key=JSON.stringify(issue);if(!seen.has(key)){seen.add(key);invariants[issue.type]=(invariants[issue.type]||0)+1;issues.push({seed,...issue});}}
  },{snapshot:false,shouldRetire:studyRetirement});
  const integrity=inspectDevelopmentState(s);if(integrity.length)issues.push({seed,integrity});
+ try{
+  const before=JSON.stringify(s),n=classifyCareerNarrative(s),text=renderCareerNarrative(s),e=n.evidence;
+  narrativeTypes[n.primary]=(narrativeTypes[n.primary]||0)+1;
+  if(!text)narrativeInvariants.empty++;
+  if(/undefined|NaN|Infinity/.test(text))narrativeInvariants.invalidText++;
+  if(JSON.stringify(s)!==before)narrativeInvariants.mutation++;
+  const tags=[n.primary,n.secondary];
+  if(tags.some(t=>['legend','generationalStar','domesticFace','twoLeagueStar','steadyStar','lateStar'].includes(t))&&e.starYears===0||
+   tags.includes('independentClimber')&&!e.routes.includes('independent')||
+   tags.includes('developmentClimber')&&!s.drafts.some(d=>d.type==='育成')||
+   tags.includes('injuryComeback')&&!e.injuryComeback||
+   tags.includes('overseasComeback')&&e.npbReturnYears<2||
+   tags.some(t=>['mlbSuccess','mlbFootprint','twoLeagueStar'].includes(t))&&e.mlbGames===0)narrativeInvariants.contradictoryTags++;
+ }catch(error){narrativeInvariants.exception++;issues.push({seed,narrative:error.message});}
  const memory=new Map();writeAutosave(s,{setItem:(k,v)=>memory.set(k,v)});maxAutoBytes=Math.max(maxAutoBytes,Buffer.byteLength([...memory.values()][0]));const loaded=readAutosave({getItem:k=>memory.get(k)??null});assert.equal(loaded.error,'',String(seed));assert.equal(loaded.state.seed,s.seed);assert.equal(loaded.state.careerId,s.careerId);
  assert.deepEqual(loaded.state.records,s.records);const archiveJson=JSON.stringify(createCareerArchiveSnapshot(s));maxArchiveBytes=Math.max(maxArchiveBytes,Buffer.byteLength(archiveJson));const archive=expandCareerState(JSON.parse(archiveJson));validate(archive);assert.deepEqual(archive.records,s.records);assert.deepEqual(archive.afterlife,s.afterlife);
  for(let j=1;j<s.teams.length;j++){const t=s.teams[j],prior=s.teams[j-1];if(t.stage==='pro'&&prior.stage!=='pro'&&s.teams.slice(0,j).some(x=>x.stage==='pro')&&prior.stage in returns)returns[prior.stage]++;}
@@ -30,5 +46,5 @@ for(let i=0;i<count;i++){
  if((i+1)%100===0)console.log((i+1)+'/'+count+' careers; invariant failures '+issues.length);
 }
 const dist=values=>{const a=values.sort((a,b)=>a-b);return {n:a.length,mean:a.reduce((n,v)=>n+v,0)/(a.length||1),median:a[Math.floor(a.length*.5)]||0,p95:a[Math.floor(a.length*.95)]||0,max:a.at(-1)||0};};
-const report={count,maxAutoBytes,maxArchiveBytes,policy:'existing studyRetirement, seed multiplicative 2654435761',retiredNumber:rows.filter(r=>r.retiredNumber).length,legacy:rows.filter(r=>r.legacy).length,pro:rows.filter(r=>r.pro).length,major:rows.filter(r=>r.major).length,age40:rows.filter(r=>r.age40).length,genius:rows.filter(r=>r.genius).length,meanRetirement:rows.reduce((n,r)=>n+r.retirementAge,0)/count,invariants,issues,transitions,returns,contractStages:stages,salaries:Object.fromEntries(Object.entries(salaries).map(([k,v])=>[k,dist(v)])),rows};
-fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/release-simulation.json',JSON.stringify(report,null,2));assert.equal(issues.length,0,JSON.stringify(issues.slice(0,12)));console.log(JSON.stringify({...report,rows:undefined},null,2));
+const report={count,narrativeInvariants,narrativeTypes,maxAutoBytes,maxArchiveBytes,policy:'existing studyRetirement, seed multiplicative 2654435761',retiredNumber:rows.filter(r=>r.retiredNumber).length,legacy:rows.filter(r=>r.legacy).length,pro:rows.filter(r=>r.pro).length,major:rows.filter(r=>r.major).length,age40:rows.filter(r=>r.age40).length,genius:rows.filter(r=>r.genius).length,meanRetirement:rows.reduce((n,r)=>n+r.retirementAge,0)/count,invariants,issues,transitions,returns,contractStages:stages,salaries:Object.fromEntries(Object.entries(salaries).map(([k,v])=>[k,dist(v)])),rows};
+fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/release-simulation.json',JSON.stringify(report,null,2));assert.equal(issues.length,0,JSON.stringify(issues.slice(0,12)));assert.ok(Object.values(narrativeInvariants).every(v=>v===0),JSON.stringify(narrativeInvariants));console.log(JSON.stringify({...report,rows:undefined},null,2));

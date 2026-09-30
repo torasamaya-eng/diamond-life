@@ -1,0 +1,2290 @@
+{
+  "verifiedAt": "2026-09-30T09:30:57.230Z",
+  "startingCommit": "cd8bbdae85382167441a9a458bae65bdeb0c2657",
+  "resumeStatus": "6 modified tracked files, 2 new implementation files; protected backup untracked; inherited polish edits retained",
+  "baselineTests": {
+    "total": 318,
+    "passed": 318,
+    "failed": 0
+  },
+  "tests": {
+    "total": 382,
+    "passed": 382,
+    "failed": 0
+  },
+  "review": {
+    "representativeTypes": 36,
+    "contradictionCases": 10,
+    "examples": [
+      {
+        "type": "twoLeagueStar",
+        "text": "国内で培った力をメジャーでも示し、両方の舞台でスターとして活躍した。高い水準の活躍を続けた安定感も持ち味だった。"
+      },
+      {
+        "type": "lateStar",
+        "text": "若い頃は主役ではなかったが、遅れて訪れた全盛期にスターの座をつかんだ。"
+      },
+      {
+        "type": "independentClimber",
+        "text": "独立リーグを経て国内一軍の主力へはい上がり、遠回りを実績に変えた。"
+      },
+      {
+        "type": "injuryComeback",
+        "text": "長期離脱を伴う大けがを乗り越え、再び一軍の主力として居場所をつかんだ。"
+      },
+      {
+        "type": "geniusDisappointment",
+        "text": "高い素質を持ちながら、長く主役を張るまでには伸び切らなかった。"
+      }
+    ],
+    "deterministic": true,
+    "readOnly": true,
+    "hiddenInformation": "genius/potential/lostStar only support expectation or adaptation labels; actual upper-level records and career events take precedence"
+  },
+  "dfa": {
+    "sources": [
+      "https://www.mlb.com/glossary/transactions/outright-waivers",
+      "https://www.mlb.com/glossary/transactions/minor-league-options",
+      "https://www.mlbplayers.com/_files/ugd/4d23dc_d6dfc2344d2042de973e37de62484da5.pdf"
+    ],
+    "cbaArticles": [
+      "XIX(A)(2)",
+      "XX(D)(1)-(4)"
+    ],
+    "threeYearBoundaryUnchanged": true,
+    "fiveYearBoundaryUnchanged": true,
+    "priorOutrightUnchanged": true,
+    "priorSuperTwoAdded": true,
+    "superTwoCutoff": "existing fixed 2y134d with previous season >=86d; league-wide top-22% rank remains the existing approximation",
+    "claimRngUnchanged": true
+  },
+  "salary": {
+    "examples": [
+      {
+        "internalMan": 7842.3417,
+        "before": "7,842万3,417円",
+        "after": "約7,842万円"
+      },
+      {
+        "internalMan": 1906.5,
+        "before": "1,906万5,000円",
+        "after": "約1,907万円"
+      },
+      {
+        "internalMan": 15000.0123,
+        "before": "1億5,000万123円",
+        "after": "約1億5,000万円"
+      }
+    ],
+    "internalPrecisionUnchanged": true,
+    "persistedPrecisionUnchanged": true,
+    "domesticExactExample": "6万6,667円",
+    "usdExample": 127100
+  },
+  "releaseRunner": [
+    {
+      "name": "build",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-ads.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-afterlife.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-archetypes.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-archive.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-autosave.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-awards.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-balance.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-career-library.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-career-narrative.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-career-rules.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-career-types.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-championship.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-contract-history.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-contracts.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-data.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-dev-tools.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-development.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-draft.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-engine.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-events.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-fielding.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-finance.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-format.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-free-agency.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-growth.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-health.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-identity.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-levels.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-lifecycle.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-market.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-mlb-contracts.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-national.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-npb-return.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-personality.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-profile.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-public-config.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-random.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-records.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-roster-presentation.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-roster.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-scouting.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-share.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-stats.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-storage.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-ui.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "syntax-youth.js",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "unit",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "storage",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "contracts-browser",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "browser",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "site-browser",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "polish-browser",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "simulation",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "name": "diff-check",
+      "passed": true,
+      "exit": 0
+    }
+  ],
+  "browser": {
+    "polish": [
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "young-clear",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "young-claim",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "three-years",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "prior-outright",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "five-option",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "five-waiver",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "split-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "guaranteed-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "market-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "market-abroad",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "returned-salary",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "domestic-exact",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "retired-review",
+        "passed": true,
+        "pageErrors": 0
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "kind": "saved-review",
+        "passed": true,
+        "pageErrors": 0
+      }
+    ],
+    "regression": [
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 320,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 375,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 390,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 430,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 768,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 768,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "width": 1280,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "storageQuota": "QuotaExceededError",
+        "migration": true,
+        "saved": 3,
+        "roundTrip": true,
+        "passed": true
+      },
+      {
+        "browser": "Chromium",
+        "standalone": true,
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 320,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 375,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 390,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 430,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 768,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 768,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "stage": "elementary",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "width": 1280,
+        "stage": "pro",
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "storageQuota": "QuotaExceededError",
+        "migration": true,
+        "saved": 3,
+        "roundTrip": true,
+        "passed": true
+      },
+      {
+        "browser": "WebKit",
+        "standalone": true,
+        "passed": true
+      }
+    ],
+    "contracts": [
+      {
+        "browser": "chromium",
+        "width": 375,
+        "kind": "single",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 375,
+        "kind": "multi",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 375,
+        "kind": "development",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 375,
+        "kind": "rehab",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 375,
+        "kind": "fa",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 375,
+        "kind": "overseas",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 375,
+        "kind": "guaranteed",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 1280,
+        "kind": "single",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 1280,
+        "kind": "multi",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 1280,
+        "kind": "development",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 1280,
+        "kind": "rehab",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 1280,
+        "kind": "fa",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 1280,
+        "kind": "overseas",
+        "passed": true
+      },
+      {
+        "browser": "chromium",
+        "width": 1280,
+        "kind": "guaranteed",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 375,
+        "kind": "single",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 375,
+        "kind": "multi",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 375,
+        "kind": "development",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 375,
+        "kind": "rehab",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 375,
+        "kind": "fa",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 375,
+        "kind": "overseas",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 375,
+        "kind": "guaranteed",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 1280,
+        "kind": "single",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 1280,
+        "kind": "multi",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 1280,
+        "kind": "development",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 1280,
+        "kind": "rehab",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 1280,
+        "kind": "fa",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 1280,
+        "kind": "overseas",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "width": 1280,
+        "kind": "guaranteed",
+        "passed": true
+      }
+    ],
+    "site": {
+      "report": [
+        {
+          "width": 1280,
+          "name": "top",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "empty",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "creation",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "privacy",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "terms",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "contact",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "library",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "detail",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "records",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "all-details",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "reload",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "pitcher",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 1280,
+          "name": "game",
+          "overflow": {
+            "scroll": 1280,
+            "width": 1280
+          }
+        },
+        {
+          "width": 390,
+          "name": "top",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "empty",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "creation",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "privacy",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "terms",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "contact",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "library",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "detail",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "records",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "all-details",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "reload",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "pitcher",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 390,
+          "name": "game",
+          "overflow": {
+            "scroll": 390,
+            "width": 390
+          }
+        },
+        {
+          "width": 320,
+          "name": "top",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "empty",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "creation",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "privacy",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "terms",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "contact",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "library",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "detail",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "records",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "all-details",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "reload",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "pitcher",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        },
+        {
+          "width": 320,
+          "name": "game",
+          "overflow": {
+            "scroll": 320,
+            "width": 320
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  "simulation": {
+    "count": 5000,
+    "narrativeInvariants": {
+      "empty": 0,
+      "exception": 0,
+      "invalidText": 0,
+      "contradictoryTags": 0,
+      "mutation": 0
+    },
+    "narrativeTypes": {
+      "injuryProspect": 111,
+      "developmentClimber": 450,
+      "longVeteran": 27,
+      "amateur": 1097,
+      "closer": 148,
+      "proWall": 1387,
+      "unfulfilledProspect": 435,
+      "generationalStar": 11,
+      "geniusDisappointment": 36,
+      "marginalPro": 264,
+      "independentClimber": 113,
+      "legend": 81,
+      "solidPro": 128,
+      "releasedComeback": 33,
+      "twoLeagueStar": 6,
+      "corporateCraft": 302,
+      "schoolElite": 38,
+      "pinchHitter": 67,
+      "ironMan": 16,
+      "longRegular": 28,
+      "lowerDraft": 114,
+      "injuryComeback": 15,
+      "overseasCollege": 29,
+      "mlbFootprint": 6,
+      "reliefCraft": 12,
+      "briefStar": 3,
+      "mlbSuccess": 13,
+      "domesticFace": 9,
+      "overseasChallenger": 5,
+      "starter": 4,
+      "universityBloom": 2,
+      "defenseCraft": 4,
+      "lateStar": 6
+    },
+    "maxAutoBytes": 853943,
+    "maxArchiveBytes": 680425,
+    "policy": "existing studyRetirement, seed multiplicative 2654435761",
+    "retiredNumber": 71,
+    "legacy": 310,
+    "pro": 3678,
+    "major": 312,
+    "age40": 186,
+    "genius": 168,
+    "meanRetirement": 32.6534,
+    "invariants": {
+      "signingDuplicate": 0,
+      "setupDuplicate": 0,
+      "postingPlayerIncome": 0,
+      "NaN": 0,
+      "Infinity": 0,
+      "negativeMoney": 0,
+      "contractTotalMismatch": 0,
+      "paidSalaryMismatch": 0,
+      "formerNpbRedraft": 0
+    },
+    "issues": [],
+    "transitions": {
+      "elementary→middle": 5000,
+      "middle→high": 5000,
+      "high→corporate": 2560,
+      "corporate→pro": 2635,
+      "pro→independent": 1166,
+      "independent→corporate": 207,
+      "high→university": 1000,
+      "university→pro": 376,
+      "high→overseas": 1000,
+      "overseas→mlb": 172,
+      "mlb→pro": 122,
+      "high→pro": 245,
+      "pro→mlb": 404,
+      "independent→pro": 453,
+      "pro→corporate": 663,
+      "overseas→pro": 273,
+      "university→corporate": 624,
+      "overseas→corporate": 555,
+      "high→independent": 195,
+      "mlb→independent": 86,
+      "mlb→corporate": 48
+    },
+    "returns": {
+      "independent": 265,
+      "corporate": 169,
+      "mlb": 45
+    },
+    "contractStages": {
+      "preArbitration": 2530,
+      "arbitration": 1107,
+      "freeAgent": 1773,
+      "superTwo": 162
+    },
+    "salaries": {
+      "pro": {
+        "n": 31517,
+        "mean": 5007.54624686677,
+        "median": 2780,
+        "p95": 14880,
+        "max": 72120
+      },
+      "mlb": {
+        "n": 4336,
+        "mean": 53698.256828205725,
+        "median": 12694.1424,
+        "p95": 299819,
+        "max": 738323.1806
+      },
+      "independent": {
+        "n": 2062,
+        "mean": 232.51212415130942,
+        "median": 180,
+        "p95": 400,
+        "max": 490
+      }
+    }
+  },
+  "baselineComparisons": {
+    "pro": {
+      "before": 3678,
+      "after": 3678,
+      "unchanged": true
+    },
+    "major": {
+      "before": 312,
+      "after": 312,
+      "unchanged": true
+    },
+    "age40": {
+      "before": 186,
+      "after": 186,
+      "unchanged": true
+    },
+    "retiredNumber": {
+      "before": 71,
+      "after": 71,
+      "unchanged": true
+    },
+    "legacy": {
+      "before": 310,
+      "after": 310,
+      "unchanged": true
+    },
+    "genius": {
+      "before": 168,
+      "after": 168,
+      "unchanged": true
+    },
+    "meanRetirement": {
+      "before": 32.6534,
+      "after": 32.6534,
+      "unchanged": true
+    }
+  },
+  "storage": [
+    {
+      "name": "NPB20",
+      "years": 20,
+      "before": {
+        "state": 1446095,
+        "autosave": 1675134,
+        "library1": 1446180,
+        "library3": 4338397,
+        "records": 728818,
+        "dailyRoster": 699872,
+        "rosterHistory": 699872,
+        "periodResults": 2,
+        "timeline": 11154
+      },
+      "after": {
+        "autosave": 417232,
+        "library1": 379072,
+        "library3": 1137216,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 20
+      }
+    },
+    {
+      "name": "MLB20",
+      "years": 20,
+      "before": {
+        "state": 1556123,
+        "autosave": 1787390,
+        "library1": 1556208,
+        "library3": 4668481,
+        "records": 787380,
+        "dailyRoster": 758076,
+        "rosterHistory": 758076,
+        "periodResults": 2,
+        "timeline": 3587
+      },
+      "after": {
+        "autosave": 460114,
+        "library1": 422843,
+        "library3": 1268529,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 20
+      }
+    },
+    {
+      "name": "mixed30",
+      "years": 30,
+      "before": {
+        "state": 2246681,
+        "autosave": 2591242,
+        "library1": 2246766,
+        "library3": 6740155,
+        "records": 1135957,
+        "dailyRoster": 1092267,
+        "rosterHistory": 1092267,
+        "periodResults": 2,
+        "timeline": 10236
+      },
+      "after": {
+        "autosave": 653717,
+        "library1": 597803,
+        "library3": 1793409,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 30
+      }
+    },
+    {
+      "name": "maximum",
+      "years": 33,
+      "before": {
+        "state": 2378270,
+        "autosave": 2755245,
+        "library1": 2378355,
+        "library3": 7134922,
+        "records": 1200658,
+        "dailyRoster": 1152896,
+        "rosterHistory": 1152896,
+        "periodResults": 2,
+        "timeline": 17244
+      },
+      "after": {
+        "autosave": 681819,
+        "library1": 619803,
+        "library3": 1859409,
+        "storage": "IndexedDB",
+        "dailyRosterCopies": 33
+      }
+    }
+  ],
+  "standalone": {
+    "regenerated": true,
+    "parity": true
+  },
+  "realIphoneSafari": "Not tested",
+  "changedBaselineSources": [
+    "DIAMOND-LIFE.html",
+    "build-single-file.mjs",
+    "dist/src/archive.js",
+    "dist/src/format.js",
+    "dist/src/roster.js",
+    "dist/src/ui.js",
+    "tests/release-runner.mjs",
+    "tests/release-simulation.mjs",
+    "tests/site-scope.test.js"
+  ],
+  "sourceSha256Lf": {
+    "DIAMOND-LIFE.html": "be7740fdefd665e3c0d5c604e1c56d02e2ed68047ca64d3a8c424c18b5f3014c",
+    "build-single-file.mjs": "3a26014bb08d8acd9effe6224537764f2d76a25127af17984d23d97323c62996",
+    "dist/src/archive.js": "ad7c7850126c629759662ba43532c6b5ae7385c2405aef01aa08759da10028a5",
+    "dist/src/format.js": "7cd81fe74d9e84219e95225310c21c0165828ac9371d9a25b21d74cb9aba4864",
+    "dist/src/roster.js": "1761b49797822d56d6da702d8358caf4c21df0a4d0fb25451ab851cfc4bf0b88",
+    "dist/src/ui.js": "14d2d3f25ffcc7573c4e04221f7ca1a51093def7ac061647ba7ac5f183a8bfaa",
+    "tests/release-runner.mjs": "6fa3e835c76782a753799dd464be9ffc7951da6566cad5c24a78e7d18941b96d",
+    "tests/release-simulation.mjs": "a7d6d6307858295573db7f16ef9fb1577062b81b955569df057b3167b432c0c7",
+    "tests/site-scope.test.js": "b60e2be17606cf9443958f95f83d4bd3e4bdb968051c88546d70e3a0d7cd6383",
+    "dist/src/career-narrative.js": "b8f948aea3c7823c6dae97d723ad6907e5d80570f4ee325dd0b35d4856ced70a",
+    "dist/src/roster-presentation.js": "ec2d495d8955447310c72f4523ac6942b048d670693fc450f79f1bde3fc9c812",
+    "tests/career-narrative.test.js": "b5580404130c88fd10fdfff35ec93b53cc36f9895e898d02971c682a614e8d29",
+    "tests/polish-fixtures.mjs": "e2972ecc80988a9f7038fb43c4a3d8a16c80860568e9a58cf1f45555e237b400",
+    "tests/roster-presentation.test.js": "c408adcec55d73cc1668912277a4a7b4d578503cc77fc38bbe9fe84adb6eb984",
+    "tests/salary-display.test.js": "bfa6db92c82753a10610254db93aeeb13100934fc29738e31e8f1144677d49cd",
+    "tests/polish-browser.mjs": "7148d0eb9c25031d2e93c18a88123e1a25498a9111c441ce811c6a0c583fd1af"
+  },
+  "protectedBackupSha256": "775c52c286ff34bc80fd214b574a73ade53fe0daec6acb4106553402408b152a"
+}

@@ -1,4 +1,4 @@
-import {minorAnnualRate,selectMajorContract} from './mlb-contracts.js';
+import {minorAnnualRate,selectMajorContract,MLB_ECONOMY} from './mlb-contracts.js';
 import {majorReady} from './development.js';
 import {random,integer,clamp,pick} from './random.js';
 import {overall} from './growth.js';
@@ -15,6 +15,14 @@ export function rosterDate(year,day){return new Date(Date.UTC(year,2,28+day)).to
 export function mlbService(s){const years=new Map();for(const r of s.records){if(r.stage!=='mlb')continue;const days=r.mlbServiceDays??0;years.set(r.year,Math.min(172,(years.get(r.year)||0)+days));}return [...years.values()].reduce((a,b)=>a+b,0);}
 export function overseasRoster(s){s.mlbRoster??={optionYears:[],outrighted:false,on40:true};return s.mlbRoster;}
 export function optionAllowance(s){const used=overseasRoster(s).optionYears.length;const seasons=s.records.filter(r=>r.stage==='mlb'&&r.dailyRoster?.days.filter(d=>d.status==='major'||d.status==='minor').length>=90).length;return used<3?3-used:used===3&&seasons<5?1:0;}
+// 2022–26 CBA XIX(A)(2), XX(D): 3+ years/prior outright, plus prior-season Super Two.
+export function outrightRights(s){
+ const service=mlbService(s),prior=(s.records||[]).filter(r=>r.stage==='mlb'&&r.year<s.year).at(-1);
+ const priorDays=(s.records||[]).filter(r=>r.year<s.year);
+ const priorService=mlbService({...s,records:priorDays});
+ const superTwo=priorService>=MLB_ECONOMY.superTwoDays&&priorService<516&&(prior?.mlbServiceDays||0)>=MLB_ECONOMY.superTwoPrior;
+ return {consent:service>=860,mayElectFA:service>=516||!!s.mlbRoster?.outrighted||superTwo,superTwo};
+}
 export function prepareRosterDecision(s){
  if(s.stage!=='mlb'||s.retired)return false;if(s.rosterDecision)return true;
  const m=overseasRoster(s);
@@ -23,16 +31,16 @@ export function prepareRosterDecision(s){
  if(!m.on40||s.health?.daysLeft>0||overall(s)>=70&&majorReady(s)||s.activeContract?.endYear>=s.year&&s.activeContract.guarantees?.regular)return false;
  const years=mlbService(s)/172;
  if(years>=5||!optionAllowance(s)){
- s.rosterDecision={year:s.year,type:years>=5?'consent':'dfa',mayElectFA:years>=3||m.outrighted,date:rosterDate(s.year,-7),deadline:rosterDate(s.year,0)};
+ s.rosterDecision={year:s.year,type:years>=5?'consent':'dfa',mayElectFA:outrightRights(s).mayElectFA,date:rosterDate(s.year,-7),deadline:rosterDate(s.year,0)};
  return true;
  }return false;
 }
 export function resolveRosterDecision(s,id){
  const d=s.rosterDecision;if(!d)throw Error('ロースターの打診はありません。');
- const m=overseasRoster(s),from=s.team;
+ const m=overseasRoster(s),from=s.team;let result;
  if(d.type==='consent'&&id==='decline'){s.rosterDecision={...d,type:'refusal',tradeTeam:pick(s,OVERSEAS_LEAGUES.flatMap(l=>l.teams).filter(t=>t!==s.team))};return;}
- if(d.type==='refusal'){if(!['stay','trade','release'].includes(id))throw Error('拒否後の進路を選んでください。');if(id==='stay'||id==='trade'){m.refusedYear=s.year;m.on40=true;if(id==='trade'){s.team=d.tradeTeam;if(s.activeContract)s.activeContract.team=s.team;s.teams.push({year:s.year,stage:'mlb',team:s.team,from});s.moves.push({year:s.year,kind:'trade',from,to:s.team,salary:s.salary});}const text=id==='stay'?'降格拒否後、球団との協議でメジャー残留':'降格拒否後、'+from+'から'+s.team+'へトレード。契約条件は継続';s.news.push(text);s.timeline.push({year:s.year,text});s.rosterDecision=null;return;}id='decline';d.mayElectFA=true;}
- if(!['accept','decline'].includes(id)||id==='decline'&&d.type!=='consent'&&!d.mayElectFA)throw Error('この手続きでは自由契約を選べません。');
+ if(d.type==='refusal'){if(!['stay','trade','release'].includes(id))throw Error('拒否後の進路を選んでください。');if(id==='stay'||id==='trade'){m.refusedYear=s.year;m.on40=true;if(id==='trade'){s.team=d.tradeTeam;if(s.activeContract)s.activeContract.team=s.team;s.teams.push({year:s.year,stage:'mlb',team:s.team,from});s.moves.push({year:s.year,kind:'trade',from,to:s.team,salary:s.salary});}const text=id==='stay'?'降格拒否後、球団との協議でメジャー残留':'降格拒否後、'+from+'から'+s.team+'へトレード。契約条件は継続';s.news.push(text);s.timeline.push({year:s.year,text});s.rosterDecision=null;return {type:id,team:s.team,text};}id='decline';d.mayElectFA=true;}
+ if(!['accept','decline'].includes(id)||id==='decline'&&d.type!=='consent'&&d.type!=='refusal'&&!outrightRights(s).mayElectFA)throw Error('この手続きでは自由契約を選べません。');
  if(id==='decline'&&d.type==='consent'){m.refusedYear=s.year;s.timeline.push({year:s.year,text:'5年以上のメジャー在籍による拒否権を行使。球団はメジャーでの続行を選択'});}
  else if(id==='decline'){
  const last=s.records.at(-1)||{stats:emptyStats(),overall:overall(s)};
@@ -40,16 +48,17 @@ export function resolveRosterDecision(s,id){
  const pay=salaryEstimate(pricing,last,true);s.seed=pricing.seed;
  s.employment={year:s.year,type:'released',from,options:[{id:'return',team:pick(s,TEAMS),stage:'pro',role:'player',salary:Math.max(600,pay),years:1},{id:'amateur',team:'東都モータース',stage:'corporate',role:'player',salary:0}]};
  s.team='自由契約';s.salary=0;s.activeContract=null;s.contractOffers=[];
+ result={type:'release',team:s.team,text:'自由契約となりました。次の所属先を検討できます。'};
  s.timeline.push({year:s.year,text:d.type==='refusal'?'降格拒否後、球団との協議で自由契約':d.deadline+'：DFA後のマイナー配属を拒否して自由契約を選択'});
  }else{
  m.consentYear=s.year;
  if(d.type==='dfa'||!optionAllowance(s)){
   const claimed=random(s)<.2;
-  if(claimed){const pool=OVERSEAS_LEAGUES.flatMap(l=>l.teams).filter(t=>t!==s.team);s.team=pick(s,pool);if(s.activeContract)s.activeContract.team=s.team;m.refusedYear=s.year;m.on40=true;s.teams.push({year:s.year,stage:'mlb',team:s.team,from});s.moves.push({year:s.year,kind:'waivers',from,to:s.team,salary:s.salary});s.timeline.push({year:s.year,text:d.deadline+'：DFAから7日以内に'+s.team+'がウェーバー獲得。メジャー登録'});}
-  else {m.outrighted=true;m.on40=false;m.outrightYear=s.year;s.timeline.push({year:s.year,text:d.deadline+'：DFAから7日以内にウェーバー通過、40人枠外のマイナー配属に同意'});}
- }else s.timeline.push({year:s.year,text:'マイナーへのオプション配属に同意'});
+  if(claimed){const pool=OVERSEAS_LEAGUES.flatMap(l=>l.teams).filter(t=>t!==s.team);s.team=pick(s,pool);if(s.activeContract)s.activeContract.team=s.team;m.refusedYear=s.year;m.on40=true;s.teams.push({year:s.year,stage:'mlb',team:s.team,from});s.moves.push({year:s.year,kind:'waivers',from,to:s.team,salary:s.salary});result={type:'claim',team:s.team,text:s.team+'がウェーバーで獲得。40人枠へ。'};s.timeline.push({year:s.year,text:d.deadline+'：'+result.text});}
+  else {m.outrighted=true;m.on40=false;m.outrightYear=s.year;result={type:'clear',team:s.team,text:'ウェーバーを通過。40人枠外でマイナー配属となりました。'};s.timeline.push({year:s.year,text:d.deadline+'：'+result.text});}
+ }else {result={type:'option',team:s.team,text:'同意に基づきマイナーへオプション配属。40人枠は維持されます。'};s.timeline.push({year:s.year,text:result.text});}
  }
- s.rosterDecision=null;
+ s.rosterDecision=null;if(result)s.news.push(result.text);return result;
 }
 export function simulateDailyRoster(s,opportunity,injury=null,reviewDevelopment=false){
  const overseas=s.stage==='mlb',cfg=overseas?ROSTER_RULES.mlb:ROSTER_RULES.npb;

@@ -1,3 +1,5 @@
+import {renderCareerNarrative} from './career-narrative.js';
+export function careerReview(s){return renderCareerNarrative(s);}
 // Lossless storage codec. Daily history is stored once, with column names once per season.
 // Runtime still exposes the established records[].dailyRoster and rosterHistory APIs.
 export function compactCareerState(state){
@@ -31,13 +33,6 @@ export function expandCareerState(packed){
 }
 export const CAREER_ARCHIVE_VERSION=1;
 const archiveFields=['version','careerId','seed','player','year','age','stage','grade','period','team','environmentId','training','scout','salary','totalSalary','totalFirstTeamAllowance','totalSigningBonus','totalSetupAllowance','totalIncentives','proYears','retired','records','tournaments','drafts','nationalHistory','awards','honors','allStars','recordHistory','recordBook','contracts','activeContract','teams','jerseyHistory','timeline','injuries','health','incomeHistory','signingPayments','postingFees','moves','domesticEntry','proEntry','overseasContract','mlbRoster','faDeclarations','careerTypes','postCareer','afterlife','careerPromises','developmentHistory','developmentState','finalCareerAd','newCareerAd'];
-export function careerReview(s){
- const pro=(s.records||[]).filter(r=>['pro','mlb'].includes(r.stage)&&r.stats?.games>0),major=pro.filter(r=>r.stage==='mlb'),awards=s.awards?.length||0;
- const start=pro.length?`国内・海外の一軍で${new Set(pro.map(r=>r.year)).size}シーズンの記録を残した。`:'プロ一軍出場には届かずとも、各地のグラウンドで野球人生を歩んだ。';
- const facts=[];if(major.length)facts.push(`メジャー出場${new Set(major.map(r=>r.year)).size}シーズン`);if(awards)facts.push(`タイトル・表彰${awards}回`);
- if((s.honors||[]).some(h=>h.title==='永久欠番'))facts.push('球団の永久欠番に');else if((s.injuries||[]).some(i=>i.severe))facts.push('大けがを経験');
- return start+(facts.length?facts.join('、')+'。':'');
-}
 export function createCareerArchiveSnapshot(state){
  if(!state?.retired)throw Error('引退後の選手だけ保存できます。');
  const snapshot=Object.fromEntries(archiveFields.filter(k=>state[k]!==undefined).map(k=>[k,state[k]]));

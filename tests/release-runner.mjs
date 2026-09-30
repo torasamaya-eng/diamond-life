@@ -9,6 +9,7 @@ run('storage',process.execPath,['tests/release-storage-measure.mjs']);
 run('contracts-browser',process.execPath,['tests/contracts-browser-check.mjs']);
 run('browser',process.execPath,['tests/release-browser.mjs']);
 run('site-browser',process.execPath,['tests/site-browser-check.mjs']);
+run('polish-browser',process.execPath,['tests/polish-browser.mjs']);
 run('simulation',process.execPath,['tests/release-simulation.mjs']);
 run('diff-check','git',['diff','--check']);
 console.log('Release checks passed: '+total+' unit tests, Chromium/WebKit, storage, matrices, '+(process.env.RELEASE_CAREERS||1000)+' careers');
