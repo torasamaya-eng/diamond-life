@@ -17,5 +17,5 @@ test('公開ページは直接アクセスとトップへの復帰に対応しSE
   assert.match(html,/<a href="\.\/index.html">トップへ戻る<\/a>/);
  }
  const html=fs.readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
- assert.match(html,/<title>白球人生/);assert.match(html,/<meta name="description" content="[^"]+"/);
+ assert.match(html,/<title>白球GAMES/);assert.match(html,/<meta name="description" content="[^"]+"/);
 });

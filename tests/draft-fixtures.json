@@ -1,0 +1,162 @@
+{
+  "K": {
+    "seed": 1,
+    "id": "p61",
+    "round": 1,
+    "development": false,
+    "rank": 7,
+    "name": "寺島 悠真",
+    "category": "高校",
+    "value": 1.17
+  },
+  "O": {
+    "seed": 1,
+    "id": "p50",
+    "round": 1,
+    "development": false,
+    "rank": 8,
+    "name": "宮原 航平",
+    "category": "大学",
+    "value": 31.11
+  },
+  "A": {
+    "seed": 1,
+    "id": "p70",
+    "round": 1,
+    "development": false,
+    "rank": 21,
+    "name": "西崎 拓海",
+    "category": "大学",
+    "value": 15.66
+  },
+  "F": {
+    "seed": 1,
+    "id": "p36",
+    "round": 2,
+    "development": false,
+    "rank": 15,
+    "name": "坂井 圭佑",
+    "category": "高校",
+    "value": 0.19
+  },
+  "L": {
+    "seed": 1,
+    "id": "p36",
+    "round": 2,
+    "development": false,
+    "rank": 15,
+    "name": "坂井 圭佑",
+    "category": "高校",
+    "value": 0.19
+  },
+  "D": {
+    "seed": 1,
+    "id": "p22",
+    "round": 2,
+    "development": false,
+    "rank": 17,
+    "name": "南條 直人",
+    "category": "社会人",
+    "value": 0.65
+  },
+  "M": {
+    "seed": 1,
+    "id": "p0",
+    "round": 3,
+    "development": false,
+    "rank": 29,
+    "name": "橘 航平",
+    "category": "高校",
+    "value": 30.1
+  },
+  "C": {
+    "seed": 1,
+    "id": "p75",
+    "round": 3,
+    "development": false,
+    "rank": 30,
+    "name": "石崎 翔吾",
+    "category": "大学",
+    "value": 43.48
+  },
+  "H": {
+    "seed": 1,
+    "id": "p75",
+    "round": 3,
+    "development": false,
+    "rank": 30,
+    "name": "石崎 翔吾",
+    "category": "大学",
+    "value": 43.48
+  },
+  "I": {
+    "seed": 1,
+    "id": "p18",
+    "round": 4,
+    "development": false,
+    "rank": 56,
+    "name": "相沢 光希",
+    "category": "独立",
+    "value": -0.27
+  },
+  "J": {
+    "seed": 2,
+    "id": "p68",
+    "round": 2,
+    "development": false,
+    "rank": 19,
+    "name": "岩城 光希",
+    "category": "高校",
+    "value": 20.79
+  },
+  "E": {
+    "seed": 2,
+    "id": "p52",
+    "round": 3,
+    "development": false,
+    "rank": 37,
+    "name": "三田 航平",
+    "category": "独立",
+    "value": -0.17
+  },
+  "N": {
+    "seed": 3,
+    "id": "p49",
+    "round": 1,
+    "development": false,
+    "rank": 11,
+    "name": "南條 晴斗",
+    "category": "高校",
+    "value": -3.76
+  },
+  "B": {
+    "seed": 9,
+    "id": "p73",
+    "round": 2,
+    "development": false,
+    "rank": 28,
+    "name": "南條 拓海",
+    "category": "大学",
+    "value": -2.43
+  },
+  "G": {
+    "seed": 16,
+    "id": "p42",
+    "round": 2,
+    "development": false,
+    "rank": 14,
+    "name": "坂井 恭平",
+    "category": "高校",
+    "value": 58.2
+  },
+  "P": {
+    "seed": 267,
+    "id": "p17",
+    "round": 5,
+    "development": true,
+    "rank": 49,
+    "name": "有村 翔吾",
+    "category": "高校",
+    "value": 94.74
+  }
+}

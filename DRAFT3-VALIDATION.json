@@ -1,0 +1,3168 @@
+{
+  "date": "2026-10-01",
+  "baseCommit": "521f738a2ead0c3291d2b679c10fe8761907bfc4",
+  "scope": "six requested improvements and draft-only visual redesign",
+  "tests": {
+    "total": 478,
+    "passed": 478,
+    "failed": 0
+  },
+  "browser": {
+    "checks": [
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "team-select"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "team-needs"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "comparison"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "watched-career"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "round-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "round-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "round-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "round-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "round-5"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "team-select"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "team-needs"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "comparison"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "watched-career"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "round-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "round-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "round-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "round-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "round-5"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "team-select"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "team-needs"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "comparison"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "watched-career"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "round-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "round-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "round-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "round-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "round-5"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "team-select"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "team-needs"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "comparison"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "watched-career"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "round-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "round-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "round-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "round-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "round-5"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "team-select"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "team-needs"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "comparison"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "watched-career"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "round-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "round-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "round-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "round-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "round-5"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "team-select"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "team-needs"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "comparison"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "watched-career"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "round-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "round-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "round-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "round-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "round-5"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "team-select"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "team-needs"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "comparison"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "watched-career"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "round-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "round-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "round-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "round-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "round-5"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "team-select"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "team-needs"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "comparison"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "first-declaration"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "tools-personality"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "defense-stats"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "watched-career"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "lottery-reballot"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "round-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "round-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "round-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "round-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "round-5"
+      }
+    ],
+    "count": 216,
+    "errors": [],
+    "coexistence": 8
+  },
+  "lifeBrowser": 28,
+  "simulation": {
+    "drafts": 1000,
+    "candidates": 76000,
+    "careers": 60000,
+    "metrics": {
+      "3位": {
+        "pitcher": {
+          "ERA": {
+            "n": 5304,
+            "mean": 4.419591125511225,
+            "min": 0,
+            "p05": 3,
+            "median": 4.361538461538461,
+            "p95": 6.014218009478673,
+            "max": 13.5
+          },
+          "IP": {
+            "n": 5304,
+            "mean": 73.38895173454061,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 5304,
+            "mean": 69.67345399698341,
+            "min": 1,
+            "p05": 42,
+            "median": 70,
+            "p95": 100,
+            "max": 132
+          },
+          "BB": {
+            "n": 5304,
+            "mean": 24.114064856711916,
+            "min": 0,
+            "p05": 10,
+            "median": 23,
+            "p95": 40,
+            "max": 62
+          },
+          "velocity": {
+            "n": 5304,
+            "mean": 144.3197021116139,
+            "min": 133.9,
+            "p05": 139.9,
+            "median": 144.3,
+            "p95": 148.8,
+            "max": 154.9
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 6696,
+            "mean": 0.3203400745824234,
+            "min": 0,
+            "p05": 0.22695035460992907,
+            "median": 0.3185840707964602,
+            "p95": 0.41739130434782606,
+            "max": 0.6363636363636364
+          },
+          "OBP": {
+            "n": 6696,
+            "mean": 0.40920868409906236,
+            "min": 0.14285714285714285,
+            "p05": 0.31446540880503143,
+            "median": 0.4098360655737705,
+            "p95": 0.5037593984962406,
+            "max": 0.7142857142857143
+          },
+          "SLG": {
+            "n": 6696,
+            "mean": 0.5552984710920865,
+            "min": 0,
+            "p05": 0.3577981651376147,
+            "median": 0.5481481481481482,
+            "p95": 0.7786885245901639,
+            "max": 1.2142857142857142
+          },
+          "HR": {
+            "n": 6696,
+            "mean": 5.612455197132617,
+            "min": 0,
+            "p05": 1,
+            "median": 5,
+            "p95": 12,
+            "max": 24
+          },
+          "SB": {
+            "n": 6696,
+            "mean": 6.487305854241338,
+            "min": 0,
+            "p05": 1,
+            "median": 6,
+            "p95": 14,
+            "max": 28
+          },
+          "defense": {
+            "n": 6696,
+            "mean": 53.35543608124253,
+            "min": 10,
+            "p05": 25,
+            "median": 53,
+            "p95": 83,
+            "max": 98
+          },
+          "arm": {
+            "n": 6696,
+            "mean": 55.40531660692951,
+            "min": 10,
+            "p05": 24,
+            "median": 54,
+            "p95": 91,
+            "max": 98
+          },
+          "speed": {
+            "n": 6696,
+            "mean": 55.584080047789726,
+            "min": 10,
+            "p05": 24,
+            "median": 55,
+            "p95": 90,
+            "max": 98
+          }
+        }
+      },
+      "公開中位候補": {
+        "pitcher": {
+          "ERA": {
+            "n": 8862,
+            "mean": 4.711567359795387,
+            "min": 0,
+            "p05": 3.3270142180094786,
+            "median": 4.691119691119691,
+            "p95": 6.230769230769231,
+            "max": 13.5
+          },
+          "IP": {
+            "n": 8862,
+            "mean": 73.54430903482964,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 8862,
+            "mean": 66.10674791243511,
+            "min": 0,
+            "p05": 39,
+            "median": 66,
+            "p95": 95,
+            "max": 132
+          },
+          "BB": {
+            "n": 8862,
+            "mean": 25.87158654931167,
+            "min": 0,
+            "p05": 11,
+            "median": 25,
+            "p95": 42,
+            "max": 65
+          },
+          "velocity": {
+            "n": 8862,
+            "mean": 142.53793726021294,
+            "min": 134.8,
+            "p05": 138.7,
+            "median": 142.5,
+            "p95": 146.5,
+            "max": 152.2
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 9138,
+            "mean": 0.30809761241241074,
+            "min": 0,
+            "p05": 0.2153846153846154,
+            "median": 0.30701754385964913,
+            "p95": 0.40425531914893614,
+            "max": 0.6363636363636364
+          },
+          "OBP": {
+            "n": 9138,
+            "mean": 0.3966183525906056,
+            "min": 0.07142857142857142,
+            "p05": 0.3026315789473684,
+            "median": 0.3953488372093023,
+            "p95": 0.49101796407185627,
+            "max": 0.6428571428571429
+          },
+          "SLG": {
+            "n": 9138,
+            "mean": 0.5097371323068859,
+            "min": 0,
+            "p05": 0.32941176470588235,
+            "median": 0.5,
+            "p95": 0.7142857142857143,
+            "max": 1.0769230769230769
+          },
+          "HR": {
+            "n": 9138,
+            "mean": 4.510177281680893,
+            "min": 0,
+            "p05": 1,
+            "median": 4,
+            "p95": 10,
+            "max": 21
+          },
+          "SB": {
+            "n": 9138,
+            "mean": 6.143685708032392,
+            "min": 0,
+            "p05": 1,
+            "median": 6,
+            "p95": 14,
+            "max": 28
+          },
+          "defense": {
+            "n": 9138,
+            "mean": 52.15068942875903,
+            "min": 10,
+            "p05": 25,
+            "median": 51,
+            "p95": 82,
+            "max": 98
+          },
+          "arm": {
+            "n": 9138,
+            "mean": 53.50120376449989,
+            "min": 10,
+            "p05": 23,
+            "median": 52,
+            "p95": 89,
+            "max": 98
+          },
+          "speed": {
+            "n": 9138,
+            "mean": 53.774567739111404,
+            "min": 10,
+            "p05": 23,
+            "median": 53,
+            "p95": 88,
+            "max": 98
+          }
+        }
+      },
+      "指名漏れ": {
+        "pitcher": {
+          "ERA": {
+            "n": 10109,
+            "mean": 6.292151471816958,
+            "min": 1.6875,
+            "p05": 4.430769230769231,
+            "median": 6.230769230769231,
+            "p95": 8.339768339768339,
+            "max": 13.915384615384616
+          },
+          "IP": {
+            "n": 10109,
+            "mean": 73.0753783757017,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 10109,
+            "mean": 46.761895340785436,
+            "min": 0,
+            "p05": 23,
+            "median": 46,
+            "p95": 74,
+            "max": 113
+          },
+          "BB": {
+            "n": 10109,
+            "mean": 33.55287367692156,
+            "min": 0,
+            "p05": 16,
+            "median": 33,
+            "p95": 53,
+            "max": 73
+          },
+          "velocity": {
+            "n": 10109,
+            "mean": 133.9000000000002,
+            "min": 125.6,
+            "p05": 128.1,
+            "median": 133.8,
+            "p95": 140,
+            "max": 150.5
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 5891,
+            "mean": 0.2506526448653523,
+            "min": 0,
+            "p05": 0.16666666666666666,
+            "median": 0.24806201550387597,
+            "p95": 0.3484848484848485,
+            "max": 0.5555555555555556
+          },
+          "OBP": {
+            "n": 5891,
+            "mean": 0.33465321639624507,
+            "min": 0.07142857142857142,
+            "p05": 0.24324324324324326,
+            "median": 0.3333333333333333,
+            "p95": 0.4342105263157895,
+            "max": 0.6428571428571429
+          },
+          "SLG": {
+            "n": 5891,
+            "mean": 0.3572058407311008,
+            "min": 0,
+            "p05": 0.21212121212121213,
+            "median": 0.3474576271186441,
+            "p95": 0.5369127516778524,
+            "max": 1.0344827586206897
+          },
+          "HR": {
+            "n": 5891,
+            "mean": 1.631811237480903,
+            "min": 0,
+            "p05": 0,
+            "median": 1,
+            "p95": 5,
+            "max": 22
+          },
+          "SB": {
+            "n": 5891,
+            "mean": 4.082668477338313,
+            "min": 0,
+            "p05": 0,
+            "median": 3,
+            "p95": 10,
+            "max": 19
+          },
+          "defense": {
+            "n": 5891,
+            "mean": 42.4063826175522,
+            "min": 10,
+            "p05": 18,
+            "median": 41,
+            "p95": 70,
+            "max": 98
+          },
+          "arm": {
+            "n": 5891,
+            "mean": 41.8940757087082,
+            "min": 10,
+            "p05": 18,
+            "median": 39,
+            "p95": 75,
+            "max": 98
+          },
+          "speed": {
+            "n": 5891,
+            "mean": 42.62858597861144,
+            "min": 10,
+            "p05": 19,
+            "median": 41,
+            "p95": 75,
+            "max": 98
+          }
+        }
+      },
+      "2位": {
+        "pitcher": {
+          "ERA": {
+            "n": 4919,
+            "mean": 3.8835954983125593,
+            "min": 0,
+            "p05": 2.5,
+            "median": 3.8333333333333335,
+            "p95": 5.46067415730337,
+            "max": 8.930769230769231
+          },
+          "IP": {
+            "n": 4919,
+            "mean": 73.56210611913149,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 4919,
+            "mean": 77.68164261028664,
+            "min": 2,
+            "p05": 47,
+            "median": 77,
+            "p95": 110,
+            "max": 139
+          },
+          "BB": {
+            "n": 4919,
+            "mean": 20.981703598292334,
+            "min": 0,
+            "p05": 8,
+            "median": 20,
+            "p95": 37,
+            "max": 59
+          },
+          "velocity": {
+            "n": 4919,
+            "mean": 147.85669851595858,
+            "min": 137.3,
+            "p05": 142.8,
+            "median": 147.9,
+            "p95": 152.8,
+            "max": 157.4
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 7081,
+            "mean": 0.344607282843743,
+            "min": 0.07142857142857142,
+            "p05": 0.25,
+            "median": 0.3448275862068966,
+            "p95": 0.43902439024390244,
+            "max": 0.8
+          },
+          "OBP": {
+            "n": 7081,
+            "mean": 0.43482066066697944,
+            "min": 0.07142857142857142,
+            "p05": 0.34108527131782945,
+            "median": 0.4358974358974359,
+            "p95": 0.524822695035461,
+            "max": 0.8181818181818182
+          },
+          "SLG": {
+            "n": 7081,
+            "mean": 0.6546798966783873,
+            "min": 0.07142857142857142,
+            "p05": 0.4251968503937008,
+            "median": 0.6484375,
+            "p95": 0.9017857142857143,
+            "max": 1.3
+          },
+          "HR": {
+            "n": 7081,
+            "mean": 8.169608812314644,
+            "min": 0,
+            "p05": 2,
+            "median": 8,
+            "p95": 16,
+            "max": 30
+          },
+          "SB": {
+            "n": 7081,
+            "mean": 7.201666431295015,
+            "min": 0,
+            "p05": 1,
+            "median": 7,
+            "p95": 15,
+            "max": 27
+          },
+          "defense": {
+            "n": 7081,
+            "mean": 57.4930094619404,
+            "min": 10,
+            "p05": 29,
+            "median": 57,
+            "p95": 87,
+            "max": 98
+          },
+          "arm": {
+            "n": 7081,
+            "mean": 60.85256319728852,
+            "min": 10,
+            "p05": 27,
+            "median": 61,
+            "p95": 94,
+            "max": 98
+          },
+          "speed": {
+            "n": 7081,
+            "mean": 60.26168620251377,
+            "min": 10,
+            "p05": 28,
+            "median": 60,
+            "p95": 94,
+            "max": 98
+          }
+        }
+      },
+      "公開1位候補": {
+        "pitcher": {
+          "ERA": {
+            "n": 3294,
+            "mean": 3.0441470199241016,
+            "min": 0,
+            "p05": 1.8556701030927836,
+            "median": 3,
+            "p95": 4.350710900473934,
+            "max": 6.422907488986784
+          },
+          "IP": {
+            "n": 3294,
+            "mean": 73.52246508803901,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 3294,
+            "mean": 89.66514875531269,
+            "min": 4,
+            "p05": 57,
+            "median": 90,
+            "p95": 125,
+            "max": 153
+          },
+          "BB": {
+            "n": 3294,
+            "mean": 15.686399514268366,
+            "min": 0,
+            "p05": 6,
+            "median": 15,
+            "p95": 30,
+            "max": 51
+          },
+          "velocity": {
+            "n": 3294,
+            "mean": 153.32519732847604,
+            "min": 143.2,
+            "p05": 148.3,
+            "median": 153.6,
+            "p95": 157.2,
+            "max": 158.2
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 8706,
+            "mean": 0.38070054576688617,
+            "min": 0.14173228346456693,
+            "p05": 0.288,
+            "median": 0.38095238095238093,
+            "p95": 0.46875,
+            "max": 0.8
+          },
+          "OBP": {
+            "n": 8706,
+            "mean": 0.4718081026632912,
+            "min": 0.18248175182481752,
+            "p05": 0.3819444444444444,
+            "median": 0.47368421052631576,
+            "p95": 0.5565217391304348,
+            "max": 0.8181818181818182
+          },
+          "SLG": {
+            "n": 8706,
+            "mean": 0.821726642656349,
+            "min": 0.18181818181818182,
+            "p05": 0.5714285714285714,
+            "median": 0.8173913043478261,
+            "p95": 1.0740740740740742,
+            "max": 2.4285714285714284
+          },
+          "HR": {
+            "n": 8706,
+            "mean": 12.616471399035149,
+            "min": 0,
+            "p05": 5,
+            "median": 12,
+            "p95": 21,
+            "max": 36
+          },
+          "SB": {
+            "n": 8706,
+            "mean": 8.303009418791637,
+            "min": 0,
+            "p05": 2,
+            "median": 8,
+            "p95": 16,
+            "max": 28
+          },
+          "defense": {
+            "n": 8706,
+            "mean": 63.710314725476685,
+            "min": 11,
+            "p05": 34,
+            "median": 64,
+            "p95": 92,
+            "max": 98
+          },
+          "arm": {
+            "n": 8706,
+            "mean": 69.41890650126349,
+            "min": 10,
+            "p05": 34,
+            "median": 71,
+            "p95": 98,
+            "max": 98
+          },
+          "speed": {
+            "n": 8706,
+            "mean": 68.47668274753043,
+            "min": 10,
+            "p05": 35,
+            "median": 69,
+            "p95": 97,
+            "max": 98
+          }
+        }
+      },
+      "公開育成候補": {
+        "pitcher": {
+          "ERA": {
+            "n": 7931,
+            "mean": 6.511375077642128,
+            "min": 1.6875,
+            "p05": 4.776923076923077,
+            "median": 6.463320463320463,
+            "p95": 8.445497630331754,
+            "max": 13.915384615384616
+          },
+          "IP": {
+            "n": 7931,
+            "mean": 72.98348253688124,
+            "min": 5.333333333333333,
+            "p05": 48.666666666666664,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 7931,
+            "mean": 44.00226957508511,
+            "min": 0,
+            "p05": 22,
+            "median": 44,
+            "p95": 68,
+            "max": 98
+          },
+          "BB": {
+            "n": 7931,
+            "mean": 34.51431093178666,
+            "min": 0,
+            "p05": 17,
+            "median": 34,
+            "p95": 54,
+            "max": 73
+          },
+          "velocity": {
+            "n": 7931,
+            "mean": 132.61394527802335,
+            "min": 125.6,
+            "p05": 127.8,
+            "median": 132.8,
+            "p95": 137.1,
+            "max": 141.2
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 5069,
+            "mean": 0.24218284043742055,
+            "min": 0,
+            "p05": 0.16260162601626016,
+            "median": 0.24107142857142858,
+            "p95": 0.328,
+            "max": 0.5555555555555556
+          },
+          "OBP": {
+            "n": 5069,
+            "mean": 0.325359949285438,
+            "min": 0.07142857142857142,
+            "p05": 0.24060150375939848,
+            "median": 0.3253968253968254,
+            "p95": 0.41353383458646614,
+            "max": 0.6428571428571429
+          },
+          "SLG": {
+            "n": 5069,
+            "mean": 0.3370780543244753,
+            "min": 0,
+            "p05": 0.20689655172413793,
+            "median": 0.3333333333333333,
+            "p95": 0.4845360824742268,
+            "max": 0.875
+          },
+          "HR": {
+            "n": 5069,
+            "mean": 1.311501282304202,
+            "min": 0,
+            "p05": 0,
+            "median": 1,
+            "p95": 4,
+            "max": 10
+          },
+          "SB": {
+            "n": 5069,
+            "mean": 3.716709410140067,
+            "min": 0,
+            "p05": 0,
+            "median": 3,
+            "p95": 10,
+            "max": 19
+          },
+          "defense": {
+            "n": 5069,
+            "mean": 40.55671730124285,
+            "min": 10,
+            "p05": 17,
+            "median": 40,
+            "p95": 67,
+            "max": 97
+          },
+          "arm": {
+            "n": 5069,
+            "mean": 39.91951075162754,
+            "min": 10,
+            "p05": 18,
+            "median": 37,
+            "p95": 71,
+            "max": 98
+          },
+          "speed": {
+            "n": 5069,
+            "mean": 40.69579798776879,
+            "min": 10,
+            "p05": 19,
+            "median": 38,
+            "p95": 71,
+            "max": 98
+          }
+        }
+      },
+      "育成": {
+        "pitcher": {
+          "ERA": {
+            "n": 6364,
+            "mean": 5.4516029975861855,
+            "min": 0,
+            "p05": 3.8969072164948453,
+            "median": 5.4,
+            "p95": 7.166666666666667,
+            "max": 11.8125
+          },
+          "IP": {
+            "n": 6364,
+            "mean": 73.27325581395347,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 6364,
+            "mean": 56.72470144563168,
+            "min": 1,
+            "p05": 32,
+            "median": 57,
+            "p95": 84,
+            "max": 108
+          },
+          "BB": {
+            "n": 6364,
+            "mean": 29.770427404148336,
+            "min": 0,
+            "p05": 14,
+            "median": 29,
+            "p95": 48,
+            "max": 68
+          },
+          "velocity": {
+            "n": 6364,
+            "mean": 138.3420333123818,
+            "min": 129.2,
+            "p05": 134,
+            "median": 138.4,
+            "p95": 142.5,
+            "max": 146.8
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 5636,
+            "mean": 0.2752696783838761,
+            "min": 0,
+            "p05": 0.18518518518518517,
+            "median": 0.2727272727272727,
+            "p95": 0.3712121212121212,
+            "max": 0.6363636363636364
+          },
+          "OBP": {
+            "n": 5636,
+            "mean": 0.3615278079094272,
+            "min": 0.09090909090909091,
+            "p05": 0.27049180327868855,
+            "median": 0.3609022556390977,
+            "p95": 0.45394736842105265,
+            "max": 0.6363636363636364
+          },
+          "SLG": {
+            "n": 5636,
+            "mean": 0.41010649828185675,
+            "min": 0,
+            "p05": 0.2558139534883721,
+            "median": 0.40186915887850466,
+            "p95": 0.5871559633027523,
+            "max": 0.875
+          },
+          "HR": {
+            "n": 5636,
+            "mean": 2.393541518807665,
+            "min": 0,
+            "p05": 0,
+            "median": 2,
+            "p95": 6,
+            "max": 14
+          },
+          "SB": {
+            "n": 5636,
+            "mean": 4.847232079488999,
+            "min": 0,
+            "p05": 0,
+            "median": 4,
+            "p95": 12,
+            "max": 23
+          },
+          "defense": {
+            "n": 5636,
+            "mean": 46.323988644428674,
+            "min": 10,
+            "p05": 21,
+            "median": 46,
+            "p95": 75,
+            "max": 98
+          },
+          "arm": {
+            "n": 5636,
+            "mean": 46.9611426543648,
+            "min": 10,
+            "p05": 20,
+            "median": 45,
+            "p95": 81,
+            "max": 98
+          },
+          "speed": {
+            "n": 5636,
+            "mean": 47.040631653655076,
+            "min": 10,
+            "p05": 21,
+            "median": 45,
+            "p95": 79,
+            "max": 98
+          }
+        }
+      },
+      "公開下位候補": {
+        "pitcher": {
+          "ERA": {
+            "n": 9019,
+            "mean": 5.494095820195205,
+            "min": 0,
+            "p05": 3.9613899613899615,
+            "median": 5.46067415730337,
+            "p95": 7.166666666666667,
+            "max": 11.8125
+          },
+          "IP": {
+            "n": 9019,
+            "mean": 73.28414088775402,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 9019,
+            "mean": 56.15888679454485,
+            "min": 0,
+            "p05": 32,
+            "median": 56,
+            "p95": 83,
+            "max": 111
+          },
+          "BB": {
+            "n": 9019,
+            "mean": 29.954429537642753,
+            "min": 0,
+            "p05": 14,
+            "median": 29,
+            "p95": 48,
+            "max": 69
+          },
+          "velocity": {
+            "n": 9019,
+            "mean": 138.12958199356973,
+            "min": 130.3,
+            "p05": 134.4,
+            "median": 138.1,
+            "p95": 141.9,
+            "max": 147.3
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 7981,
+            "mean": 0.2777617291008612,
+            "min": 0,
+            "p05": 0.18840579710144928,
+            "median": 0.27522935779816515,
+            "p95": 0.3728813559322034,
+            "max": 0.6363636363636364
+          },
+          "OBP": {
+            "n": 7981,
+            "mean": 0.3648798936456323,
+            "min": 0.09090909090909091,
+            "p05": 0.2727272727272727,
+            "median": 0.36486486486486486,
+            "p95": 0.4583333333333333,
+            "max": 0.6363636363636364
+          },
+          "SLG": {
+            "n": 7981,
+            "mean": 0.4162587729239589,
+            "min": 0,
+            "p05": 0.2631578947368421,
+            "median": 0.40963855421686746,
+            "p95": 0.5928571428571429,
+            "max": 1
+          },
+          "HR": {
+            "n": 7981,
+            "mean": 2.4816439042726475,
+            "min": 0,
+            "p05": 0,
+            "median": 2,
+            "p95": 6,
+            "max": 15
+          },
+          "SB": {
+            "n": 7981,
+            "mean": 5.118406214760055,
+            "min": 0,
+            "p05": 0,
+            "median": 5,
+            "p95": 12,
+            "max": 22
+          },
+          "defense": {
+            "n": 7981,
+            "mean": 47.223029695526876,
+            "min": 10,
+            "p05": 21,
+            "median": 47,
+            "p95": 76,
+            "max": 98
+          },
+          "arm": {
+            "n": 7981,
+            "mean": 47.6873825335171,
+            "min": 10,
+            "p05": 21,
+            "median": 46,
+            "p95": 82,
+            "max": 98
+          },
+          "speed": {
+            "n": 7981,
+            "mean": 48.18569101616339,
+            "min": 10,
+            "p05": 21,
+            "median": 47,
+            "p95": 81,
+            "max": 98
+          }
+        }
+      },
+      "4位": {
+        "pitcher": {
+          "ERA": {
+            "n": 5799,
+            "mean": 4.889695364505034,
+            "min": 0,
+            "p05": 3.375,
+            "median": 4.853932584269663,
+            "p95": 6.522471910112359,
+            "max": 10.125
+          },
+          "IP": {
+            "n": 5799,
+            "mean": 73.49100419612563,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 5799,
+            "mean": 63.53198827384032,
+            "min": 0,
+            "p05": 38,
+            "median": 63,
+            "p95": 92,
+            "max": 126
+          },
+          "BB": {
+            "n": 5799,
+            "mean": 26.855664769787893,
+            "min": 0,
+            "p05": 12,
+            "median": 26,
+            "p95": 44,
+            "max": 65
+          },
+          "velocity": {
+            "n": 5799,
+            "mean": 141.33441972753917,
+            "min": 132.4,
+            "p05": 137.1,
+            "median": 141.4,
+            "p95": 145.6,
+            "max": 151.5
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 6201,
+            "mean": 0.2961425965636106,
+            "min": 0,
+            "p05": 0.20454545454545456,
+            "median": 0.2945205479452055,
+            "p95": 0.3924050632911392,
+            "max": 0.6153846153846154
+          },
+          "OBP": {
+            "n": 6201,
+            "mean": 0.3846705218098,
+            "min": 0.07142857142857142,
+            "p05": 0.2897196261682243,
+            "median": 0.38317757009345793,
+            "p95": 0.4791666666666667,
+            "max": 0.6428571428571429
+          },
+          "SLG": {
+            "n": 6201,
+            "mean": 0.4724344310414345,
+            "min": 0,
+            "p05": 0.29508196721311475,
+            "median": 0.4672131147540984,
+            "p95": 0.672,
+            "max": 1
+          },
+          "HR": {
+            "n": 6201,
+            "mean": 3.7014997581035316,
+            "min": 0,
+            "p05": 0,
+            "median": 3,
+            "p95": 9,
+            "max": 20
+          },
+          "SB": {
+            "n": 6201,
+            "mean": 5.788582486695694,
+            "min": 0,
+            "p05": 0,
+            "median": 5,
+            "p95": 13,
+            "max": 22
+          },
+          "defense": {
+            "n": 6201,
+            "mean": 50.573133365586195,
+            "min": 10,
+            "p05": 23,
+            "median": 50,
+            "p95": 80,
+            "max": 98
+          },
+          "arm": {
+            "n": 6201,
+            "mean": 51.513626834381554,
+            "min": 10,
+            "p05": 22,
+            "median": 50,
+            "p95": 87,
+            "max": 98
+          },
+          "speed": {
+            "n": 6201,
+            "mean": 51.94291243347847,
+            "min": 10,
+            "p05": 22,
+            "median": 51,
+            "p95": 87,
+            "max": 98
+          }
+        }
+      },
+      "公開上位候補": {
+        "pitcher": {
+          "ERA": {
+            "n": 6782,
+            "mean": 3.9540443588833885,
+            "min": 0,
+            "p05": 2.606177606177606,
+            "median": 3.9251101321585904,
+            "p95": 5.46067415730337,
+            "max": 11.8125
+          },
+          "IP": {
+            "n": 6782,
+            "mean": 73.43109210655629,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 6782,
+            "mean": 76.43438513712769,
+            "min": 2,
+            "p05": 47,
+            "median": 76,
+            "p95": 108,
+            "max": 139
+          },
+          "BB": {
+            "n": 6782,
+            "mean": 21.462547920967268,
+            "min": 0,
+            "p05": 8,
+            "median": 21,
+            "p95": 37,
+            "max": 59
+          },
+          "velocity": {
+            "n": 6782,
+            "mean": 147.4013270421699,
+            "min": 138.5,
+            "p05": 143,
+            "median": 147.3,
+            "p95": 152,
+            "max": 156.9
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 9218,
+            "mean": 0.3405804139152726,
+            "min": 0.07692307692307693,
+            "p05": 0.24468085106382978,
+            "median": 0.33980582524271846,
+            "p95": 0.436241610738255,
+            "max": 0.7
+          },
+          "OBP": {
+            "n": 9218,
+            "mean": 0.4307380456477585,
+            "min": 0.14285714285714285,
+            "p05": 0.3391304347826087,
+            "median": 0.4306569343065693,
+            "p95": 0.5217391304347826,
+            "max": 0.7272727272727273
+          },
+          "SLG": {
+            "n": 9218,
+            "mean": 0.6380195482567175,
+            "min": 0.07692307692307693,
+            "p05": 0.4222222222222222,
+            "median": 0.6323529411764706,
+            "p95": 0.875,
+            "max": 1.4
+          },
+          "HR": {
+            "n": 9218,
+            "mean": 7.738555001084834,
+            "min": 0,
+            "p05": 2,
+            "median": 7,
+            "p95": 15,
+            "max": 30
+          },
+          "SB": {
+            "n": 9218,
+            "mean": 7.062920373182903,
+            "min": 0,
+            "p05": 1,
+            "median": 6,
+            "p95": 15,
+            "max": 27
+          },
+          "defense": {
+            "n": 9218,
+            "mean": 56.86873508353222,
+            "min": 10,
+            "p05": 28,
+            "median": 57,
+            "p95": 87,
+            "max": 98
+          },
+          "arm": {
+            "n": 9218,
+            "mean": 59.82913864178781,
+            "min": 10,
+            "p05": 26,
+            "median": 60,
+            "p95": 93,
+            "max": 98
+          },
+          "speed": {
+            "n": 9218,
+            "mean": 59.47407246691256,
+            "min": 10,
+            "p05": 27,
+            "median": 59,
+            "p95": 93,
+            "max": 98
+          }
+        }
+      },
+      "1位": {
+        "pitcher": {
+          "ERA": {
+            "n": 3393,
+            "mean": 3.120837990360068,
+            "min": 0,
+            "p05": 1.8888888888888888,
+            "median": 3.0618556701030926,
+            "p95": 4.5198237885462555,
+            "max": 6.444444444444445
+          },
+          "IP": {
+            "n": 3393,
+            "mean": 73.50800668042059,
+            "min": 5.333333333333333,
+            "p05": 54,
+            "median": 75.66666666666667,
+            "p95": 97,
+            "max": 97
+          },
+          "K": {
+            "n": 3393,
+            "mean": 88.7869142351901,
+            "min": 4,
+            "p05": 56,
+            "median": 89,
+            "p95": 125,
+            "max": 153
+          },
+          "BB": {
+            "n": 3393,
+            "mean": 16.181844974948422,
+            "min": 0,
+            "p05": 6,
+            "median": 15,
+            "p95": 30,
+            "max": 50
+          },
+          "velocity": {
+            "n": 3393,
+            "mean": 152.98296492779227,
+            "min": 141.8,
+            "p05": 147.4,
+            "median": 153.3,
+            "p95": 157.2,
+            "max": 158.2
+          }
+        },
+        "batter": {
+          "AVG": {
+            "n": 8607,
+            "mean": 0.3792413359461676,
+            "min": 0.1346153846153846,
+            "p05": 0.28431372549019607,
+            "median": 0.3798449612403101,
+            "p95": 0.46875,
+            "max": 0.7777777777777778
+          },
+          "OBP": {
+            "n": 8607,
+            "mean": 0.4705911456760412,
+            "min": 0.18248175182481752,
+            "p05": 0.3783783783783784,
+            "median": 0.4728682170542636,
+            "p95": 0.5565217391304348,
+            "max": 0.8181818181818182
+          },
+          "SLG": {
+            "n": 8607,
+            "mean": 0.8161626044068907,
+            "min": 0.2222222222222222,
+            "p05": 0.5588235294117647,
+            "median": 0.8125,
+            "p95": 1.0743801652892562,
+            "max": 2.4285714285714284
+          },
+          "HR": {
+            "n": 8607,
+            "mean": 12.47298710352039,
+            "min": 0,
+            "p05": 5,
+            "median": 12,
+            "p95": 21,
+            "max": 36
+          },
+          "SB": {
+            "n": 8607,
+            "mean": 8.309980248634831,
+            "min": 0,
+            "p05": 2,
+            "median": 8,
+            "p95": 16,
+            "max": 28
+          },
+          "defense": {
+            "n": 8607,
+            "mean": 63.787847101196704,
+            "min": 11,
+            "p05": 34,
+            "median": 64,
+            "p95": 92,
+            "max": 98
+          },
+          "arm": {
+            "n": 8607,
+            "mean": 69.11897292901126,
+            "min": 10,
+            "p05": 34,
+            "median": 71,
+            "p95": 98,
+            "max": 98
+          },
+          "speed": {
+            "n": 8607,
+            "mean": 68.47809922156384,
+            "min": 10,
+            "p05": 35,
+            "median": 70,
+            "p95": 97,
+            "max": 98
+          }
+        }
+      }
+    },
+    "teams": {
+      "東京クラウンズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1722,
+        "cpuPicks": 4580,
+        "cpuMatches": 1604,
+        "needs": {
+          "leftRelief": 156,
+          "middleBat": 283,
+          "catcherFuture": 213,
+          "speedCenter": 276,
+          "firstPower": 293,
+          "catcherReady": 207,
+          "shortDefense": 281,
+          "specialist": 140,
+          "leftStarter": 84,
+          "closer": 229,
+          "corporate": 138,
+          "starter": 205,
+          "highTools": 124,
+          "powerPitcher": 61,
+          "control": 70,
+          "catcherArm": 91,
+          "college": 149
+        },
+        "needPicks": {
+          "middleBat": 284,
+          "leftRelief": 178,
+          "catcherReady": 60,
+          "specialist": 147,
+          "shortDefense": 41,
+          "leftStarter": 94,
+          "corporate": 218,
+          "closer": 128,
+          "firstPower": 88,
+          "starter": 200,
+          "highTools": 135,
+          "speedCenter": 50,
+          "college": 201,
+          "powerPitcher": 59,
+          "control": 63,
+          "catcherFuture": 23,
+          "catcherArm": 27
+        },
+        "matchRate": 0.3444,
+        "cpuMatchRate": 0.3502183406113537
+      },
+      "名古屋フェニックス": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1708,
+        "cpuPicks": 4580,
+        "cpuMatches": 1598,
+        "needs": {
+          "leftRelief": 152,
+          "middleBat": 304,
+          "corporate": 137,
+          "control": 83,
+          "catcherArm": 94,
+          "firstPower": 271,
+          "starter": 188,
+          "catcherFuture": 219,
+          "catcherReady": 234,
+          "speedCenter": 271,
+          "highTools": 110,
+          "shortDefense": 295,
+          "closer": 227,
+          "powerPitcher": 67,
+          "college": 149,
+          "leftStarter": 63,
+          "specialist": 136
+        },
+        "needPicks": {
+          "middleBat": 328,
+          "corporate": 215,
+          "leftRelief": 127,
+          "starter": 133,
+          "speedCenter": 87,
+          "firstPower": 80,
+          "highTools": 107,
+          "catcherReady": 139,
+          "control": 63,
+          "closer": 77,
+          "powerPitcher": 34,
+          "college": 214,
+          "specialist": 156,
+          "leftStarter": 57,
+          "shortDefense": 54,
+          "catcherArm": 37,
+          "catcherFuture": 48
+        },
+        "matchRate": 0.3416,
+        "cpuMatchRate": 0.34890829694323144
+      },
+      "福岡オーシャンズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1600,
+        "cpuPicks": 4585,
+        "cpuMatches": 1497,
+        "needs": {
+          "leftStarter": 81,
+          "middleBat": 262,
+          "college": 131,
+          "catcherReady": 206,
+          "firstPower": 295,
+          "catcherFuture": 199,
+          "shortDefense": 322,
+          "speedCenter": 275,
+          "highTools": 143,
+          "leftRelief": 131,
+          "starter": 200,
+          "corporate": 117,
+          "specialist": 137,
+          "closer": 285,
+          "powerPitcher": 66,
+          "catcherArm": 86,
+          "control": 64
+        },
+        "needPicks": {
+          "college": 188,
+          "leftStarter": 88,
+          "middleBat": 283,
+          "highTools": 134,
+          "leftRelief": 126,
+          "corporate": 175,
+          "starter": 157,
+          "speedCenter": 59,
+          "powerPitcher": 48,
+          "closer": 121,
+          "catcherFuture": 37,
+          "catcherReady": 80,
+          "firstPower": 86,
+          "shortDefense": 41,
+          "catcherArm": 20,
+          "specialist": 149,
+          "control": 50
+        },
+        "matchRate": 0.32,
+        "cpuMatchRate": 0.32649945474372954
+      },
+      "大阪ブレイバーズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1630,
+        "cpuPicks": 4585,
+        "cpuMatches": 1527,
+        "needs": {
+          "closer": 261,
+          "leftStarter": 60,
+          "starter": 202,
+          "leftRelief": 147,
+          "middleBat": 263,
+          "catcherFuture": 219,
+          "shortDefense": 302,
+          "corporate": 125,
+          "firstPower": 286,
+          "catcherReady": 229,
+          "speedCenter": 274,
+          "specialist": 133,
+          "control": 73,
+          "college": 133,
+          "highTools": 131,
+          "catcherArm": 92,
+          "powerPitcher": 70
+        },
+        "needPicks": {
+          "starter": 194,
+          "middleBat": 283,
+          "corporate": 196,
+          "closer": 99,
+          "control": 59,
+          "college": 236,
+          "leftRelief": 143,
+          "catcherFuture": 20,
+          "firstPower": 88,
+          "specialist": 148,
+          "catcherReady": 100,
+          "highTools": 72,
+          "shortDefense": 35,
+          "leftStarter": 65,
+          "powerPitcher": 40,
+          "speedCenter": 63,
+          "catcherArm": 19
+        },
+        "matchRate": 0.326,
+        "cpuMatchRate": 0.3330425299890949
+      },
+      "横浜セイラーズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1616,
+        "cpuPicks": 4580,
+        "cpuMatches": 1493,
+        "needs": {
+          "shortDefense": 291,
+          "speedCenter": 296,
+          "catcherReady": 216,
+          "powerPitcher": 60,
+          "highTools": 151,
+          "closer": 271,
+          "firstPower": 267,
+          "corporate": 124,
+          "leftRelief": 145,
+          "catcherFuture": 200,
+          "middleBat": 272,
+          "specialist": 127,
+          "control": 83,
+          "leftStarter": 68,
+          "college": 124,
+          "starter": 198,
+          "catcherArm": 107
+        },
+        "needPicks": {
+          "catcherReady": 75,
+          "highTools": 234,
+          "powerPitcher": 38,
+          "speedCenter": 56,
+          "corporate": 142,
+          "leftRelief": 157,
+          "middleBat": 281,
+          "shortDefense": 53,
+          "catcherFuture": 49,
+          "specialist": 140,
+          "control": 58,
+          "leftStarter": 70,
+          "closer": 102,
+          "college": 155,
+          "catcherArm": 25,
+          "starter": 135,
+          "firstPower": 83
+        },
+        "matchRate": 0.3232,
+        "cpuMatchRate": 0.3259825327510917
+      },
+      "神宮ウイングス": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1587,
+        "cpuPicks": 4580,
+        "cpuMatches": 1479,
+        "needs": {
+          "closer": 220,
+          "speedCenter": 287,
+          "corporate": 129,
+          "middleBat": 277,
+          "shortDefense": 284,
+          "college": 150,
+          "leftRelief": 154,
+          "catcherFuture": 220,
+          "control": 68,
+          "powerPitcher": 71,
+          "specialist": 107,
+          "catcherArm": 107,
+          "highTools": 136,
+          "firstPower": 286,
+          "starter": 199,
+          "catcherReady": 238,
+          "leftStarter": 67
+        },
+        "needPicks": {
+          "corporate": 181,
+          "speedCenter": 61,
+          "middleBat": 298,
+          "specialist": 133,
+          "leftRelief": 131,
+          "closer": 87,
+          "highTools": 102,
+          "shortDefense": 44,
+          "catcherFuture": 29,
+          "catcherReady": 104,
+          "powerPitcher": 53,
+          "leftStarter": 51,
+          "college": 211,
+          "firstPower": 101,
+          "starter": 141,
+          "catcherArm": 27,
+          "control": 56
+        },
+        "matchRate": 0.3174,
+        "cpuMatchRate": 0.32292576419213975
+      },
+      "千葉ウェーブス": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1692,
+        "cpuPicks": 4585,
+        "cpuMatches": 1589,
+        "needs": {
+          "leftStarter": 75,
+          "speedCenter": 296,
+          "specialist": 115,
+          "starter": 188,
+          "catcherArm": 88,
+          "shortDefense": 291,
+          "catcherReady": 217,
+          "firstPower": 300,
+          "middleBat": 273,
+          "college": 129,
+          "leftRelief": 149,
+          "corporate": 137,
+          "closer": 254,
+          "control": 67,
+          "powerPitcher": 71,
+          "catcherFuture": 217,
+          "highTools": 133
+        },
+        "needPicks": {
+          "specialist": 120,
+          "leftStarter": 81,
+          "starter": 171,
+          "catcherReady": 88,
+          "middleBat": 306,
+          "firstPower": 115,
+          "college": 244,
+          "corporate": 235,
+          "powerPitcher": 46,
+          "closer": 133,
+          "shortDefense": 46,
+          "leftRelief": 144,
+          "control": 48,
+          "speedCenter": 65,
+          "highTools": 66,
+          "catcherFuture": 24,
+          "catcherArm": 20
+        },
+        "matchRate": 0.3384,
+        "cpuMatchRate": 0.3465648854961832
+      },
+      "仙台フォレスターズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1684,
+        "cpuPicks": 4585,
+        "cpuMatches": 1567,
+        "needs": {
+          "firstPower": 252,
+          "catcherReady": 212,
+          "specialist": 117,
+          "speedCenter": 281,
+          "shortDefense": 274,
+          "leftRelief": 155,
+          "starter": 208,
+          "middleBat": 303,
+          "college": 135,
+          "catcherFuture": 218,
+          "closer": 265,
+          "highTools": 116,
+          "leftStarter": 90,
+          "corporate": 136,
+          "control": 71,
+          "catcherArm": 97,
+          "powerPitcher": 70
+        },
+        "needPicks": {
+          "specialist": 111,
+          "speedCenter": 50,
+          "starter": 199,
+          "leftRelief": 191,
+          "shortDefense": 29,
+          "middleBat": 303,
+          "college": 184,
+          "catcherFuture": 29,
+          "closer": 167,
+          "corporate": 213,
+          "leftStarter": 100,
+          "highTools": 110,
+          "control": 59,
+          "catcherArm": 26,
+          "catcherReady": 67,
+          "powerPitcher": 59,
+          "firstPower": 62
+        },
+        "matchRate": 0.3368,
+        "cpuMatchRate": 0.34176663031624865
+      },
+      "北海道ノーザンズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1587,
+        "cpuPicks": 4585,
+        "cpuMatches": 1476,
+        "needs": {
+          "shortDefense": 312,
+          "firstPower": 279,
+          "catcherFuture": 202,
+          "starter": 192,
+          "specialist": 141,
+          "control": 82,
+          "college": 134,
+          "middleBat": 296,
+          "highTools": 136,
+          "leftRelief": 122,
+          "corporate": 130,
+          "closer": 254,
+          "catcherArm": 84,
+          "speedCenter": 273,
+          "catcherReady": 228,
+          "powerPitcher": 65,
+          "leftStarter": 70
+        },
+        "needPicks": {
+          "starter": 134,
+          "firstPower": 91,
+          "specialist": 155,
+          "middleBat": 322,
+          "leftRelief": 127,
+          "control": 65,
+          "corporate": 174,
+          "highTools": 157,
+          "catcherFuture": 38,
+          "closer": 85,
+          "catcherReady": 80,
+          "college": 166,
+          "leftStarter": 63,
+          "catcherArm": 23,
+          "powerPitcher": 44,
+          "shortDefense": 48,
+          "speedCenter": 46
+        },
+        "matchRate": 0.3174,
+        "cpuMatchRate": 0.32191930207197383
+      },
+      "神戸ハーバーズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1639,
+        "cpuPicks": 4585,
+        "cpuMatches": 1529,
+        "needs": {
+          "speedCenter": 287,
+          "shortDefense": 294,
+          "highTools": 131,
+          "catcherReady": 202,
+          "starter": 204,
+          "catcherFuture": 216,
+          "middleBat": 280,
+          "college": 129,
+          "firstPower": 280,
+          "leftRelief": 160,
+          "specialist": 143,
+          "closer": 252,
+          "corporate": 137,
+          "control": 64,
+          "catcherArm": 90,
+          "powerPitcher": 77,
+          "leftStarter": 54
+        },
+        "needPicks": {
+          "shortDefense": 45,
+          "highTools": 190,
+          "catcherFuture": 53,
+          "middleBat": 293,
+          "specialist": 159,
+          "leftRelief": 165,
+          "starter": 130,
+          "corporate": 166,
+          "firstPower": 102,
+          "control": 54,
+          "catcherArm": 22,
+          "speedCenter": 63,
+          "closer": 100,
+          "college": 161,
+          "catcherReady": 74,
+          "leftStarter": 66,
+          "powerPitcher": 55
+        },
+        "matchRate": 0.3278,
+        "cpuMatchRate": 0.33347873500545255
+      },
+      "埼玉キングス": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1674,
+        "cpuPicks": 4585,
+        "cpuMatches": 1577,
+        "needs": {
+          "speedCenter": 280,
+          "middleBat": 294,
+          "highTools": 136,
+          "closer": 259,
+          "firstPower": 275,
+          "catcherFuture": 222,
+          "catcherReady": 224,
+          "leftRelief": 140,
+          "powerPitcher": 80,
+          "shortDefense": 266,
+          "college": 138,
+          "control": 71,
+          "specialist": 133,
+          "catcherArm": 91,
+          "starter": 190,
+          "leftStarter": 76,
+          "corporate": 125
+        },
+        "needPicks": {
+          "highTools": 133,
+          "closer": 107,
+          "speedCenter": 94,
+          "leftRelief": 129,
+          "powerPitcher": 52,
+          "college": 206,
+          "shortDefense": 51,
+          "control": 52,
+          "firstPower": 74,
+          "specialist": 145,
+          "middleBat": 341,
+          "catcherReady": 119,
+          "starter": 126,
+          "corporate": 181,
+          "leftStarter": 62,
+          "catcherFuture": 41,
+          "catcherArm": 26
+        },
+        "matchRate": 0.3348,
+        "cpuMatchRate": 0.34394765539803707
+      },
+      "広島レッドアローズ": {
+        "drafts": 1000,
+        "picks": 5000,
+        "matches": 1621,
+        "cpuPicks": 4585,
+        "cpuMatches": 1519,
+        "needs": {
+          "middleBat": 307,
+          "control": 74,
+          "closer": 232,
+          "leftRelief": 150,
+          "speedCenter": 279,
+          "highTools": 125,
+          "shortDefense": 294,
+          "starter": 202,
+          "catcherFuture": 218,
+          "college": 125,
+          "catcherReady": 207,
+          "firstPower": 282,
+          "corporate": 146,
+          "catcherArm": 103,
+          "specialist": 133,
+          "powerPitcher": 58,
+          "leftStarter": 65
+        },
+        "needPicks": {
+          "middleBat": 329,
+          "control": 55,
+          "closer": 75,
+          "speedCenter": 52,
+          "highTools": 112,
+          "leftRelief": 149,
+          "college": 195,
+          "starter": 154,
+          "corporate": 231,
+          "catcherReady": 82,
+          "firstPower": 95,
+          "specialist": 153,
+          "shortDefense": 46,
+          "catcherFuture": 30,
+          "catcherArm": 22,
+          "powerPitcher": 33,
+          "leftStarter": 60
+        },
+        "matchRate": 0.3242,
+        "cpuMatchRate": 0.33129770992366414
+      }
+    },
+    "phenomena": {
+      "人物懸念でもスター": {
+        "count": 5209,
+        "example": {
+          "seed": 1,
+          "id": "p10",
+          "name": "小野寺 拓海",
+          "category": "独立",
+          "tier": "1位候補"
+        }
+      },
+      "努力家でも非定着": {
+        "count": 1429,
+        "example": {
+          "seed": 1,
+          "id": "p21",
+          "name": "藤森 蓮",
+          "category": "社会人",
+          "tier": "中位候補"
+        }
+      },
+      "下位大学実績": {
+        "count": 642,
+        "example": {
+          "seed": 1,
+          "id": "p23",
+          "name": "岩城 翔吾",
+          "category": "大学",
+          "tier": "中位候補"
+        }
+      },
+      "俊足一芸": {
+        "count": 430,
+        "example": {
+          "seed": 1,
+          "id": "p43",
+          "name": "有村 一真",
+          "category": "独立",
+          "tier": "上位候補"
+        }
+      },
+      "強打守備難": {
+        "count": 2022,
+        "example": {
+          "seed": 1,
+          "id": "p46",
+          "name": "西崎 蓮",
+          "category": "独立",
+          "tier": "上位候補"
+        }
+      },
+      "守備特化": {
+        "count": 1578,
+        "example": {
+          "seed": 1,
+          "id": "p66",
+          "name": "坂井 悠真",
+          "category": "高校",
+          "tier": "1位候補"
+        }
+      },
+      "肩特化": {
+        "count": 1773,
+        "example": {
+          "seed": 1,
+          "id": "p69",
+          "name": "荒川 光希",
+          "category": "大学",
+          "tier": "下位候補"
+        }
+      },
+      "育成候補に高打率": {
+        "count": 140,
+        "example": {
+          "seed": 3,
+          "id": "p40",
+          "name": "南條 恭平",
+          "category": "独立",
+          "tier": "育成候補"
+        }
+      },
+      "1位素材": {
+        "count": 99,
+        "example": {
+          "seed": 5,
+          "id": "p48",
+          "name": "三田 律",
+          "category": "高校",
+          "tier": "1位候補"
+        }
+      }
+    },
+    "careerClassification": {
+      "スター": 5441,
+      "長期主力": 5032,
+      "一軍定着できず": 4623,
+      "ローテーション投手": 4395,
+      "主砲": 1188,
+      "一軍戦力": 4032,
+      "未完の大器": 663,
+      "一軍と二軍を往復": 10667,
+      "レギュラー": 3264,
+      "ユーティリティ": 1618,
+      "育成のまま終了": 4747,
+      "代打": 3078,
+      "レジェンド": 788,
+      "代走要員": 1484,
+      "短期活躍": 483,
+      "スーパースター": 1771,
+      "長期ローテーション投手": 3552,
+      "守護神": 213,
+      "守備職人": 821,
+      "セットアッパー": 1663,
+      "救援の仕事人": 428,
+      "エース": 39,
+      "支配下昇格": 10
+    },
+    "contradictions": []
+  },
+  "backupHash": "775c52c286ff34bc80fd214b574a73ade53fe0daec6acb4106553402408b152a",
+  "backupUntouched": true,
+  "lifeChanges": "existing alpha entry link only; no new changes",
+  "saveCompatibility": "additive v2 optional fields; historical picks/results retained; older draft keeps original CPU planning",
+  "sourceHashes": {
+    "dist/draft/ads.js": "4c5c713d6ed216428ca31cec4f435afe02363dc7c2468c3dddc22854cc78b127",
+    "dist/draft/candidates.js": "dca24cb275f8eec6d05e14bb11e92beb0b9ed699bb53cd66429f61752220fab7",
+    "dist/draft/career.js": "eaf04617c45d3491637e1a58519e0702b88a2cf6a43c45faf1f7a2b93fc1f84f",
+    "dist/draft/config.js": "938f559bf2d67d43b3f96c1258ac980866b985588217f632f40e8e2fbadfaf0a",
+    "dist/draft/draft.js": "cbf5629c3d0296f1d3259b392d3a1e7bf46d912b923b8c822a102a33f2529e70",
+    "dist/draft/evaluation.js": "3fc03b7d7a963b32ab10f5b555cc8e37b9417e81e5e7b957fe35268ea9c087bf",
+    "dist/draft/index.html": "b32d523e966be5f75b79881e7e10271324502a9232730d68d4e54da9b186762c",
+    "dist/draft/migration.js": "0d7b48f9985ecaeb4b17d361e532574aa6d022fffac85d3668e671525b8460a1",
+    "dist/draft/random.js": "3eee53721729d05b09d29b0388d6e4725b8621666d7ac8e07b3ae3e5b2afdb0b",
+    "dist/draft/scouting.js": "678e7e663ac576e9fd5e1794a65f5030595bce50f62ab73912cebf3f8979eba3",
+    "dist/draft/stats.js": "3173b4e90e6a7025987902643ab0a354b2804ef8f6245ccf3b30849758758594",
+    "dist/draft/storage.js": "ce4420a45f0cd179355fa21702ac430293b45b8381284fd6ff5726c2d6554baf",
+    "dist/draft/style.css": "0b6b12f95e4b0179a1fdbe45dbc3d04f8c11e309be730a7dc2dee02507c6fbee",
+    "dist/draft/teams.js": "c89073e09a4831aff200eac051455c38a9e5a664b3e426137532ab6b79a8f0a2",
+    "dist/draft/tools.js": "ba878ce78e57340d952776a4e7c30a19492d00979a561ae9a0ac6cc547c54a94",
+    "dist/draft/ui.js": "d6c634c33eb95895a22acf0addf4cf4158035557e47dc9c3e2c7048a06773579",
+    "dist/draft/watchlist.js": "fb11fa819460c996669ee5037dfa2c5182bc4391d866174e113ad79b9d782db3"
+  },
+  "commit": false,
+  "push": false,
+  "deployed": false
+}

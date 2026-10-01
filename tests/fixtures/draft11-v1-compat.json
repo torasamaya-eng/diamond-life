@@ -1,0 +1,62 @@
+[
+  {
+    "seed": 1,
+    "id": "p17",
+    "pick": {
+      "team": 0,
+      "id": "p17",
+      "round": 1,
+      "development": false,
+      "order": 1
+    },
+    "hash": "65e75d3d51cbdec798f0a106c1103b9cb17e4cddfff4ddd61e63a0cb89cf1434"
+  },
+  {
+    "seed": 7,
+    "id": "p64",
+    "pick": {
+      "team": 9,
+      "id": "p64",
+      "round": 1,
+      "development": false,
+      "order": 1
+    },
+    "hash": "a1ef9321ab5f40e0f1eef42e2a597e05fa9c927225951a1ced907ee00fa765f2"
+  },
+  {
+    "seed": 42,
+    "id": "p32",
+    "pick": {
+      "team": 0,
+      "id": "p32",
+      "round": 1,
+      "development": false,
+      "order": 1
+    },
+    "hash": "6c67652d6b7b9b9f204ff50a76377583d71833c846baf439970991c27517f046"
+  },
+  {
+    "seed": 52,
+    "id": "p8",
+    "pick": {
+      "team": 0,
+      "id": "p8",
+      "round": 1,
+      "development": false,
+      "order": 1
+    },
+    "hash": "d31b97ecb20bcb3393efa1651ec6bef411529c03f29b70d8b4d4d0783ee899c9"
+  },
+  {
+    "seed": 293,
+    "id": "p7",
+    "pick": {
+      "team": 0,
+      "id": "p7",
+      "round": 1,
+      "development": false,
+      "order": 1
+    },
+    "hash": "708ab3a056fe26b72df2bef4e83be5f0db8fb6fcdcd970c2bed005c23a2ca553"
+  }
+]

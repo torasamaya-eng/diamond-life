@@ -1,0 +1,1300 @@
+{
+  "date": "2026-09-30",
+  "baseCommit": "521f738a2ead0c3291d2b679c10fe8761907bfc4",
+  "baselineUnit": {
+    "passed": 382,
+    "failed": 0
+  },
+  "finalUnit": {
+    "total": 416,
+    "passed": 416,
+    "failed": 0
+  },
+  "syntax": "all dist/draft JS passed",
+  "build": "passed, standalone synchronized",
+  "protection": {
+    "checked": 49,
+    "unexpectedChanges": [],
+    "backupHash": "775c52c286ff34bc80fd214b574a73ade53fe0daec6acb4106553402408b152a",
+    "backupUntouched": true,
+    "lifeChange": "top-page link only; generated standalone synchronized"
+  },
+  "draftBrowser": {
+    "checks": [
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 360,
+        "name": "career-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "name": "career-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 430,
+        "name": "career-4"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "intro"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "scouting"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "overview"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "history"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "details"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "intelligence"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "draft"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "drafted"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "results"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-0"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-1"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-2"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-3"
+      },
+      {
+        "engine": "chromium",
+        "width": 1280,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 360,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 430,
+        "name": "career-4"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "intro"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "scouting"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "overview"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "history"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "details"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "intelligence"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "draft"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "drafted"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "results"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-0"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-1"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-2"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-3"
+      },
+      {
+        "engine": "webkit",
+        "width": 1280,
+        "name": "career-4"
+      }
+    ],
+    "count": 112,
+    "errors": [],
+    "coexistence": 8
+  },
+  "lifeRegression": {
+    "siteBrowser": 39,
+    "releaseBrowser": 28,
+    "passed": true
+  },
+  "simulation": {
+    "drafts": 1000,
+    "careers": 60000,
+    "groups": {
+      "all": {
+        "n": 60000,
+        "value": 461557.49000000337,
+        "stars": 1662,
+        "busts": 43085,
+        "injuries": 76261,
+        "years": 502372,
+        "meanValue": 7.692624833333389,
+        "starRate": 0.0277,
+        "bustRate": 0.7180833333333333,
+        "injuryRatePerYear": 0.15180185201404536
+      },
+      "round1": {
+        "n": 12000,
+        "value": 291371.6900000002,
+        "stars": 1335,
+        "busts": 3797,
+        "injuries": 22117,
+        "years": 142603,
+        "meanValue": 24.28097416666668,
+        "starRate": 0.11125,
+        "bustRate": 0.3164166666666667,
+        "injuryRatePerYear": 0.15509491385174226
+      },
+      "社会人": {
+        "n": 15170,
+        "value": 134981.44999999998,
+        "stars": 437,
+        "busts": 10209,
+        "injuries": 19710,
+        "years": 127816,
+        "meanValue": 8.89792023731048,
+        "starRate": 0.028806855636123927,
+        "bustRate": 0.672972972972973,
+        "injuryRatePerYear": 0.15420604619140013
+      },
+      "medical-serious": {
+        "n": 12216,
+        "value": 98633.47999999975,
+        "stars": 327,
+        "busts": 8536,
+        "injuries": 18576,
+        "years": 101920,
+        "meanValue": 8.074122462344446,
+        "starRate": 0.026768172888015716,
+        "bustRate": 0.6987557301899149,
+        "injuryRatePerYear": 0.18226059654631083
+      },
+      "trend-other": {
+        "n": 32483,
+        "value": 204245.72000000026,
+        "stars": 860,
+        "busts": 24824,
+        "injuries": 39505,
+        "years": 261029,
+        "meanValue": 6.287772681094735,
+        "starRate": 0.026475387125573378,
+        "bustRate": 0.7642151279130622,
+        "injuryRatePerYear": 0.15134333733033495
+      },
+      "独立": {
+        "n": 14870,
+        "value": 133278.61999999985,
+        "stars": 442,
+        "busts": 9993,
+        "injuries": 19384,
+        "years": 125244,
+        "meanValue": 8.962919973100192,
+        "starRate": 0.02972427706792199,
+        "bustRate": 0.6720242098184264,
+        "injuryRatePerYear": 0.1547698891763278
+      },
+      "medical-other": {
+        "n": 47784,
+        "value": 362924.0100000011,
+        "stars": 1335,
+        "busts": 34549,
+        "injuries": 57685,
+        "years": 400452,
+        "meanValue": 7.595094801607256,
+        "starRate": 0.02793822199899548,
+        "bustRate": 0.7230244433283107,
+        "injuryRatePerYear": 0.14404972381209233
+      },
+      "trend-up": {
+        "n": 27517,
+        "value": 257311.770000001,
+        "stars": 802,
+        "busts": 18261,
+        "injuries": 36756,
+        "years": 241343,
+        "meanValue": 9.351011011374823,
+        "starRate": 0.029145619071846495,
+        "bustRate": 0.6636261220336519,
+        "injuryRatePerYear": 0.15229776707839052
+      },
+      "unfinished-frame": {
+        "n": 8144,
+        "value": 61159.19000000021,
+        "stars": 220,
+        "busts": 5881,
+        "injuries": 10448,
+        "years": 67520,
+        "meanValue": 7.509723722986274,
+        "starRate": 0.027013752455795677,
+        "bustRate": 0.7221267190569745,
+        "injuryRatePerYear": 0.15473933649289098
+      },
+      "tall": {
+        "n": 19052,
+        "value": 146097.41999999914,
+        "stars": 544,
+        "busts": 13708,
+        "injuries": 24387,
+        "years": 159051,
+        "meanValue": 7.6683508293092135,
+        "starRate": 0.02855343271047659,
+        "bustRate": 0.7195045139617888,
+        "injuryRatePerYear": 0.1533281777543052
+      },
+      "大学": {
+        "n": 14987,
+        "value": 112989.70999999979,
+        "stars": 396,
+        "busts": 10717,
+        "injuries": 19542,
+        "years": 127465,
+        "meanValue": 7.539181290451711,
+        "starRate": 0.026422899846533662,
+        "bustRate": 0.7150864082204578,
+        "injuryRatePerYear": 0.15331267406739105
+      },
+      "高校": {
+        "n": 14973,
+        "value": 80307.70999999996,
+        "stars": 387,
+        "busts": 12166,
+        "injuries": 17625,
+        "years": 121847,
+        "meanValue": 5.363501636278633,
+        "starRate": 0.025846523742736927,
+        "bustRate": 0.812529219261337,
+        "injuryRatePerYear": 0.14464861670783852
+      },
+      "family": {
+        "n": 7632,
+        "value": 56433.649999999965,
+        "stars": 191,
+        "busts": 5560,
+        "injuries": 9663,
+        "years": 63187,
+        "meanValue": 7.3943461740041885,
+        "starRate": 0.02502620545073375,
+        "bustRate": 0.7285115303983228,
+        "injuryRatePerYear": 0.1529270261287923
+      },
+      "representative": {
+        "n": 1888,
+        "value": 32845.29000000002,
+        "stars": 103,
+        "busts": 841,
+        "injuries": 3127,
+        "years": 20105,
+        "meanValue": 17.396869703389843,
+        "starRate": 0.05455508474576271,
+        "bustRate": 0.4454449152542373,
+        "injuryRatePerYear": 0.15553344939069882
+      },
+      "round2": {
+        "n": 12000,
+        "value": 93623.86999999976,
+        "stars": 238,
+        "busts": 7998,
+        "injuries": 16627,
+        "years": 108960,
+        "meanValue": 7.8019891666666465,
+        "starRate": 0.019833333333333335,
+        "bustRate": 0.6665,
+        "injuryRatePerYear": 0.15259728340675477
+      },
+      "round3": {
+        "n": 12000,
+        "value": 35037.130000000216,
+        "stars": 62,
+        "busts": 9835,
+        "injuries": 13780,
+        "years": 91127,
+        "meanValue": 2.9197608333333513,
+        "starRate": 0.005166666666666667,
+        "bustRate": 0.8195833333333333,
+        "injuryRatePerYear": 0.1512175315768104
+      },
+      "round4": {
+        "n": 12000,
+        "value": 22724.82999999998,
+        "stars": 22,
+        "busts": 10404,
+        "injuries": 12516,
+        "years": 83518,
+        "meanValue": 1.8937358333333316,
+        "starRate": 0.0018333333333333333,
+        "bustRate": 0.867,
+        "injuryRatePerYear": 0.14985991043846836
+      },
+      "development": {
+        "n": 12000,
+        "value": 18799.970000000027,
+        "stars": 5,
+        "busts": 11051,
+        "injuries": 11221,
+        "years": 76164,
+        "meanValue": 1.566664166666669,
+        "starRate": 0.0004166666666666667,
+        "bustRate": 0.9209166666666667,
+        "injuryRatePerYear": 0.14732682107032194
+      }
+    },
+    "publicOutcomeCorrelation": 0.4442589955115298,
+    "examples": {
+      "first-bust": {
+        "seed": 1,
+        "id": "p65",
+        "name": "青柳 恭平",
+        "rank": 2,
+        "trend": 2.7,
+        "value": 4.4,
+        "clues": {
+          "velocity": 154.2,
+          "exitVelocity": 148.6,
+          "height": 194,
+          "history": [
+            {
+              "age": 16,
+              "velocity": 139.4,
+              "weight": 74
+            },
+            {
+              "age": 17,
+              "velocity": 140.5,
+              "weight": 76
+            },
+            {
+              "age": 18,
+              "velocity": 140.6,
+              "weight": 78
+            },
+            {
+              "age": 19,
+              "velocity": 144.7,
+              "weight": 80
+            },
+            {
+              "age": 20,
+              "velocity": 146.5,
+              "weight": 82
+            },
+            {
+              "age": 21,
+              "velocity": 148.1,
+              "weight": 84
+            },
+            {
+              "age": 22,
+              "velocity": 149.1,
+              "weight": 86
+            },
+            {
+              "age": 23,
+              "velocity": 151.5,
+              "weight": 88
+            },
+            {
+              "age": 24,
+              "velocity": 154.2,
+              "weight": 90
+            }
+          ]
+        }
+      },
+      "family-bust": {
+        "seed": 1,
+        "id": "p27",
+        "name": "荒川 晴斗",
+        "rank": 18,
+        "trend": 0.3,
+        "value": -7,
+        "clues": {
+          "velocity": 146.9,
+          "exitVelocity": 145.7,
+          "height": 190,
+          "history": [
+            {
+              "age": 16,
+              "velocity": 143.2,
+              "weight": 60
+            },
+            {
+              "age": 17,
+              "velocity": 142.6,
+              "weight": 62
+            },
+            {
+              "age": 18,
+              "velocity": 143.7,
+              "weight": 64
+            },
+            {
+              "age": 19,
+              "velocity": 143.7,
+              "weight": 66
+            },
+            {
+              "age": 20,
+              "velocity": 145,
+              "weight": 68
+            },
+            {
+              "age": 21,
+              "velocity": 145.2,
+              "weight": 70
+            },
+            {
+              "age": 22,
+              "velocity": 144.6,
+              "weight": 72
+            },
+            {
+              "age": 23,
+              "velocity": 146,
+              "weight": 74
+            },
+            {
+              "age": 24,
+              "velocity": 147.3,
+              "weight": 76
+            },
+            {
+              "age": 25,
+              "velocity": 146.6,
+              "weight": 78
+            },
+            {
+              "age": 26,
+              "velocity": 146.9,
+              "weight": 80
+            }
+          ]
+        }
+      },
+      "injured-star": {
+        "seed": 4,
+        "id": "p21",
+        "name": "青柳 航平",
+        "rank": 17,
+        "trend": 0.6,
+        "value": 64.73,
+        "clues": {
+          "velocity": 143.2,
+          "exitVelocity": 146.1,
+          "height": 185,
+          "history": [
+            {
+              "age": 16,
+              "velocity": 141.9,
+              "weight": 64
+            },
+            {
+              "age": 17,
+              "velocity": 142.3,
+              "weight": 65
+            },
+            {
+              "age": 18,
+              "velocity": 141.9,
+              "weight": 66
+            },
+            {
+              "age": 19,
+              "velocity": 140.1,
+              "weight": 67
+            },
+            {
+              "age": 20,
+              "velocity": 142,
+              "weight": 68
+            },
+            {
+              "age": 21,
+              "velocity": 142.6,
+              "weight": 69
+            },
+            {
+              "age": 22,
+              "velocity": 143.2,
+              "weight": 70
+            }
+          ]
+        }
+      },
+      "family-star": {
+        "seed": 7,
+        "id": "p74",
+        "name": "西崎 湊",
+        "rank": 6,
+        "trend": 2.1,
+        "value": 73.22,
+        "clues": {
+          "velocity": 153.7,
+          "exitVelocity": 147.6,
+          "height": 193,
+          "history": [
+            {
+              "age": 16,
+              "velocity": 142.3,
+              "weight": 65
+            },
+            {
+              "age": 17,
+              "velocity": 143.2,
+              "weight": 66
+            },
+            {
+              "age": 18,
+              "velocity": 143,
+              "weight": 67
+            },
+            {
+              "age": 19,
+              "velocity": 148,
+              "weight": 68
+            },
+            {
+              "age": 20,
+              "velocity": 149.4,
+              "weight": 69
+            },
+            {
+              "age": 21,
+              "velocity": 151.6,
+              "weight": 70
+            },
+            {
+              "age": 22,
+              "velocity": 153.7,
+              "weight": 71
+            }
+          ]
+        }
+      },
+      "development-star": {
+        "seed": 68,
+        "id": "p55",
+        "name": "三田 直人",
+        "rank": 53,
+        "trend": -2,
+        "value": 57.61,
+        "clues": {
+          "velocity": 139,
+          "exitVelocity": 176.4,
+          "height": 181,
+          "history": [
+            {
+              "age": 16,
+              "velocity": 138.5,
+              "weight": 80
+            },
+            {
+              "age": 17,
+              "velocity": 138.8,
+              "weight": 83
+            },
+            {
+              "age": 18,
+              "velocity": 138.9,
+              "weight": 86
+            },
+            {
+              "age": 19,
+              "velocity": 139.4,
+              "weight": 89
+            },
+            {
+              "age": 20,
+              "velocity": 138.7,
+              "weight": 92
+            },
+            {
+              "age": 21,
+              "velocity": 139,
+              "weight": 95
+            }
+          ]
+        }
+      }
+    },
+    "fixtures": {
+      "A": {
+        "seed": 1,
+        "id": "p5",
+        "round": 1,
+        "development": false,
+        "rank": 7,
+        "name": "三田 直人",
+        "category": "大学",
+        "value": 54.96
+      },
+      "H": {
+        "seed": 1,
+        "id": "p5",
+        "round": 1,
+        "development": false,
+        "rank": 7,
+        "name": "三田 直人",
+        "category": "大学",
+        "value": 54.96
+      },
+      "M": {
+        "seed": 1,
+        "id": "p5",
+        "round": 1,
+        "development": false,
+        "rank": 7,
+        "name": "三田 直人",
+        "category": "大学",
+        "value": 54.96
+      },
+      "K": {
+        "seed": 1,
+        "id": "p56",
+        "round": 1,
+        "development": false,
+        "rank": 10,
+        "name": "田代 大樹",
+        "category": "高校",
+        "value": 14.15
+      },
+      "O": {
+        "seed": 1,
+        "id": "p31",
+        "round": 1,
+        "development": false,
+        "rank": 6,
+        "name": "西崎 晴斗",
+        "category": "大学",
+        "value": 10.23
+      },
+      "F": {
+        "seed": 1,
+        "id": "p27",
+        "round": 2,
+        "development": false,
+        "rank": 18,
+        "name": "荒川 晴斗",
+        "category": "独立",
+        "value": -7
+      },
+      "J": {
+        "seed": 1,
+        "id": "p42",
+        "round": 3,
+        "development": false,
+        "rank": 37,
+        "name": "岩城 圭佑",
+        "category": "高校",
+        "value": -0.04
+      },
+      "I": {
+        "seed": 1,
+        "id": "p53",
+        "round": 4,
+        "development": false,
+        "rank": 58,
+        "name": "田代 蓮",
+        "category": "大学",
+        "value": 23.12
+      },
+      "C": {
+        "seed": 1,
+        "id": "p14",
+        "round": 5,
+        "development": true,
+        "rank": 49,
+        "name": "川瀬 光希",
+        "category": "大学",
+        "value": 0
+      },
+      "D": {
+        "seed": 2,
+        "id": "p61",
+        "round": 5,
+        "development": true,
+        "rank": 58,
+        "name": "橘 拓海",
+        "category": "社会人",
+        "value": 1.68
+      },
+      "B": {
+        "seed": 3,
+        "id": "p59",
+        "round": 3,
+        "development": false,
+        "rank": 20,
+        "name": "小暮 悠真",
+        "category": "大学",
+        "value": 0.31
+      },
+      "E": {
+        "seed": 3,
+        "id": "p31",
+        "round": 3,
+        "development": false,
+        "rank": 42,
+        "name": "宮原 悠真",
+        "category": "独立",
+        "value": 1.21
+      },
+      "G": {
+        "seed": 7,
+        "id": "p74",
+        "round": 1,
+        "development": false,
+        "rank": 6,
+        "name": "西崎 湊",
+        "category": "大学",
+        "value": 73.22
+      },
+      "L": {
+        "seed": 14,
+        "id": "p42",
+        "round": 1,
+        "development": false,
+        "rank": 7,
+        "name": "三田 圭佑",
+        "category": "大学",
+        "value": 17.56
+      },
+      "N": {
+        "seed": 45,
+        "id": "p11",
+        "round": 1,
+        "development": false,
+        "rank": 6,
+        "name": "石崎 翔吾",
+        "category": "社会人",
+        "value": -9.59
+      },
+      "P": {
+        "seed": 68,
+        "id": "p55",
+        "round": 5,
+        "development": true,
+        "rank": 53,
+        "name": "三田 直人",
+        "category": "社会人",
+        "value": 57.61
+      }
+    },
+    "invariants": {
+      "duplicatePicks": 0,
+      "unfinished": 0,
+      "injuryFull": 0,
+      "totalErrors": 0,
+      "statErrors": 0
+    }
+  },
+  "storage": {
+    "key": "hakkyu-draft.session",
+    "version": 1,
+    "checksum": true,
+    "autosaveAndIndexedDBCoexistenceCases": 8,
+    "allIdentical": true
+  },
+  "sourceHashes": {
+    "dist/draft/ads.js": "4c5c713d6ed216428ca31cec4f435afe02363dc7c2468c3dddc22854cc78b127",
+    "dist/draft/candidates.js": "ad5ef808d2b7ae4dd05a1fed274960d539d1d566f58e7c1248befcf29f0dd966",
+    "dist/draft/career.js": "024b88364cb4b438d98bd64fdc87d978dd158b564a462e8d916b213b721eec25",
+    "dist/draft/config.js": "aef98cc06a9318bfc78df9b6069f8e742565cbafa7a65292fbdfff4acbee454c",
+    "dist/draft/draft.js": "7ebcfed845719b33f860297327979e01af7b5b635185691b9fd00baa544f2e53",
+    "dist/draft/index.html": "2fb57f7fd01a0c8502c1f0a7c9582caf8dc2e26dd7a144ad3526778999aab332",
+    "dist/draft/random.js": "3eee53721729d05b09d29b0388d6e4725b8621666d7ac8e07b3ae3e5b2afdb0b",
+    "dist/draft/stats.js": "3173b4e90e6a7025987902643ab0a354b2804ef8f6245ccf3b30849758758594",
+    "dist/draft/storage.js": "2347318c8aa9685e9c4d0e865d4804fb3c38ecc2dbf815a2afbd18d7d3d45c68",
+    "dist/draft/style.css": "8ee447376f32e8d67cc471b3353141f55d2f07a4e6d82e6fa965b62d00c4843e",
+    "dist/draft/ui.js": "7398bcb02c28cb06d16e9e4b7c59f974534430683627b150adf3f239c28a7704"
+  },
+  "gitDiffCheck": "passed",
+  "commit": "not created",
+  "push": "not performed",
+  "deployment": "not performed",
+  "unverified": [
+    "physical iPhone Safari",
+    "real advertising SDK",
+    "production publishing",
+    "multi-tab concurrent draft synchronization"
+  ],
+  "selfReview": [
+    "Fixed non-finite irrelevant measurement fields before persistence",
+    "Protected empty/corrupt/quota saves with validation and checksum",
+    "Prevented double-click from opening a result after instant transition",
+    "Development contracts do not play top-league games before promotion",
+    "Batter repair events cannot be triggered by irrelevant pitcher set-velocity values; fixture P was re-selected from final population without changing any life baseline"
+  ]
+}
