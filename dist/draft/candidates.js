@@ -1,6 +1,6 @@
 import {initializeTraits,defenseAt,fielding,scoutingTools} from './tools.js';
 import {assignCandidateNames} from './names.js';
-import {CONFIG,CATEGORIES,TIERS,validateConfig} from './config.js';
+import {CONFIG,CATEGORIES,TIERS,validateConfig,PITCH_MEASUREMENT} from './config.js';
 import {random,clamp,round} from './random.js';
 import {batting,pitching,sum,rates} from './stats.js';
 import {teamProfile} from './teams.js';
@@ -14,7 +14,7 @@ const curves=['steady','early','late','college','corporate','independent','rebou
 export const abilityKeys=role=>role==='投手'?['stuff','control','breaking','stamina']:['contact','power','eye','speed','field','arm'];
 export function average(a){return Object.values(a).reduce((s,v)=>s+v,0)/Object.keys(a).length;}
 function timing(curve,age){if(curve==='early')return 1.15-Math.max(0,age-18)*.06;if(curve==='late')return .77+(age-16)*.035;if(curve==='college')return age<19?.86:1+(age-19)*.05;if(curve==='corporate')return age<23?.88:1.08;if(curve==='independent')return age<22?.90:1.07;return 1;}
-function historyFor(c,rng){
+function historyFor(c,rng,measurementModel){
  const rows=[];const h=c.hidden;for(let age=16;age<=c.age;age++){
   const stage=age<=18?'高校':c.category==='大学'||(h.college&&age<=22)?'大学':c.category;
   const growth=(age-16)*h.development,phase=timing(h.curve,age),a=Object.fromEntries(Object.entries(h.base).map(([k,v])=>[k,clamp((v+growth)*phase,20,94)]));
@@ -25,7 +25,7 @@ function historyFor(c,rng){
   const stat=makeSplitStats(c,a,games,rng,opposition,form);
   const defense=c.role==='野手'?fielding(defenseAt(c,a,age),c.position,games,random(`${c.id}:field:${age}:${c.name}`)):null;
   const height=Math.round(c.height-Math.max(0,c.age-age)*(age<=18?1.3:.25));const weight=Math.max(56,Math.round(c.weight-(c.age-age)*h.bodyGain));
-  const velocity=round(119+(a.stuff??50)*.40+rng.normal()*.6,1),exitVelocity=round(112+(a.power??50)*.69+rng.normal(),1);
+  const velocity=round((measurementModel==='peak-v2'?PITCH_MEASUREMENT.base+(a.stuff??50)*PITCH_MEASUREMENT.stuffScale:119+(a.stuff??50)*.40)+rng.normal()*.6,1),exitVelocity=round(112+(a.power??50)*.69+rng.normal(),1);
   const national=rng.next()<.28?{games:c.role==='投手'?2:5,stats:makeStats(c,a,c.role==='投手'?2:5,rng,opposition+12,form+h.pressure*7-3.5)}:null;
   const situations=c.role==='投手'?{empty:makeStats(c,a,4,rng,opposition,form),runners:makeStats(c,a,4,rng,opposition,form-h.setLoss*.7+h.pressure*3)}:{fastball:makeStats(c,a,8,rng,opposition,form+(a.contact-a.eye)*.15),breaking:makeStats(c,a,8,rng,opposition,form+(a.eye-a.contact)*.25),risp:makeStats(c,a,6,rng,opposition,form+(h.pressure-.5)*6)};
   const league=opposition<6?'地域リーグ':opposition<13?'地区強豪リーグ':'全国水準リーグ';
@@ -50,7 +50,7 @@ export function generateCandidates(seed,config=CONFIG){
   if(c.hidden.curve==='early')c.hidden.peakAge-=2;if(c.hidden.curve==='late')c.hidden.peakAge+=2;
   initializeTraits(c,seed,{specialize:true});
   if(['adaptation-v1','adaptation-v2'].includes(config.careerModel))prepareDevelopment(c,quality,config.careerModel);
-  c.history=historyFor(c,rng);const latest=c.history.at(-1),prev=c.history.at(-2),a=c.hidden.current;
+  c.history=historyFor(c,rng,config.measurementModel);const latest=c.history.at(-1),prev=c.history.at(-2),a=c.hidden.current;
   c.velocity=latest.velocity;c.exitVelocity=latest.exitVelocity;c.trend=round(role==='投手'?latest.velocity-prev.velocity:(latest.exitVelocity-prev.exitVelocity),1);
   c.representative=latest.national&&(role==='投手'?rates(latest.national.stats).era<2.8:rates(latest.national.stats).ops>.83)?category==='高校'?'U18候補合宿':category==='大学'?'大学代表選出':'全国大会優秀選手':null;
   c.medical=c.history.filter(y=>y.injury).map(y=>({year:y.year,...y.injury}));
@@ -67,7 +67,7 @@ export function generateCandidates(seed,config=CONFIG){
  const ordered=[...candidates].sort((a,b)=>publicScore(b)-publicScore(a));
  ordered.forEach((c,i)=>{c.rank=i+1;c.tier=TIERS[i<12?0:i<28?1:i<46?2:i<63?3:4];c.surveys=Math.round(clamp(12-i/7+rng.normal(),1,12));c.interviews=Math.round(clamp(c.surveys-rng.int(1,6),0,12));c.movement=c.trend>3?'急上昇':c.trend>1?'上昇':c.trend<-3?'急落':c.trend<-1?'下降':'横ばい';});
  if(config.scoutingModel==='club-v1'){
-  const profiles=Array.from({length:config.teamCount},(_,i)=>teamProfile(seed,i));
+  const profiles=Array.from({length:config.teamCount},(_,i)=>teamProfile(seed,i,config.needsModel==='available-v1'?candidates.map(report):null));
   for(const c of candidates){
    c.surveyDetails=profiles.map(profile=>({team:profile.team,...recruitmentAssessment(report(c),profile,seed)})).filter(a=>a.survey).map(a=>({team:a.team,reasons:a.reasons,interview:a.interview}));
    c.surveys=c.surveyDetails.length;c.interviews=c.surveyDetails.filter(a=>a.interview).length;

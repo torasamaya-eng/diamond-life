@@ -37,7 +37,7 @@ test('draft11: historical lower picks include observed stars and a legend, witho
 
 test('draft11: old adaptation-v1 careers retain their exact pre-change results',()=>{
  for(const fixture of old){
-  const s=finishDraft(createSession(fixture.seed,{...CONFIG,careerModel:'adaptation-v1'})),c=s.candidates.find(c=>c.id===fixture.id);
+  const s=finishDraft(createSession(fixture.seed,{...CONFIG,careerModel:'adaptation-v1',measurementModel:'legacy',needsModel:'legacy'})),c=s.candidates.find(c=>c.id===fixture.id);
   const r=simulateCareer(c,fixture.pick,fixture.seed);
   assert.equal(createHash('sha256').update(JSON.stringify(r)).digest('hex'),fixture.hash);
  }

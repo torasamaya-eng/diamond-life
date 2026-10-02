@@ -6,7 +6,7 @@ import {recruitmentAssessment} from './recruitment.js';
 export function eligible(c,round,development=false){return development?c.condition==='制限なし':c.condition!=='2位まで・未指名なら進学／残留'||round<=2;}
 export function cpuBoards(candidates,seed,config=CONFIG){
  const visible=candidates.map(report);
- return TEAMS.slice(0,config.teamCount).map((team,i)=>{const rng=random(`${seed}:club:${i}`),profile=teamProfile(seed,i);
+ return TEAMS.slice(0,config.teamCount).map((team,i)=>{const rng=random(`${seed}:club:${i}`),profile=teamProfile(seed,i,config.needsModel==='available-v1'?visible:null);
   if(config.scoutingModel==='club-v1'){
    const assessments=visible.map(c=>recruitmentAssessment(c,profile,seed));
    return {...profile,need:profile.needs[0].label,selectionModel:'club-v1',assessments,board:[...assessments].sort((a,b)=>b.score-a.score).map(c=>c.id)};

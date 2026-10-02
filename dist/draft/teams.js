@@ -6,12 +6,16 @@ const kinds={
  starter:['即戦力の先発投手','先発','即戦力'],leftStarter:['左の先発候補','先発','左腕'],powerPitcher:['球威型投手','先発','球威'],control:['制球型投手','先発','制球'],leftRelief:['左の中継ぎ','救援','左腕'],closer:['将来の守護神候補','救援','将来'],firstPower:['強打の一塁手','一塁','長打'],middleBat:['中軸候補','三塁','長打'],speedCenter:['俊足センター','中堅','走力'],shortDefense:['守備型遊撃手','遊撃','守備'],catcherArm:['強肩捕手','捕手','肩'],catcherReady:['即戦力捕手','捕手','即戦力'],catcherFuture:['高校生捕手','捕手','将来'],highTools:['高校生素材型','外野','将来'],college:['大学生即戦力','全体','即戦力'],corporate:['社会人即戦力','全体','即戦力'],specialist:['守備走塁の一芸型','外野','守備走塁']
 };
 export const NEEDS=Object.fromEntries(Object.entries(kinds).map(([id,[label,position,type]])=>[id,{id,label,position,type}]));
-export function teamProfile(seed,index){
+export function teamProfile(seed,index,candidates=null){
  const rng=random(`${seed}:team-context:${index}`),context=Object.fromEntries(POSITIONS.map(p=>[p,{strength:rng.int(30,85),age:rng.int(24,35),depth:rng.int(1,5)}]));
  const weak=POSITIONS.toSorted((a,b)=>(context[a].strength-context[a].age-5/context[a].depth)-(context[b].strength-context[b].age-5/context[b].depth));
- const options=p=>Object.values(NEEDS).filter(n=>n.position===p);
+ const possible=Object.values(NEEDS).filter(n=>!candidates||candidates.some(c=>matchesNeed(c,n)));
+ const options=p=>possible.filter(n=>n.position===p);
  const chosen=[];for(const p of weak){const choices=options(p).filter(n=>!chosen.some(x=>x.id===n.id));if(choices.length)chosen.push(rng.pick(choices));if(chosen.length===2)break;}
- chosen.push(rng.pick(Object.values(NEEDS).filter(n=>!chosen.some(x=>x.id===n.id)&&['将来','即戦力','守備走塁'].includes(n.type))));
+ const remaining=possible.filter(n=>!chosen.some(x=>x.id===n.id));
+ const extra=remaining.filter(n=>['将来','即戦力','守備走塁'].includes(n.type));
+ if(extra.length||remaining.length)chosen.push(rng.pick(extra.length?extra:remaining));
+ while(chosen.length<3){const rest=possible.filter(n=>!chosen.some(x=>x.id===n.id));if(!rest.length)break;chosen.push(rng.pick(rest));}
  const needs=chosen.map((n,i)=>({...n,priority:['最優先','優先','将来・追加枠'][i],reason:context[n.position]?`${n.position}は${context[n.position].age>=31?'高齢化が進み世代交代が必要':context[n.position].depth<=2?'控えが少なく選手層が薄い':'主力候補の競争を促したい'}。${n.type==='将来'?'数年後を見据えて育成する候補が欲しい。':n.type==='即戦力'?'早期に一軍で使える完成度を重視。':`${n.type}を武器に出場機会を作れる選手を求める。`}`:'今ある戦力とは異なる武器を加え、数年後の編成に選択肢を残したい。'}));
  return {team:TEAMS[index],league:LEAGUES[index<6?0:1],context,needs,philosophy:PHILOSOPHIES[index%PHILOSOPHIES.length]};
 }

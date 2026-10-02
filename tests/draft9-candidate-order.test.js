@@ -1,14 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createSession,finishDraft,available} from '../dist/draft/draft.js';
+import {TIERS} from '../dist/draft/config.js';
 import {report} from '../dist/draft/candidates.js';
 import {candidateNumbers,orderCandidates} from '../dist/draft/candidate-order.js';
 
-test('draft9: featured 22 and evaluation labels remain unchanged; only presentation order changes',()=>{
+test('draft9: tiers are grouped in requested order without ranking within each tier',()=>{
  const s=createSession(42),before=JSON.stringify(s),numbers=candidateNumbers(s);
  const ordered=orderCandidates(s,s.candidates.map(report));
  assert.equal(ordered.length,76);
- assert.deepEqual(ordered.slice(0,22).map(c=>c.id).sort(),s.candidates.filter(c=>c.rank<=22).map(c=>c.id).sort());
+ assert.deepEqual(ordered.map(c=>TIERS.indexOf(c.tier)),ordered.map(c=>TIERS.indexOf(c.tier)).sort((a,b)=>a-b));
+ for(const tier of TIERS){const group=ordered.filter(c=>c.tier===tier);assert.notDeepEqual(group.map(c=>c.rank),group.map(c=>c.rank).sort((a,b)=>a-b));}
  assert.deepEqual(ordered.map(c=>numbers.get(c.id)),Array.from({length:76},(_,i)=>i+1));
  assert.notDeepEqual(ordered.slice(0,22).map(c=>c.rank),Array.from({length:22},(_,i)=>i+1));
  for(const c of ordered)assert.deepEqual(c,report(s.candidates.find(p=>p.id===c.id)));
@@ -25,8 +27,7 @@ test('draft9: same seed and legacy save reproduce numbers without adding save fi
 
 test('draft9: ratings, hidden data and internal ordering within a group do not determine numbers',()=>{
  const s=createSession(18),changed=structuredClone(s);
- const featured=changed.candidates.filter(c=>c.rank<=22),others=changed.candidates.filter(c=>c.rank>22);
- for(const group of [featured,others]){
+ for(const group of TIERS.map(t=>changed.candidates.filter(c=>c.tier===t))){
   const ranks=group.map(c=>c.rank).reverse();
   group.forEach((c,i)=>{c.rank=ranks[i];c.velocity=200;c.exitVelocity=250;c.hidden={potential:1};});
  }
@@ -44,12 +45,12 @@ test('draft9: filters and picks keep original numbers; reading the directory can
  for(const c of orderCandidates(s,available(s)))assert.equal(candidateNumbers(s).get(c.id),numbers.get(c.id));
 });
 
-test('draft9: across 1000 directory seeds No.1 is distributed across all 22 featured ranks',()=>{
- const base=createSession(42),counts=Array(22).fill(0);
+test('draft9: across 1000 seeds each tier first slot is distributed among its candidates',()=>{
+ const base=createSession(42);for(const tier of TIERS){const group=base.candidates.filter(c=>c.tier===tier),counts=new Map(group.map(c=>[c.id,0]));
  for(let seed=0;seed<1000;seed++){
   const s={...base,seed};
-  counts[orderCandidates(s,base.candidates)[0].rank-1]++;
+  const id=orderCandidates(s,group)[0].id;counts.set(id,counts.get(id)+1);
  }
- assert.ok(counts.every(n=>n>=20&&n<=80),JSON.stringify(counts));
- assert.equal(counts.reduce((a,b)=>a+b,0),1000);
+ assert.ok([...counts.values()].every(n=>n>=25&&n<=140),JSON.stringify([...counts]));
+ assert.equal([...counts.values()].reduce((a,b)=>a+b,0),1000);}
 });

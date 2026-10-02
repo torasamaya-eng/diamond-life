@@ -44,7 +44,7 @@ const predicates={
  P:(c,r)=>r.pick.development&&r.value>=55
 };
 // Original fixtures remain unchanged and verify the old-save model exactly.
-const legacyConfig={...CONFIG,scoutingModel:'legacy',careerModel:'legacy'};
+const legacyConfig={...CONFIG,scoutingModel:'legacy',careerModel:'legacy',measurementModel:'legacy',needsModel:'legacy'};
 for(const [key,predicate] of Object.entries(predicates))test(`draft: legacy representative prospect ${key} arises naturally`,()=>{const fixture=fixtures[key];assert.ok(fixture);const s=finishDraft(createSession(fixture.seed,legacyConfig)),c=s.candidates.find(c=>c.id===fixture.id),pick=s.picks.find(p=>p.id===c.id),r=simulateCareer(c,pick,fixture.seed);assert.ok(predicate(c,r));assert.equal(r.value,fixture.value);});
 test('draft: development contracts have no top-team games until promotion; events agree with annual roles',()=>{for(let seed=1;seed<15;seed++){const s=finishDraft(createSession(seed));for(const r of revealCareers(s)){for(const y of r.rows){if(y.contract==='育成')assert.equal(y.stats.games,0);if(y.injuryDays>=210)assert.equal(y.stats.games+y.farm.games,0);}for(const e of r.events.filter(e=>e.type==='ROLE'))assert.ok(r.rows.some(y=>y.year===e.year&&y.age===e.age));}}});
 test('draft: a batter without a left-hand weakness cannot get a repair event from irrelevant set velocity',()=>{for(const c of generateCandidates(31).filter(c=>c.role==='野手'&&c.hidden.leftSplit>=-3)){const r=simulateCareer(c,{team:0,round:5,development:true},31);assert.ok(!r.events.some(e=>e.type==='REPAIR'));}});
